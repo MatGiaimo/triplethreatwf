@@ -10,11 +10,11 @@
     <%
         if (!Request.IsAuthenticated)
         {
-            Html.RenderPartial("LogOnUserControl");
+            Html.RenderPartial("LogOn");
         }
         else
         {
-            Html.RenderPartial("OpenItemsUserControl");
+            Html.RenderPartial("OpenItems");
         }
     %>
     </p>

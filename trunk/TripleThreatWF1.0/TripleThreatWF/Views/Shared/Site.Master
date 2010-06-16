@@ -16,7 +16,7 @@
             </div>
               
             <div id="logindisplay">
-                <% Html.RenderPartial("LogOnTopUserControl"); %>
+                <% Html.RenderPartial("LogOnTop"); %>
             </div> 
             
             <div id="menucontainer">
@@ -32,7 +32,7 @@
         <%if (Request.IsAuthenticated)
           { %>
         <div id="sideNav">
-            <% Html.RenderPartial("SideNavUserControl"); %>
+            <% Html.RenderPartial("SideNav"); %>
         </div>
         <%} %>
 

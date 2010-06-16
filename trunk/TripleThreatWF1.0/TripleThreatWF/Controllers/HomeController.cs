@@ -16,12 +16,7 @@ namespace TripleThreatWF.Controllers
             return View();
         }
 
-        public ActionResult SearchDocs()
-        {
-            return View();
-        }
-
-        public ActionResult ManageDoc()
+        public ActionResult OpenItems()
         {
             return View();
         }
