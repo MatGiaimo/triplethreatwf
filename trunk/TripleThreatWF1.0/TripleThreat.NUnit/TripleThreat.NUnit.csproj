@@ -48,12 +48,6 @@
     <Compile Include="UTUseCases.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TFFramework\TFFramework.csproj">
-      <Project>{3521CF2C-6F1D-4443-90B6-A832B2D62876}</Project>
-      <Name>TFFramework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_1.sequencediagram" />
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_2.sequencediagram" />
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_3.sequencediagram" />
@@ -76,6 +70,12 @@
     <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_5.sequencediagram.layout">
       <DependentUpon>UTUseCases_FuncReq_5.sequencediagram</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TTFramework\TTFramework.csproj">
+      <Project>{3521CF2C-6F1D-4443-90B6-A832B2D62876}</Project>
+      <Name>TTFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

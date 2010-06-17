@@ -126,6 +126,12 @@
     <Folder Include="Views\User\" />
     <Folder Include="Views\Workflow\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TTFramework\TTFramework.csproj">
+      <Project>{3521CF2C-6F1D-4443-90B6-A832B2D62876}</Project>
+      <Name>TTFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
