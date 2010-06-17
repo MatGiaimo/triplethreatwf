@@ -53,6 +53,30 @@
       <Name>TFFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_1.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_2.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_3.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_4.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_5.sequencediagram" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_1.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_1.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_2.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_2.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_3.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_3.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_4.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_4.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_5.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_5.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
