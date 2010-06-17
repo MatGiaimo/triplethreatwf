@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Mat\Documents\Visual Studio 2010\Projects\TripleThreatWF\TripleThreat.NUnit\FrameworkTests.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-06-16" time="23:35:48">
+  <environment nunit-version="2.5.3.9345" clr-version="4.0.30319.1" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\Users\Mat\Documents\visual studio 2010\Projects\TripleThreatWF\NUnit" machine-name="MAT-PC" user="Mat" user-domain="Mat-PC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite name="C:\Users\Mat\Documents\Visual Studio 2010\Projects\TripleThreatWF\TripleThreat.NUnit\FrameworkTests.nunit" executed="True" success="True" time="0.010" asserts="0">
+    <results>
+      <test-suite name="C:\Users\Mat\Documents\Visual Studio 2010\Projects\TripleThreatWF\TripleThreat.NUnit\bin\Debug\TripleThreat.NUnit.dll" executed="True" success="True" time="0.008" asserts="0">
+        <results>
+          <test-suite name="UTTripleThreat" executed="True" success="True" time="0.007" asserts="0">
+            <results>
+              <test-suite name="UTCore" executed="True" success="True" time="0.005" asserts="0">
+                <results>
+                  <test-case name="UTTripleThreat.UTCore.AddDocumentToFolder" executed="True" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
