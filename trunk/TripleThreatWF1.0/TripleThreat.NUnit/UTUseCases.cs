@@ -156,26 +156,86 @@ namespace UTTripleThreat
         [Test]
         public void FuncReq_6()
         {
+            IDocument doc = DocumentHelper.CreateNewDocument();
+
+            doc.DateAdded = DateTime.Now;
+            doc.AddedBy = new User(); //some user
+            doc.DocumentName = "SomeDocName";
+            doc.CustomerAccount = new CustomerGroup();
+            doc.State = DocumentState.Incomplete;
+            doc.ReadAccessGroups = new List<UserGroup>();
+            doc.FullAccessGroups = new List<UserGroup>();
+
         }
 
+        /// <summary>
+        ///[FuncReq_7] Document State
+        ///Create a document 
+        ///Verify document is in 'InProgress' or initial state. Do we want an UnAssigned state for documents not belonging to a workflow?
+        /// </summary>
         [Test]
         public void FuncReq_7()
         {
+            IDocument doc = DocumentHelper.CreateNewDocument();
+            //Assert.AreEqual(doc.State, DocumentState.Incomplete);
         }
 
+        /// <summary>
+        ///[FuncReq_8] Document Search
+        ///Specify criteria to search 
+        ///Execute document search. (Document.Find()? IQueryable collection?) We'll be using LINQ to SQL. Not quite sure how to unit test this yet.
+        /// </summary>
         [Test]
         public void FuncReq_8()
         {
+            DocumentHelper.GetDocuments();
         }
 
+        /// <summary>
+        ///[FuncReq_9] Document Folders
+        ///Create a folder 
+        ///Create two documents 
+        ///Add documents to folder
+        /// </summary>
         [Test]
         public void FuncReq_9()
         {
+            IFolder folder = FolderHelper.CreateNewFolder();
+
+            IDocument doc = DocumentHelper.CreateNewDocument();
+            IDocument doc2 = DocumentHelper.CreateNewDocument();
+
+            folder.AddDocument(doc);
+            folder.AddDocument(doc2);
+
         }
 
+        /// <summary>
+        ///[FuncReq_10] User Groups
+        ///Create a Supervisor User Group 
+        ///Create a Technician User Group 
+        ///Create a User 
+        ///Add User to Supervisor Group 
+        ///Add User to Technician Group 
+        ///Verify user has permissions associated with both groups
+        /// </summary>
         [Test]
         public void FuncReq_10()
         {
+            UserGroup supr = new UserGroup();
+            supr.GroupName = "Supervisor";
+
+            UserGroup tech = new UserGroup();
+            tech.GroupName = "Technician";
+
+            User u = new User();
+            u.UserName = "NotSure";
+
+            supr.Members.Add(u);
+            tech.Members.Add(u);
+
+            //Assert Some check
+
         }
 
         [Test]
@@ -183,9 +243,29 @@ namespace UTTripleThreat
         {
         }
 
+        /// <summary>
+        ///[FuncReq_12] Administrators
+        ///Create a Supervisor User Group 
+        ///Create a User 
+        ///Add User to Supervisor Group 
+        ///Remove User from Supervisor Group 
+        ///Remove User
+        /// </summary>
         [Test]
         public void FuncReq_12()
         {
+            UserGroup supr = new UserGroup();
+            supr.GroupName = "Supervisor";
+
+            User u = new User();
+            u.UserName = "NotSure";
+
+            supr.Members.Add(u);
+            supr.Members.Remove(u);
+
+            u.DeleteUser();
+
+            //Assert Some check
         }
 
 
@@ -194,40 +274,7 @@ namespace UTTripleThreat
 }
 
 
-//[FuncReq_6] Document Attributes
 
-//Create a document 
-//Add attributes to a document: 
-//Date Added 
-//Added By 
-//Document Name 
-//Customer Name 
-//State 
-//View Groups 
-//Admin Groups
-//[FuncReq_7] Document State
 
-//Create a document 
-//Verify document is in 'InProgress' or initial state. Do we want an UnAssigned state for documents not belonging to a workflow?
-//[FuncReq_8] Document Search
-//Specify criteria to search 
-//Execute document search. (Document.Find()? IQueryable collection?) We'll be using LINQ to SQL. Not quite sure how to unit test this yet.
-//[FuncReq_9] Document Folders
-//Create a folder 
-//Create two documents 
-//Add documents to folder
-//[FuncReq_10] User Groups
 
-//Create a Supervisor User Group 
-//Create a Technician User Group 
-//Create a User 
-//Add User to Supervisor Group 
-//Add User to Technician Group 
-//Verify user has permissions associated with both groups
-//[FuncReq_12] Administrators
 
-//Create a Supervisor User Group 
-//Create a User 
-//Add User to Supervisor Group 
-//Remove User from Supervisor Group 
-//Remove User

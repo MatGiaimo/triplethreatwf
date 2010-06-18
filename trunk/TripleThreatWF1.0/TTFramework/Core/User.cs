@@ -37,5 +37,10 @@ namespace TripleThreat.Framework
 
         public string EmailAddress { get; set; }
 
+        public void DeleteUser()
+        {
+
+        }
+
     }
 }

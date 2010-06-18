@@ -29,6 +29,8 @@ namespace TripleThreat.Framework
 {
     public class UserGroup
     {
-        string GroupName { get; set; }
+        public string GroupName { get; set; }
+
+        public List<User> Members { get; set; }
     }
 }

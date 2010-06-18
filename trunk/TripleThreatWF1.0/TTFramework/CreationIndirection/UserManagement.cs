@@ -27,40 +27,15 @@ using System.Text;
 
 namespace TripleThreat.Framework
 {
-    public enum DocumentState
+    public class UserManagement
     {
-        //todo: identify states
-        Incomplete,
-        Complete
-    }
+        //public TripleThreat.Framework.DatabaseInteractions.IDatabase Database { get; set; }
 
-    public interface IDocument
-    {
-        string GetPath();
-
-        void UpdateDocument(string documentPath);
-
-        void ArchiveDocument();
-
-        //Date Added 
-        DateTime DateAdded { get; set; }
-
-        //Added By 
-        User AddedBy { get; set; }
-
-        //Document Name 
-        string DocumentName { get; set; }
-
-        //Customer Name
-        CustomerGroup CustomerAccount { get; set; }
-
-        //State 
-        DocumentState State { get; set; }
-
-        //View Groups 
-        List<UserGroup> ReadAccessGroups { get; set; }
-
-        //Admin Groups
-        List<UserGroup> FullAccessGroups { get; set; }
+        //public void CreateUserGroup(string groupName)
+        //{
+        //    UserGroup u = new UserGroup();
+        //    u.GroupName = groupName;
+        //    Database.AddUserGroup(u);
+        //}
     }
 }

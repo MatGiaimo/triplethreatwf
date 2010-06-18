@@ -56,6 +56,7 @@
     <Compile Include="CreationIndirection\ActivityHelper.cs" />
     <Compile Include="CreationIndirection\DocumentHelper.cs" />
     <Compile Include="CreationIndirection\FolderHelper.cs" />
+    <Compile Include="CreationIndirection\UserManagement.cs" />
     <Compile Include="CreationIndirection\WorkFlowHelper.cs" />
     <Compile Include="DatabaseInteractions\DatabaseInterfaceFactory.cs" />
     <Compile Include="DatabaseInteractions\IDatabase.cs" />
