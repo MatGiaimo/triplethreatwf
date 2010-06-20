@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripleThreatWF.Tests", "Tri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripleThreat.NUnit", "TripleThreat.NUnit\TripleThreat.NUnit.csproj", "{348F207F-4E55-4442-9060-158E0126A873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTFramework", "TTFramework\TTFramework.csproj", "{3521CF2C-6F1D-4443-90B6-A832B2D62876}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripleThreat.Framework", "TripleThreat.Framework\TripleThreat.Framework.csproj", "{3521CF2C-6F1D-4443-90B6-A832B2D62876}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

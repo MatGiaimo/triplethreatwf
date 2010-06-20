@@ -72,9 +72,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TTFramework\TTFramework.csproj">
+    <ProjectReference Include="..\TripleThreat.Framework\TripleThreat.Framework.csproj">
       <Project>{3521CF2C-6F1D-4443-90B6-A832B2D62876}</Project>
-      <Name>TTFramework</Name>
+      <Name>TripleThreat.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

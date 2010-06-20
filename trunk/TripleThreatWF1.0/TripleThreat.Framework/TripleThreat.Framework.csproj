@@ -8,8 +8,8 @@
     <ProjectGuid>{3521CF2C-6F1D-4443-90B6-A832B2D62876}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TFFramework</RootNamespace>
-    <AssemblyName>TFFramework</AssemblyName>
+    <RootNamespace>TripleThreat.Framework</RootNamespace>
+    <AssemblyName>TripleThreat.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
