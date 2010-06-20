@@ -1,95 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="TripleThreat.Customer">
-    <Position X="0.5" Y="2.5" Width="1.75" />
+  <Class Name="TripleThreat.Framework.Customer">
+    <Position X="0.5" Y="2.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>EAAAAEAAAAAAAAAAAAAAAAAAAAAAAAACAAAAEAAAAAg=</HashCode>
+      <HashCode>EAAAAEAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Core\Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TripleThreat.UserGroup">
-    <Position X="4.25" Y="4.5" Width="1.5" />
+  <Class Name="TripleThreat.Framework.UserGroup">
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAE=</HashCode>
       <FileName>Core\UserGroup.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Members" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="TripleThreat.CustomerGroup">
+  <Class Name="TripleThreat.Framework.CustomerGroup">
     <Position X="0.5" Y="0.5" Width="1.75" />
+    <AssociationLine Name="Customers" Type="TripleThreat.Framework.Customer">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.206" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Core\CustomerGroup.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Customers" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="TripleThreat.Lender">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+  <Class Name="TripleThreat.Framework.Lender">
+    <Position X="4.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQ=</HashCode>
       <FileName>Core\Lender.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TripleThreat.User">
-    <Position X="6" Y="4.5" Width="1.5" />
+  <Class Name="TripleThreat.Framework.User">
+    <Position X="3" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAgAAAAg=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAgAAAAg=</HashCode>
       <FileName>Core\User.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="TripleThreat.IActivity">
-    <Position X="2.5" Y="2.5" Width="1.5" />
+  <Class Name="TripleThreat.Framework.DocumentHelper">
+    <Position X="6.5" Y="4.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAgAAAAAAAA=</HashCode>
+      <FileName>CreationIndirection\DocumentHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TripleThreat.Framework.IActivity">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <AssociationLine Name="WorkFlows" Type="TripleThreat.Framework.IWorkFlow">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.237" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Core\IActivity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="WorkFlows" />
+    </ShowAsAssociation>
   </Interface>
-  <Interface Name="TripleThreat.IDocument">
-    <Position X="6.5" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAQAAAAAAA=</HashCode>
-      <FileName>Core\IDocument.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="TripleThreat.IFolder">
-    <Position X="6.5" Y="0.5" Width="1.5" />
+  <Interface Name="TripleThreat.Framework.IFolder">
+    <Position X="7.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAABAA=</HashCode>
       <FileName>Core\IFolder.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="TripleThreat.IWorkFlow">
-    <Position X="9.25" Y="2" Width="1.5" />
+  <Interface Name="TripleThreat.Framework.IWorkFlow">
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Core\IWorkFlow.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Folder" />
+    </ShowAsAssociation>
   </Interface>
-  <Interface Name="TripleThreat.IWorkFlowStep">
-    <Position X="9.25" Y="5" Width="2" />
+  <Interface Name="TripleThreat.Framework.IDocument">
+    <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAIAAAAAAAAAAAAIAAAACIAAAAwAQBAAAAgA=</HashCode>
+      <FileName>Core\IDocument.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CustomerAccount" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="TripleThreat.Framework.IWorkFlowStep">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Core\IWorkFlowStep.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Folder" />
+    </ShowAsAssociation>
   </Interface>
-  <Enum Name="TripleThreat.ActivityStatus">
-    <Position X="2.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAACAAQAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\IActivity.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="TripleThreat.WorkFlowState">
-    <Position X="9.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAIAAAAAAAAAAAAAQAABAAAAAAAAAAA=</HashCode>
-      <FileName>Core\IWorkFlow.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="TripleThreat.WorkFlowStepState">
-    <Position X="9.25" Y="3.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAAACAAAA=</HashCode>
-      <FileName>Core\IWorkFlowStep.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

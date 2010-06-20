@@ -29,12 +29,28 @@ namespace TripleThreat.Framework
 {
     public class DocumentHelper
     {
+        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
         static public IDocument CreateNewDocument(/*todo add creation criterion*/)
         {
             throw new System.NotImplementedException();
         }
 
         static public List<IDocument> GetDocuments(/*todo: search criterion*/)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        static public bool SaveDocument(IDocument document)
         {
             throw new System.NotImplementedException();
         }

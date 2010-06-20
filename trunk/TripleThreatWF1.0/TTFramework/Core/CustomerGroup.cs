@@ -34,7 +34,7 @@ namespace TripleThreat.Framework
             throw new System.NotImplementedException();
         }
 
-        public List<Customer> Customers { get; set; }
+        public TripleThreat.Framework.Customer Customers { get; set; }
 
         public List<IActivity> Activities { get; set; }
     }

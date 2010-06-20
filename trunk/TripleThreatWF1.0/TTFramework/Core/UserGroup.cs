@@ -31,6 +31,6 @@ namespace TripleThreat.Framework
     {
         public string GroupName { get; set; }
 
-        public List<User> Members { get; set; }
+        public TripleThreat.Framework.User Members { get; set; }
     }
 }
