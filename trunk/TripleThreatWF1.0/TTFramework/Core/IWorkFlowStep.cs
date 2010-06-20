@@ -43,11 +43,15 @@ namespace TripleThreat.Framework
     // State
     public interface IWorkFlowStep
     {
+        IFolder Folder
+        {
+            get;
+            set;
+        }
+    
         WorkFlowStepState GetState();
 
         IWorkFlowStep ProcessAndGetNext();
-
-        IFolder Folder { get; set; }
     }
   
 }

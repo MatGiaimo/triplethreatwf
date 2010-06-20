@@ -8,6 +8,27 @@ namespace TripleThreatWF.Controllers
 {
     public class SearchController : Controller
     {
+        public TripleThreat.Framework.DocumentHelper DocumentHelper
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public TripleThreat.Framework.IDocument IDocument
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
         //
         // GET: /Search/
 

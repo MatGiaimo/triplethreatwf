@@ -133,7 +133,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Controllers\DocumentController.cd" />
+    <None Include="Controllers\ClassDiagrams\AccountController.cd" />
+    <None Include="Controllers\ClassDiagrams\CustomerController.cd" />
+    <None Include="Controllers\ClassDiagrams\DocumentController.cd" />
+    <None Include="Controllers\ClassDiagrams\FolderController.cd" />
+    <None Include="Controllers\ClassDiagrams\HomeController.cd" />
+    <None Include="Controllers\ClassDiagrams\SearchController.cd" />
+    <None Include="Controllers\ClassDiagrams\UserController.cd" />
+    <None Include="Controllers\ClassDiagrams\WorkflowController.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -8,6 +8,16 @@ namespace TripleThreatWF.Controllers
 {
     public class FolderController : Controller
     {
+        public TripleThreat.Framework.IFolder IFolder
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
         //
         // GET: /Folder/
 

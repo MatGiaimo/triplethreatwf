@@ -8,6 +8,27 @@ namespace TripleThreatWF.Controllers
 {
     public class UserController : Controller
     {
+        public TripleThreat.Framework.UserManagement UserManagement
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public TripleThreat.Framework.User User
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
         //
         // GET: /User/
 

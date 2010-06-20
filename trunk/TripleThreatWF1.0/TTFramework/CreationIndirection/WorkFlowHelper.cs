@@ -29,6 +29,17 @@ namespace TripleThreat.Framework
 {
     public class WorkFlowHelper
     {
+        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
         static public IWorkFlow CreateWorkFlow(List<IWorkFlowStep> steps)
         {
             throw new System.NotImplementedException();

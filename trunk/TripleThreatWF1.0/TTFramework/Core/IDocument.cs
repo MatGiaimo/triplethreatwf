@@ -62,5 +62,11 @@ namespace TripleThreat.Framework
 
         //Admin Groups
         List<UserGroup> FullAccessGroups { get; set; }
+
+        Lender Lender
+        {
+            get;
+            set;
+        }
     }
 }

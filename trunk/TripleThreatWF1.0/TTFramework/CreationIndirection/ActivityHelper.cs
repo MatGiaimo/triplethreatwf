@@ -29,6 +29,28 @@ namespace TripleThreat.Framework
 {
     public class ActivityHelper
     {
+        public IActivity IActivity
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
         static public void SubmitActivityForProcessing(IActivity activity)
         {
             throw new System.NotImplementedException();

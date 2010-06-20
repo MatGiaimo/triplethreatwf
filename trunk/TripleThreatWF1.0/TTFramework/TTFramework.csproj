@@ -63,8 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Core\ClassDiagram.cd" />
-    <None Include="CreationIndirection\DocumentHelper.cd" />
+    <None Include="Core\CoreClassDiagram.cd" />
+    <None Include="CreationIndirection\HelpersClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -29,6 +29,17 @@ namespace TripleThreat.Framework
 {
     public class FolderHelper
     {
+        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
         static public IFolder CreateNewFolder(/*todo add creation criterion*/)
         {
             throw new System.NotImplementedException();

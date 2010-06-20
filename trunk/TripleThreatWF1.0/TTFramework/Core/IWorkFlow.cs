@@ -46,5 +46,11 @@ namespace TripleThreat.Framework
         WorkFlowState GetState();
 
         IFolder Folder { get; set; }
+
+        IWorkFlowStep IWorkFlowStep
+        {
+            get;
+            set;
+        }
     }
 }

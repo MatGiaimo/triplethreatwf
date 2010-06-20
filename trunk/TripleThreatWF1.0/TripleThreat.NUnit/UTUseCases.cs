@@ -231,8 +231,9 @@ namespace UTTripleThreat
             User u = new User();
             u.UserName = "NotSure";
 
-            supr.Members.Add(u);
-            tech.Members.Add(u);
+            //implement ICollection?
+            //supr.Members.Add(u);
+            //tech.Members.Add(u);
 
             //Assert Some check
 
@@ -260,8 +261,9 @@ namespace UTTripleThreat
             User u = new User();
             u.UserName = "NotSure";
 
-            supr.Members.Add(u);
-            supr.Members.Remove(u);
+            //implement ICollection?
+            //supr.Members.Add(u);
+            //supr.Members.Remove(u);
 
             u.DeleteUser();
 

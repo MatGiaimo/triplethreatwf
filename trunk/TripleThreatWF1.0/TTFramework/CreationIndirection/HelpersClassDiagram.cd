@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TripleThreat.Framework.ActivityHelper">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <AssociationLine Name="IActivity" Type="TripleThreat.Framework.IActivity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.75" Y="1.244" />
+        <Point X="3.688" Y="1.244" />
+        <Point X="3.688" Y="2.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAABAAAAAAgAAAAAAAAAAAAAAAAAAAIAABAA=</HashCode>
+      <FileName>CreationIndirection\ActivityHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IActivity" />
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.DocumentHelper">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAEAAgAAAAAAAA=</HashCode>
+      <FileName>CreationIndirection\DocumentHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.FolderHelper">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>CreationIndirection\FolderHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.UserManagement" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreationIndirection\UserManagement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.WorkFlowHelper">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreationIndirection\WorkFlowHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="TripleThreat.Framework.IActivity">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Core\IActivity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TripleThreat.Framework.DatabaseInteractions.IDatabase">
+    <Position X="3.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAQAAQSQCACACEhIAAQABAASCAwAEggggQAAgBAAA=</HashCode>
+      <FileName>DatabaseInteractions\IDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TripleThreat.Framework.ActivityStatus">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAQAIAAAAAAAACAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Core\IActivity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

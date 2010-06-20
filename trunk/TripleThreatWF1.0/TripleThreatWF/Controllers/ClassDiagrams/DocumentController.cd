@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TripleThreatWF.Controllers.DocumentController">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <AssociationLine Name="IDocument" Type="TripleThreat.Framework.IDocument">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.175" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAEAAAAAAAAAAAAAAAAAAAIAEAAAIAAAA=</HashCode>
+      <FileName>Controllers\DocumentController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IDocument" />
+      <Property Name="DocumentHelper" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.DocumentHelper">
+    <Position X="2.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="TripleThreat.Framework.IDocument">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="TripleThreat.Framework.DatabaseInteractions.IDatabase" Collapsed="true">
+    <Position X="2.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

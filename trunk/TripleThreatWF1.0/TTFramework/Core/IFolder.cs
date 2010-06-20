@@ -29,6 +29,7 @@ namespace TripleThreat.Framework
 {
     public interface IFolder
     {
+    
         void AddDocument(IDocument document);
 
         void RemoveDocument(IDocument document);

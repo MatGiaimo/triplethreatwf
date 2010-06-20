@@ -38,5 +38,16 @@ namespace TripleThreat.Framework
 
         public string SSN { get; set; }
 
+        public Lender Lender
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
     }
 }

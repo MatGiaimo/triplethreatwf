@@ -7,7 +7,7 @@ using TripleThreat.Framework;
 
 namespace TripleThreatWF.Controllers
 {
-    public class DocumentController
+    public class DocumentController : Controller
     {
         public TripleThreat.Framework.IDocument IDocument
         {
