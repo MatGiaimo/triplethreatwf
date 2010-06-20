@@ -222,26 +222,39 @@ namespace UTTripleThreat
         [Test]
         public void FuncReq_10()
         {
-            UserGroup supr = new UserGroup();
-            supr.GroupName = "Supervisor";
+            UserGroup supr = UserManagement.CreateNewUserGroup("Supervisor");
 
-            UserGroup tech = new UserGroup();
-            tech.GroupName = "Technician";
+            UserGroup tech = UserManagement.CreateNewUserGroup("Technician");
 
             User u = new User();
             u.UserName = "NotSure";
 
-            //implement ICollection?
-            //supr.Members.Add(u);
-            //tech.Members.Add(u);
+            supr.Members.Add(u);
+            tech.Members.Add(u);
 
             //Assert Some check
-
         }
 
         [Test]
+        /// <summary>
+        /// [Func_Req_11] Customers
+        /// Add a Customer
+        /// Add the Customer to a CustomerGroup
+        /// Create a Document
+        /// Associate the Document with a Customer
+        /// </summary>
         public void FuncReq_11()
         {
+            Lender lndr = new Lender("Bank of America");
+            Address addr = new Address("407 Deer Ct.", "Chagrin Falls", "OH", "44022");
+            Customer cust = new Customer("Bob","Simpson",addr,"666-00-6666",lndr);
+            CustomerGroup custAcct = CustomerHelper.CreateNewCustomerGroup("Administrators");
+
+            custAcct.Customers.Add(cust);
+
+            IDocument doc = DocumentHelper.CreateNewDocument();
+
+            cust.Documents.Add(doc);
         }
 
         /// <summary>
@@ -255,15 +268,14 @@ namespace UTTripleThreat
         [Test]
         public void FuncReq_12()
         {
-            UserGroup supr = new UserGroup();
-            supr.GroupName = "Supervisor";
+            UserGroup supr = UserManagement.CreateNewUserGroup("Supervisor");
 
             User u = new User();
             u.UserName = "NotSure";
 
             //implement ICollection?
-            //supr.Members.Add(u);
-            //supr.Members.Remove(u);
+            supr.Members.Add(u);
+            supr.Members.Remove(u);
 
             u.DeleteUser();
 

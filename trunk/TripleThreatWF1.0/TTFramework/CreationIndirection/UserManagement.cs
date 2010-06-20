@@ -47,5 +47,16 @@ namespace TripleThreat.Framework
             {
             }
         }
+
+        public static UserGroup CreateNewUserGroup(string Name)
+        {
+            UserGroup usrGroup = new UserGroup();
+
+            usrGroup.GroupName = Name;
+
+            usrGroup.Members = new List<User>();
+
+            return usrGroup;
+        }
     }
 }

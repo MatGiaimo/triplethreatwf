@@ -29,25 +29,25 @@ namespace TripleThreat.Framework
 {
     public class Customer
     {
+        public Customer(string FirstName, string LastName, Address Address, string SSN, Lender Lender)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Address = Address;
+            this.SSN = SSN;
+            this.Lender = Lender;
+        }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public string Address { get; set; }
+        public Address Address { get; set; }
 
         public string SSN { get; set; }
 
-        public Lender Lender
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Lender Lender { get; set; }
 
+        public List<IDocument> Documents { get; set; }
     }
 }

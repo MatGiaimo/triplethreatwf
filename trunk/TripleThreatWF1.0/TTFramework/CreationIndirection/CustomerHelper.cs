@@ -19,7 +19,6 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
 */
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,25 +26,27 @@ using System.Text;
 
 namespace TripleThreat.Framework
 {
-    public class CustomerGroup
+    public class CustomerHelper
     {
-        public string Name { get; set; }
-
-        public CustomerGroup()
+        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
         {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
         }
 
-        public CustomerGroup(string Name)
+        static public CustomerGroup CreateNewCustomerGroup(string Name)
         {
-            this.Name = Name;
-        }
-        public Guid GetCustomerGroupID()
-        {
-            return new Guid();
+            CustomerGroup custGroup = new CustomerGroup(Name);
+
+            custGroup.Customers = new List<Customer>();
+
+            return custGroup;
         }
 
-        public List<TripleThreat.Framework.Customer> Customers { get; set; }
-
-        public List<IActivity> Activities { get; set; }
     }
 }

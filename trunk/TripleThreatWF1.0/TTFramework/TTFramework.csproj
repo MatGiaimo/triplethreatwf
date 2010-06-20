@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Address.cs" />
     <Compile Include="Core\AutomatedWorkFlowStep.cs" />
     <Compile Include="Core\AutoStepWorker.cs" />
     <Compile Include="Core\Customer.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Core\User.cs" />
     <Compile Include="Core\UserGroup.cs" />
     <Compile Include="CreationIndirection\ActivityHelper.cs" />
+    <Compile Include="CreationIndirection\CustomerHelper.cs" />
     <Compile Include="CreationIndirection\DocumentHelper.cs" />
     <Compile Include="CreationIndirection\FolderHelper.cs" />
     <Compile Include="CreationIndirection\UserManagement.cs" />

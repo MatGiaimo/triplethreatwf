@@ -29,6 +29,11 @@ namespace TripleThreat.Framework
 {
     public class Lender
     {
+        public Lender(string Name)
+        {
+            this.LenderName = Name;
+        }
+
         public Guid LenderID { get; set; }
 
         public string LenderName { get; set; }
