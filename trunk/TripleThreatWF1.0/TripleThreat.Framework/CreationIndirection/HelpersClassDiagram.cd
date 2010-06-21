@@ -38,10 +38,10 @@
       <Property Name="IDatabase" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="TripleThreat.Framework.UserManagement" Collapsed="true">
-    <Position X="0.5" Y="8" Width="1.5" />
+  <Class Name="TripleThreat.Framework.UserManagement">
+    <Position X="0.5" Y="8" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CreationIndirection\UserManagement.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -49,10 +49,20 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="TripleThreat.Framework.WorkFlowHelper">
-    <Position X="0.5" Y="8.75" Width="1.5" />
+    <Position X="0.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CreationIndirection\WorkFlowHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.CustomerHelper">
+    <Position X="0.5" Y="10.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreationIndirection\CustomerHelper.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="IDatabase" />
@@ -66,7 +76,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="TripleThreat.Framework.DatabaseInteractions.IDatabase">
-    <Position X="3.5" Y="4.5" Width="1.5" />
+    <Position X="3.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAQAAQSQCACACEhIAAQABAASCAwAEggggQAAgBAAA=</HashCode>
       <FileName>DatabaseInteractions\IDatabase.cs</FileName>
