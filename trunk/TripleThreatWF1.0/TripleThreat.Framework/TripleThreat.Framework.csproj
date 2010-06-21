@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\CoreClassDiagram.cd" />
+    <None Include="Core\WorkFlowClassDiagram.cd" />
     <None Include="CreationIndirection\HelpersClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

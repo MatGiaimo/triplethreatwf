@@ -49,14 +49,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_1.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_10.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_11.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_12.sequencediagram" />
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_2.sequencediagram" />
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_3.sequencediagram" />
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_4.sequencediagram" />
     <None Include="SequenceDiagrams\UTUseCases_FuncReq_5.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_6.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_7.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_8.sequencediagram" />
+    <None Include="SequenceDiagrams\UTUseCases_FuncReq_9.sequencediagram" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_1.sequencediagram.layout">
       <DependentUpon>UTUseCases_FuncReq_1.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_10.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_10.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_11.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_11.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_12.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_12.sequencediagram</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_2.sequencediagram.layout">
       <DependentUpon>UTUseCases_FuncReq_2.sequencediagram</DependentUpon>
@@ -69,6 +85,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_5.sequencediagram.layout">
       <DependentUpon>UTUseCases_FuncReq_5.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_6.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_6.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_7.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_7.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_8.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_8.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceDiagrams\UTUseCases_FuncReq_9.sequencediagram.layout">
+      <DependentUpon>UTUseCases_FuncReq_9.sequencediagram</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
