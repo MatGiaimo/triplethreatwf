@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TripleThreat.Framework.DatabaseInteractions;
 
 namespace TripleThreat.Framework
 {
@@ -40,7 +41,7 @@ namespace TripleThreat.Framework
             }
         }
 
-        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        public TripleThreat.Framework.DatabaseInteractions.IDatabaseContext DatabaseContext
         {
             get
             {

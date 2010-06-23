@@ -28,7 +28,7 @@ namespace TripleThreat.Framework
 {
     public class CustomerHelper
     {
-        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        public TripleThreat.Framework.DatabaseInteractions.IDatabaseContext DatabaseContext
         {
             get
             {

@@ -246,7 +246,7 @@ namespace UTTripleThreat
         public void FuncReq_11()
         {
             Lender lndr = new Lender("Bank of America");
-            Address addr = new Address("407 Deer Ct.", "Chagrin Falls", "OH", "44022");
+            Address addr = new Address("407 Deer Ct.", "Chagrin Falls", "OH", 44022);
             Customer cust = new Customer("Bob","Simpson",addr,"666-00-6666",lndr);
             CustomerGroup custAcct = CustomerHelper.CreateNewCustomerGroup("Administrators");
 

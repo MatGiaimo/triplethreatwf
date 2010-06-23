@@ -28,24 +28,13 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAE=</HashCode>
       <FileName>Core\UserGroup.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Members" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="TripleThreat.Framework.CustomerGroup">
     <Position X="0.5" Y="0.5" Width="1.75" />
-    <AssociationLine Name="Customers" Type="TripleThreat.Framework.Customer">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="0.206" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Core\CustomerGroup.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Customers" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="TripleThreat.Framework.Lender">
     <Position X="2.5" Y="3.25" Width="1.25" />
@@ -112,9 +101,6 @@
       <HashCode>AAAAAACAAIAAAAAAAAAAAEIAAAACIAAAAwAQBAAAAgA=</HashCode>
       <FileName>Core\IDocument.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="CustomerAccount" />
-    </ShowAsAssociation>
   </Interface>
   <Interface Name="TripleThreat.Framework.IWorkFlowStep">
     <Position X="2.75" Y="8.75" Width="1.5" />

@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,14 +63,28 @@
     <Compile Include="CreationIndirection\FolderHelper.cs" />
     <Compile Include="CreationIndirection\UserManagement.cs" />
     <Compile Include="CreationIndirection\WorkFlowHelper.cs" />
-    <Compile Include="DatabaseInteractions\DatabaseInterfaceFactory.cs" />
-    <Compile Include="DatabaseInteractions\IDatabase.cs" />
+    <Compile Include="DatabaseInteractions\DatabaseContext.cs" />
+    <Compile Include="DatabaseInteractions\DatabaseContextFactory.cs" />
+    <Compile Include="DatabaseInteractions\IDatabaseContext.cs" />
+    <Compile Include="DatabaseInteractions\DataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Core\CoreClassDiagram.cd" />
     <None Include="Core\WorkFlowClassDiagram.cd" />
     <None Include="CreationIndirection\HelpersClassDiagram.cd" />
+    <EntityDeploy Include="DatabaseInteractions\DataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Properties\DataSources\TripleThreat.Framework.DatabaseInteractions.DatabaseContext.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

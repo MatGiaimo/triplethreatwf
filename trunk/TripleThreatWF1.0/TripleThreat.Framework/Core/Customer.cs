@@ -27,7 +27,7 @@ using System.Text;
 
 namespace TripleThreat.Framework
 {
-    public class Customer
+    public partial class Customer
     {
         public Customer(string FirstName, string LastName, Address Address, string SSN, Lender Lender)
         {

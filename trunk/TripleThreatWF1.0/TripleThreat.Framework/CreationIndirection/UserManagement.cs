@@ -37,7 +37,7 @@ namespace TripleThreat.Framework
         //    u.GroupName = groupName;
         //    Database.AddUserGroup(u);
         //}
-        public TripleThreat.Framework.DatabaseInteractions.IDatabase IDatabase
+        public TripleThreat.Framework.DatabaseInteractions.IDatabaseContext DatabaseContext
         {
             get
             {

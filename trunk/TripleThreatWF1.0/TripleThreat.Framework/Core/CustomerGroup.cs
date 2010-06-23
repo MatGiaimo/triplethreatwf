@@ -27,7 +27,7 @@ using System.Text;
 
 namespace TripleThreat.Framework
 {
-    public class CustomerGroup
+    public partial class CustomerGroup
     {
         public string Name { get; set; }
 
@@ -44,7 +44,7 @@ namespace TripleThreat.Framework
             return new Guid();
         }
 
-        public List<TripleThreat.Framework.Customer> Customers { get; set; }
+        public List<Customer> Customers { get; set; }
 
         public List<IActivity> Activities { get; set; }
     }
