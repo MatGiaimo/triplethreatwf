@@ -24,8 +24,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TripleThreat.Framework.Core;
 
-namespace TripleThreat.Framework
+namespace TripleThreat.Framework.Helpers
 {
     public class UserManagement
     {
@@ -37,7 +38,7 @@ namespace TripleThreat.Framework
         //    u.GroupName = groupName;
         //    Database.AddUserGroup(u);
         //}
-        public TripleThreat.Framework.DatabaseInteractions.IDatabaseContext DatabaseContext
+        public TripleThreat.Framework.Core.IDatabaseContext DatabaseContext
         {
             get
             {

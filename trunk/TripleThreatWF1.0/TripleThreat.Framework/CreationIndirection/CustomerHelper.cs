@@ -23,29 +23,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TripleThreat.Framework.Core;
+using System.Data.Objects;
 
-namespace TripleThreat.Framework
+namespace TripleThreat.Framework.Helpers
 {
-    public class CustomerHelper
+    public class CustomerHelper : HelperBase
     {
-        public TripleThreat.Framework.DatabaseInteractions.IDatabaseContext DatabaseContext
+        public CustomerHelper(IDatabaseContext DatabaseContext) : base(DatabaseContext)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
         }
 
-        static public CustomerGroup CreateNewCustomerGroup(string Name)
+        public List<Customer> GetCustomersForGroup(int CustomerGroupId)
         {
-            CustomerGroup custGroup = new CustomerGroup(Name);
+            throw new System.NotImplementedException();
+        }
 
-            custGroup.Customers = new List<Customer>();
+        public CustomerGroup GetCustomerGroupById(int Id)
+        {
+            IQueryable<CustomerGroup> cGroupQuery =
+                from customergroup in this.Database.CustomerGroups
+                where customergroup.Id == Id
+                select customergroup;
 
-            return custGroup;
+            return cGroupQuery.FirstOrDefault();
         }
 
     }

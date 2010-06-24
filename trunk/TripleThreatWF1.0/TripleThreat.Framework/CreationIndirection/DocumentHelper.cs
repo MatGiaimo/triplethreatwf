@@ -24,12 +24,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TripleThreat.Framework.Core;
 
-namespace TripleThreat.Framework
+namespace TripleThreat.Framework.Helpers
 {
     public class DocumentHelper
     {
-        public TripleThreat.Framework.DatabaseInteractions.IDatabaseContext DatabaseContext
+        public TripleThreat.Framework.Core.IDatabaseContext DatabaseContext
         {
             get
             {
