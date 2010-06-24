@@ -22,12 +22,11 @@
 
 using System;
 using System.Collections.Generic;
-
 using NUnit.Framework;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
 
-using TripleThreat.Framework;
-
-namespace UTTripleThreat
+namespace TripleThreat.NUnit
 {
     [TestFixture()]
     public class UTUseCases
@@ -245,16 +244,16 @@ namespace UTTripleThreat
         /// </summary>
         public void FuncReq_11()
         {
-            Lender lndr = new Lender("Bank of America");
-            Address addr = new Address("407 Deer Ct.", "Chagrin Falls", "OH", 44022);
-            Customer cust = new Customer("Bob","Simpson",addr,"666-00-6666",lndr);
-            CustomerGroup custAcct = CustomerHelper.CreateNewCustomerGroup("Administrators");
+            //Lender lndr = new Lender("Bank of America");
+            //Address addr = new Address("407 Deer Ct.", "Chagrin Falls", "OH", 44022);
+            //Customer cust = new Customer("Bob","Simpson",addr,"666-00-6666",lndr);
+            //CustomerGroup custAcct = CustomerHelper.CreateNewCustomerGroup("Administrators");
 
-            custAcct.Customers.Add(cust);
+            //custAcct.Customers.Add(cust);
 
-            IDocument doc = DocumentHelper.CreateNewDocument();
+            //IDocument doc = DocumentHelper.CreateNewDocument();
 
-            cust.Documents.Add(doc);
+            //cust.Documents.Add(doc);
         }
 
         /// <summary>

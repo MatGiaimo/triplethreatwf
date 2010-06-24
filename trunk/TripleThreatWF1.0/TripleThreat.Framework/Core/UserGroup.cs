@@ -25,12 +25,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TripleThreat.Framework
+namespace TripleThreat.Framework.Core
 {
     public class UserGroup
     {
         public string GroupName { get; set; }
 
-        public List<TripleThreat.Framework.User> Members { get; set; }
+        public List<TripleThreat.Framework.Core.User> Members { get; set; }
     }
 }

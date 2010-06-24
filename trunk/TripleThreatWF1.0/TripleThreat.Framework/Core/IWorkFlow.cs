@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TripleThreat.Framework
+namespace TripleThreat.Framework.Core
 {
 
     public enum WorkFlowState

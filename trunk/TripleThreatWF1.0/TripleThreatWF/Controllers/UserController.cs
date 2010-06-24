@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
 
 namespace TripleThreatWF.Controllers
 {
     public class UserController : Controller
     {
-        public TripleThreat.Framework.UserManagement UserManagement
+        public UserManagement UserManagement
         {
             get
             {
@@ -19,7 +21,7 @@ namespace TripleThreatWF.Controllers
             }
         }
 
-        public TripleThreat.Framework.User User
+        public User User
         {
             get
             {

@@ -25,8 +25,10 @@ using System;
 using NUnit.Framework;
 
 using TripleThreat.Framework;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
 
-namespace UTTripleThreat
+namespace TripleThreat.NUnit
 {
     [TestFixture()]
     public class UTCore

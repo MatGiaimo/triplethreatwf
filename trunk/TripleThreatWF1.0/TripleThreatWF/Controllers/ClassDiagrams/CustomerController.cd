@@ -6,20 +6,6 @@
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\CustomerController.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Customer" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="TripleThreat.Framework.Customer">
-    <Position X="0.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="TripleThreat.Framework.CustomerGroup">
-    <Position X="3" Y="2.5" Width="1.5" />
-    <TypeIdentifier />
-    <ShowAsAssociation>
-      <Property Name="Customers" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

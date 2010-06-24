@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="TripleThreat.Framework.AutomatedWorkFlowStep">
+  <Class Name="TripleThreat.Framework.Core.AutomatedWorkFlowStep">
     <Position X="0.5" Y="5.5" Width="1.5" />
-    <AssociationLine Name="IWorkFlowStep.Folder" Type="TripleThreat.Framework.IFolder" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="IWorkFlowStep.Folder" Type="TripleThreat.Framework.Core.IFolder" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="1.125" Y="7.632" />
         <Point X="1.125" Y="7.882" />
@@ -23,7 +23,7 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TripleThreat.Framework.ManualWorkFlowStep">
+  <Class Name="TripleThreat.Framework.Core.ManualWorkFlowStep">
     <Position X="3.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAEAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAQ=</HashCode>
@@ -34,7 +34,7 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="TripleThreat.Framework.IWorkFlow">
+  <Interface Name="TripleThreat.Framework.Core.IWorkFlow">
     <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAAAABAA=</HashCode>
@@ -44,35 +44,35 @@
       <Property Name="IWorkFlowStep" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="TripleThreat.Framework.IWorkFlowStep">
+  <Interface Name="TripleThreat.Framework.Core.IWorkFlowStep">
     <Position X="3.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Core\IWorkFlowStep.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="TripleThreat.Framework.IFolder">
+  <Interface Name="TripleThreat.Framework.Core.IFolder">
     <Position X="3.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAABAA=</HashCode>
       <FileName>Core\IFolder.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="TripleThreat.Framework.WorkFlowState">
+  <Enum Name="TripleThreat.Framework.Core.WorkFlowState">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIAIAAAAAAAAAAAAAQAABAAAAAAAAAAA=</HashCode>
       <FileName>Core\IWorkFlow.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="TripleThreat.Framework.WorkFlowStepState">
+  <Enum Name="TripleThreat.Framework.Core.WorkFlowStepState">
     <Position X="3" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAAACAAAA=</HashCode>
       <FileName>Core\IWorkFlowStep.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="TripleThreat.Framework.AutomatedActions">
+  <Enum Name="TripleThreat.Framework.Core.AutomatedActions">
     <Position X="0.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using TripleThreatWF.Models;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
 
 namespace TripleThreatWF.Controllers
 {
@@ -19,7 +21,7 @@ namespace TripleThreatWF.Controllers
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 
-        public TripleThreat.Framework.User User
+        public User User
         {
             get
             {

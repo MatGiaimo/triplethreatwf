@@ -24,8 +24,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TripleThreat.Framework.Core;
 
-namespace TripleThreat.Framework
+namespace TripleThreat.Framework.Core
 {
     public enum DocumentState
     {

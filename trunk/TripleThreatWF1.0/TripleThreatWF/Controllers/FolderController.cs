@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TripleThreat.Framework.Core;
 
 namespace TripleThreatWF.Controllers
 {
     public class FolderController : Controller
     {
-        public TripleThreat.Framework.IFolder IFolder
+        public IFolder IFolder
         {
             get
             {

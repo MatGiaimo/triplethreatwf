@@ -13,12 +13,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="IDocument" />
-      <Property Name="DocumentHelper" />
     </ShowAsAssociation>
-  </Class>
-  <Class Name="TripleThreat.Framework.DocumentHelper">
-    <Position X="2.75" Y="2.75" Width="1.75" />
-    <TypeIdentifier />
   </Class>
   <Interface Name="TripleThreat.Framework.IDocument">
     <Position X="0.5" Y="2.75" Width="1.5" />

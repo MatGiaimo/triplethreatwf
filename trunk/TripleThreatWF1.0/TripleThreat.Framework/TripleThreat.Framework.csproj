@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -43,34 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Address.cs" />
     <Compile Include="Core\AutomatedWorkFlowStep.cs" />
     <Compile Include="Core\AutoStepWorker.cs" />
-    <Compile Include="Core\Customer.cs" />
-    <Compile Include="Core\CustomerGroup.cs" />
     <Compile Include="Core\IActivity.cs" />
     <Compile Include="Core\IDocument.cs" />
     <Compile Include="Core\IFolder.cs" />
     <Compile Include="Core\IWorkFlow.cs" />
     <Compile Include="Core\IWorkFlowStep.cs" />
-    <Compile Include="Core\Lender.cs" />
     <Compile Include="Core\ManualWorkFlowStep.cs" />
     <Compile Include="Core\User.cs" />
     <Compile Include="Core\UserGroup.cs" />
-    <Compile Include="CreationIndirection\ActivityHelper.cs" />
-    <Compile Include="CreationIndirection\CustomerHelper.cs" />
-    <Compile Include="CreationIndirection\DocumentHelper.cs" />
-    <Compile Include="CreationIndirection\FolderHelper.cs" />
-    <Compile Include="CreationIndirection\UserManagement.cs" />
-    <Compile Include="CreationIndirection\WorkFlowHelper.cs" />
-    <Compile Include="DatabaseInteractions\DatabaseContext.cs" />
-    <Compile Include="DatabaseInteractions\DatabaseContextFactory.cs" />
-    <Compile Include="DatabaseInteractions\IDatabaseContext.cs" />
-    <Compile Include="DatabaseInteractions\DataModel.Designer.cs">
+    <Compile Include="Core\DatabaseContext.cs" />
+    <Compile Include="Core\DatabaseContextFactory.cs" />
+    <Compile Include="Core\IDatabaseContext.cs" />
+    <Compile Include="Core\DataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ActivityHelper.cs" />
+    <Compile Include="Helpers\CustomerHelper.cs" />
+    <Compile Include="Helpers\DocumentHelper.cs" />
+    <Compile Include="Helpers\FolderHelper.cs" />
+    <Compile Include="Helpers\HelperBase.cs" />
+    <Compile Include="Helpers\UserManagement.cs" />
+    <Compile Include="Helpers\WorkFlowHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,11 +77,11 @@
     </None>
     <None Include="Core\CoreClassDiagram.cd" />
     <None Include="Core\WorkFlowClassDiagram.cd" />
-    <None Include="CreationIndirection\HelpersClassDiagram.cd" />
-    <EntityDeploy Include="DatabaseInteractions\DataModel.edmx">
+    <EntityDeploy Include="Core\DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Helpers\HelpersClassDiagram.cd" />
     <None Include="Properties\DataSources\TripleThreat.Framework.DatabaseInteractions.DatabaseContext.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

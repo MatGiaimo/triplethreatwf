@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
 
 namespace TripleThreatWF.Controllers
 {
     public class CustomerController : Controller
     {
-        public TripleThreat.Framework.Customer Customer
+        public Customer Customer
         {
             get
             {

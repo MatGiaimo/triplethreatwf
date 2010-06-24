@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
 
 namespace TripleThreatWF.Controllers
 {
     public class SearchController : Controller
     {
-        public TripleThreat.Framework.DocumentHelper DocumentHelper
+        public DocumentHelper DocumentHelper
         {
             get
             {
@@ -19,7 +21,7 @@ namespace TripleThreatWF.Controllers
             }
         }
 
-        public TripleThreat.Framework.IDocument IDocument
+        public IDocument IDocument
         {
             get
             {
