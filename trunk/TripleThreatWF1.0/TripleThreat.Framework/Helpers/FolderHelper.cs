@@ -28,17 +28,10 @@ using TripleThreat.Framework.Core;
 
 namespace TripleThreat.Framework.Helpers
 {
-    public class FolderHelper
+    public class FolderHelper : HelperBase
     {
-        public TripleThreat.Framework.Core.IDatabaseContext DatabaseContext
+        public FolderHelper(IDatabaseContext DatabaseConext) : base(DatabaseConext)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
         }
     
         static public IFolder CreateNewFolder(/*todo add creation criterion*/)
@@ -46,9 +39,18 @@ namespace TripleThreat.Framework.Helpers
             throw new System.NotImplementedException();
         }
 
-        static public List<IFolder> GetFolders(/*todo: search criterion*/)
+        public List<Folder> GetFolders(/*todo: search criterion*/)
         {
-            throw new System.NotImplementedException();
+            //IQueryable<CustomerGroup> cGroupQuery =
+            //    from customergroup in this.Database.CustomerGroups
+            //    where customergroup.Id == Id
+            //    select customergroup;
+
+            IQueryable<Folder> folderQuery = 
+                from folder in this.Database.Folders
+                select folder;
+
+            return folderQuery.ToList<Folder>();
         }
 
     }

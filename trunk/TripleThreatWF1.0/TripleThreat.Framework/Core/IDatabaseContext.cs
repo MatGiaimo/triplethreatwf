@@ -110,6 +110,11 @@ namespace TripleThreat.Framework.Core
             get;
         }
 
+        IQueryable<Folder> Folders
+        {
+            get;
+        }
+
         #endregion
 
 

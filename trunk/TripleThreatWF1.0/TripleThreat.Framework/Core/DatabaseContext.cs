@@ -178,6 +178,14 @@ namespace TripleThreat.Framework.Core
             }
         }
 
+        IQueryable<Folder> IDatabaseContext.Folders
+        {
+            get
+            {
+                return this.Folders;
+            }
+        }
+
         #endregion
     }
 }
