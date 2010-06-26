@@ -45,11 +45,13 @@ namespace TripleThreat.Framework.Core
     /// </summary>
     public interface IActivity
     {
+        String ActivityID { get; set; }
+
         ActivityStatus Status { get; set; }
 
-        IFolder GetFolder();
+        IFolder Folder { get; set; }
 
-        IWorkFlow WorkFlows { get; set; }
+        IWorkFlow WorkFlow { get; set; }
 
 
     }

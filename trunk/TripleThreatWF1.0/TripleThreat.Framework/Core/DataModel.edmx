@@ -20,7 +20,11 @@
           <EntitySet Name="aspnet_WebEvent_Events" EntityType="ASPNETDBModel.Store.aspnet_WebEvent_Events" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Customer" EntityType="ASPNETDBModel.Store.Customer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CustomerGroup" EntityType="ASPNETDBModel.Store.CustomerGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Document" EntityType="ASPNETDBModel.Store.Document" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Folder" EntityType="ASPNETDBModel.Store.Folder" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Lender" EntityType="ASPNETDBModel.Store.Lender" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkFlow" EntityType="ASPNETDBModel.Store.WorkFlow" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkFlowStep" EntityType="ASPNETDBModel.Store.WorkFlowStep" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="vw_aspnet_Applications" EntityType="ASPNETDBModel.Store.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo" store:Name="vw_aspnet_Applications">
             <DefiningQuery>SELECT 
       [vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 
@@ -167,6 +171,26 @@
           <AssociationSet Name="FK_Customer_Lender" Association="ASPNETDBModel.Store.FK_Customer_Lender">
             <End Role="Lender" EntitySet="Lender" />
             <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerGroup_WorkFlow" Association="ASPNETDBModel.Store.FK_CustomerGroup_WorkFlow">
+            <End Role="WorkFlow" EntitySet="WorkFlow" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Folder" Association="ASPNETDBModel.Store.FK_Document_Folder">
+            <End Role="Folder" EntitySet="Folder" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkFlow_Folder" Association="ASPNETDBModel.Store.FK_WorkFlow_Folder">
+            <End Role="Folder" EntitySet="Folder" />
+            <End Role="WorkFlow" EntitySet="WorkFlow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkFlow_Lender" Association="ASPNETDBModel.Store.FK_WorkFlow_Lender">
+            <End Role="Lender" EntitySet="Lender" />
+            <End Role="WorkFlow" EntitySet="WorkFlow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkFlowStep_WorkFlow" Association="ASPNETDBModel.Store.FK_WorkFlowStep_WorkFlow">
+            <End Role="WorkFlow" EntitySet="WorkFlow" />
+            <End Role="WorkFlowStep" EntitySet="WorkFlowStep" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Address">
@@ -328,6 +352,24 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="WorkFlowId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="isArchived" Type="bit" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="FolderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Lender">
           <Key>
@@ -337,8 +379,26 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="AddressId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="WorkFlow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="LenderId" Type="int" Nullable="false" />
+          <Property Name="FolderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkFlowStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="WorkFlowId" Type="int" Nullable="false" />
+          <Property Name="IsAuto" Type="bit" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Applications">
           <Key>
@@ -352,7 +412,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_MembershipUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_MembershipUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_MembershipUsers">
           <Key>
@@ -398,7 +458,7 @@
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Profiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Profiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Profiles">
           <Key>
@@ -410,7 +470,7 @@
           <Property Name="DataSize" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Roles">
           <Key>
@@ -426,7 +486,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Users">
           <Key>
@@ -446,7 +506,7 @@
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_UsersInRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_UsersInRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_UsersInRoles">
           <Key>
@@ -457,7 +517,7 @@
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Paths' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Paths' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_WebPartState_Paths">
           <Key>
@@ -472,7 +532,7 @@
           <Property Name="LoweredPath" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Shared' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Shared' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_WebPartState_Shared">
           <Key>
@@ -484,7 +544,7 @@
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_WebPartState_User">
           <Key>
@@ -660,6 +720,66 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="LenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerGroup_WorkFlow">
+          <End Role="WorkFlow" Type="ASPNETDBModel.Store.WorkFlow" Multiplicity="1" />
+          <End Role="CustomerGroup" Type="ASPNETDBModel.Store.CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkFlow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="WorkFlowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Folder">
+          <End Role="Folder" Type="ASPNETDBModel.Store.Folder" Multiplicity="1" />
+          <End Role="Document" Type="ASPNETDBModel.Store.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="FolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkFlow_Folder">
+          <End Role="Folder" Type="ASPNETDBModel.Store.Folder" Multiplicity="1" />
+          <End Role="WorkFlow" Type="ASPNETDBModel.Store.WorkFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkFlow">
+              <PropertyRef Name="FolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkFlow_Lender">
+          <End Role="Lender" Type="ASPNETDBModel.Store.Lender" Multiplicity="1" />
+          <End Role="WorkFlow" Type="ASPNETDBModel.Store.WorkFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkFlow">
+              <PropertyRef Name="LenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkFlowStep_WorkFlow">
+          <End Role="WorkFlow" Type="ASPNETDBModel.Store.WorkFlow" Multiplicity="1" />
+          <End Role="WorkFlowStep" Type="ASPNETDBModel.Store.WorkFlowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkFlow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkFlowStep">
+              <PropertyRef Name="WorkFlowId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1077,6 +1197,30 @@
           <AssociationSet Name="FK_Customer_Lender" Association="TripleThreat.FK_Customer_Lender">
             <End Role="Lender" EntitySet="Lenders" />
             <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="Documents" EntityType="TripleThreat.Document" />
+          <EntitySet Name="Folders" EntityType="TripleThreat.Folder" />
+          <EntitySet Name="WorkFlows" EntityType="TripleThreat.WorkFlow" />
+          <EntitySet Name="WorkFlowSteps" EntityType="TripleThreat.WorkFlowStep" />
+          <AssociationSet Name="FK_CustomerGroup_WorkFlow" Association="TripleThreat.FK_CustomerGroup_WorkFlow">
+            <End Role="WorkFlow" EntitySet="WorkFlows" />
+            <End Role="CustomerGroup" EntitySet="CustomerGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Folder" Association="TripleThreat.FK_Document_Folder">
+            <End Role="Folder" EntitySet="Folders" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkFlow_Folder" Association="TripleThreat.FK_WorkFlow_Folder">
+            <End Role="Folder" EntitySet="Folders" />
+            <End Role="WorkFlow" EntitySet="WorkFlows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkFlow_Lender" Association="TripleThreat.FK_WorkFlow_Lender">
+            <End Role="Lender" EntitySet="Lenders" />
+            <End Role="WorkFlow" EntitySet="WorkFlows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkFlowStep_WorkFlow" Association="TripleThreat.FK_WorkFlowStep_WorkFlow">
+            <End Role="WorkFlow" EntitySet="WorkFlows" />
+            <End Role="WorkFlowStep" EntitySet="WorkFlowSteps" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="aspnet_Applications">
@@ -1499,6 +1643,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customers" Relationship="TripleThreat.FK_Customer_CustomerGroup" FromRole="CustomerGroup" ToRole="Customer" />
+          <Property Type="Int32" Name="WorkFlowId" Nullable="false" />
+          <NavigationProperty Name="WorkFlow" Relationship="TripleThreat.FK_CustomerGroup_WorkFlow" FromRole="CustomerGroup" ToRole="WorkFlow" />
         </EntityType>
         <EntityType Name="Lender">
           <Key>
@@ -1509,6 +1655,7 @@
           <Property Type="Int32" Name="AddressId" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="TripleThreat.FK_Lender_Address" FromRole="Lender" ToRole="Address" />
           <NavigationProperty Name="Customers" Relationship="TripleThreat.FK_Customer_Lender" FromRole="Lender" ToRole="Customer" />
+          <NavigationProperty Name="WorkFlows" Relationship="TripleThreat.FK_WorkFlow_Lender" FromRole="Lender" ToRole="WorkFlow" />
         </EntityType>
         <Association Name="FK_Customer_Address">
           <End Type="TripleThreat.Address" Role="Address" Multiplicity="1" />
@@ -1555,6 +1702,109 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="LenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="isArchived" Nullable="false" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="FolderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Folder" Relationship="TripleThreat.FK_Document_Folder" FromRole="Document" ToRole="Folder" />
+        </EntityType>
+        <EntityType Name="Folder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Documents" Relationship="TripleThreat.FK_Document_Folder" FromRole="Folder" ToRole="Document" />
+          <NavigationProperty Name="WorkFlows" Relationship="TripleThreat.FK_WorkFlow_Folder" FromRole="Folder" ToRole="WorkFlow" />
+        </EntityType>
+        <EntityType Name="WorkFlow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LenderId" Nullable="false" />
+          <Property Type="Int32" Name="FolderId" Nullable="false" />
+          <NavigationProperty Name="CustomerGroups" Relationship="TripleThreat.FK_CustomerGroup_WorkFlow" FromRole="WorkFlow" ToRole="CustomerGroup" />
+          <NavigationProperty Name="Folder" Relationship="TripleThreat.FK_WorkFlow_Folder" FromRole="WorkFlow" ToRole="Folder" />
+          <NavigationProperty Name="Lender" Relationship="TripleThreat.FK_WorkFlow_Lender" FromRole="WorkFlow" ToRole="Lender" />
+          <NavigationProperty Name="WorkFlowSteps" Relationship="TripleThreat.FK_WorkFlowStep_WorkFlow" FromRole="WorkFlow" ToRole="WorkFlowStep" />
+        </EntityType>
+        <EntityType Name="WorkFlowStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="WorkFlowId" Nullable="false" />
+          <Property Type="Boolean" Name="IsAuto" Nullable="false" />
+          <NavigationProperty Name="WorkFlow" Relationship="TripleThreat.FK_WorkFlowStep_WorkFlow" FromRole="WorkFlowStep" ToRole="WorkFlow" />
+        </EntityType>
+        <Association Name="FK_CustomerGroup_WorkFlow">
+          <End Type="TripleThreat.WorkFlow" Role="WorkFlow" Multiplicity="1" />
+          <End Type="TripleThreat.CustomerGroup" Role="CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkFlow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerGroup">
+              <PropertyRef Name="WorkFlowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Folder">
+          <End Type="TripleThreat.Folder" Role="Folder" Multiplicity="1" />
+          <End Type="TripleThreat.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="FolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkFlow_Folder">
+          <End Type="TripleThreat.Folder" Role="Folder" Multiplicity="1" />
+          <End Type="TripleThreat.WorkFlow" Role="WorkFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Folder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkFlow">
+              <PropertyRef Name="FolderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkFlow_Lender">
+          <End Type="TripleThreat.Lender" Role="Lender" Multiplicity="1" />
+          <End Type="TripleThreat.WorkFlow" Role="WorkFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkFlow">
+              <PropertyRef Name="LenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkFlowStep_WorkFlow">
+          <End Type="TripleThreat.WorkFlow" Role="WorkFlow" Multiplicity="1" />
+          <End Type="TripleThreat.WorkFlowStep" Role="WorkFlowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkFlow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkFlowStep">
+              <PropertyRef Name="WorkFlowId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1764,6 +2014,7 @@
           <EntitySetMapping Name="CustomerGroups">
             <EntityTypeMapping TypeName="TripleThreat.CustomerGroup">
               <MappingFragment StoreEntitySet="CustomerGroup">
+                <ScalarProperty Name="WorkFlowId" ColumnName="WorkFlowId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1773,6 +2024,45 @@
             <EntityTypeMapping TypeName="TripleThreat.Lender">
               <MappingFragment StoreEntitySet="Lender">
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="TripleThreat.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="isArchived" ColumnName="isArchived" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Folders">
+            <EntityTypeMapping TypeName="TripleThreat.Folder">
+              <MappingFragment StoreEntitySet="Folder">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkFlows">
+            <EntityTypeMapping TypeName="TripleThreat.WorkFlow">
+              <MappingFragment StoreEntitySet="WorkFlow">
+                <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+                <ScalarProperty Name="LenderId" ColumnName="LenderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkFlowSteps">
+            <EntityTypeMapping TypeName="TripleThreat.WorkFlowStep">
+              <MappingFragment StoreEntitySet="WorkFlowStep">
+                <ScalarProperty Name="IsAuto" ColumnName="IsAuto" />
+                <ScalarProperty Name="WorkFlowId" ColumnName="WorkFlowId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1798,7 +2088,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model1">
+      <Diagram Name="Model1" ZoomLevel="75">
         <EntityTypeShape EntityType="TripleThreat.aspnet_Applications" Width="1.5" PointX="0.75" PointY="7.875" Height="2.5571907552083326" IsExpanded="true" />
         <EntityTypeShape EntityType="TripleThreat.aspnet_Membership" Width="1.5" PointX="6" PointY="9.5" Height="5.4417122395833317" IsExpanded="true" />
         <EntityTypeShape EntityType="TripleThreat.aspnet_Paths" Width="1.5" PointX="3" PointY="6.375" Height="2.3648893229166665" IsExpanded="true" />
@@ -1870,26 +2160,49 @@
           <ConnectorPoint PointX="9" PointY="14.701396484375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TripleThreat.Address" Width="1.5" PointX="13.375" PointY="8.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="TripleThreat.Customer" Width="1.5" PointX="17.875" PointY="10.25" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="TripleThreat.CustomerGroup" Width="1.5" PointX="15.625" PointY="9.875" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="TripleThreat.Lender" Width="1.5" PointX="15.625" PointY="12.625" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="TripleThreat.Customer" Width="1.5" PointX="15.875" PointY="10.375" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="TripleThreat.CustomerGroup" Width="1.5" PointX="15.75" PointY="13.875" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="TripleThreat.Lender" Width="1.5" PointX="13.375" PointY="12.625" Height="2.1725878906249996" />
         <AssociationConnector Association="TripleThreat.FK_Customer_Address" >
-          <ConnectorPoint PointX="14.875" PointY="9.28125" />
-          <ConnectorPoint PointX="18.625" PointY="9.28125" />
-          <ConnectorPoint PointX="18.625" PointY="10.25" />
+          <ConnectorPoint PointX="14.875" PointY="10.744944661458334" />
+          <ConnectorPoint PointX="15.875" PointY="10.744944661458334" />
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_Lender_Address" >
           <ConnectorPoint PointX="14.125" PointY="11.114889322916667" />
-          <ConnectorPoint PointX="14.125" PointY="13.615143229166669" />
-          <ConnectorPoint PointX="15.625" PointY="13.615143229166669" />
+          <ConnectorPoint PointX="14.125" PointY="12.625" />
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_Customer_CustomerGroup" >
-          <ConnectorPoint PointX="17.125" PointY="10.860341796874998" />
-          <ConnectorPoint PointX="17.875" PointY="10.860341796874998" />
+          <ConnectorPoint PointX="16.5625" PointY="13.875" />
+          <ConnectorPoint PointX="16.5625" PointY="13.316793619791667" />
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_Customer_Lender" >
-          <ConnectorPoint PointX="17.125" PointY="12.908396809895834" />
-          <ConnectorPoint PointX="17.875" PointY="12.908396809895834" />
+          <ConnectorPoint PointX="14.875" PointY="12.970896809895834" />
+          <ConnectorPoint PointX="15.875" PointY="12.970896809895834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TripleThreat.Document" Width="1.5" PointX="13.5" PointY="20.125" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="TripleThreat.Folder" Width="1.5" PointX="15.75" PointY="20.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="TripleThreat.WorkFlow" Width="1.5" PointX="15.75" PointY="16.625" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="TripleThreat.WorkFlowStep" Width="1.5" PointX="17.75" PointY="16.875" Height="1.9802864583333246" />
+        <AssociationConnector Association="TripleThreat.FK_CustomerGroup_WorkFlow" >
+          <ConnectorPoint PointX="16.5" PointY="16.625" />
+          <ConnectorPoint PointX="16.5" PointY="15.855286458333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="TripleThreat.FK_Document_Folder" >
+          <ConnectorPoint PointX="15.75" PointY="21.018992513020834" />
+          <ConnectorPoint PointX="15" PointY="21.018992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="TripleThreat.FK_WorkFlow_Folder" >
+          <ConnectorPoint PointX="16.5" PointY="20.125" />
+          <ConnectorPoint PointX="16.5" PointY="19.182190755208325" />
+        </AssociationConnector>
+        <AssociationConnector Association="TripleThreat.FK_WorkFlow_Lender" >
+          <ConnectorPoint PointX="14.125" PointY="14.797587890625" />
+          <ConnectorPoint PointX="14.125" PointY="17.903595377604162" />
+          <ConnectorPoint PointX="15.75" PointY="17.903595377604162" />
+        </AssociationConnector>
+        <AssociationConnector Association="TripleThreat.FK_WorkFlowStep_WorkFlow" >
+          <ConnectorPoint PointX="17.25" PointY="17.865143229166662" />
+          <ConnectorPoint PointX="17.75" PointY="17.865143229166662" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

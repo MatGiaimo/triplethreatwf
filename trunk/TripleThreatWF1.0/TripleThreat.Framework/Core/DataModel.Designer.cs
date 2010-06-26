@@ -32,6 +32,11 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("TripleThreat", "FK_Lender_Address", "Address", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.Address), "Lender", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.Lender), true)]
 [assembly: EdmRelationshipAttribute("TripleThreat", "FK_Customer_CustomerGroup", "CustomerGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.CustomerGroup), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.Customer), true)]
 [assembly: EdmRelationshipAttribute("TripleThreat", "FK_Customer_Lender", "Lender", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.Lender), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.Customer), true)]
+[assembly: EdmRelationshipAttribute("TripleThreat", "FK_CustomerGroup_WorkFlow", "WorkFlow", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.WorkFlow), "CustomerGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.CustomerGroup), true)]
+[assembly: EdmRelationshipAttribute("TripleThreat", "FK_Document_Folder", "Folder", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.Folder), "Document", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.Document), true)]
+[assembly: EdmRelationshipAttribute("TripleThreat", "FK_WorkFlow_Folder", "Folder", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.Folder), "WorkFlow", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.WorkFlow), true)]
+[assembly: EdmRelationshipAttribute("TripleThreat", "FK_WorkFlow_Lender", "Lender", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.Lender), "WorkFlow", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.WorkFlow), true)]
+[assembly: EdmRelationshipAttribute("TripleThreat", "FK_WorkFlowStep_WorkFlow", "WorkFlow", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TripleThreat.Framework.Core.WorkFlow), "WorkFlowStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TripleThreat.Framework.Core.WorkFlowStep), true)]
 
 #endregion
 
@@ -450,6 +455,70 @@ namespace TripleThreat.Framework.Core
             }
         }
         private ObjectSet<Lender> _Lenders;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Document> Documents
+        {
+            get
+            {
+                if ((_Documents == null))
+                {
+                    _Documents = base.CreateObjectSet<Document>("Documents");
+                }
+                return _Documents;
+            }
+        }
+        private ObjectSet<Document> _Documents;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Folder> Folders
+        {
+            get
+            {
+                if ((_Folders == null))
+                {
+                    _Folders = base.CreateObjectSet<Folder>("Folders");
+                }
+                return _Folders;
+            }
+        }
+        private ObjectSet<Folder> _Folders;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<WorkFlow> WorkFlows
+        {
+            get
+            {
+                if ((_WorkFlows == null))
+                {
+                    _WorkFlows = base.CreateObjectSet<WorkFlow>("WorkFlows");
+                }
+                return _WorkFlows;
+            }
+        }
+        private ObjectSet<WorkFlow> _WorkFlows;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<WorkFlowStep> WorkFlowSteps
+        {
+            get
+            {
+                if ((_WorkFlowSteps == null))
+                {
+                    _WorkFlowSteps = base.CreateObjectSet<WorkFlowStep>("WorkFlowSteps");
+                }
+                return _WorkFlowSteps;
+            }
+        }
+        private ObjectSet<WorkFlowStep> _WorkFlowSteps;
 
         #endregion
         #region AddTo Methods
@@ -636,6 +705,38 @@ namespace TripleThreat.Framework.Core
         public void AddToLenders(Lender lender)
         {
             base.AddObject("Lenders", lender);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Documents EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDocuments(Document document)
+        {
+            base.AddObject("Documents", document);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Folders EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFolders(Folder folder)
+        {
+            base.AddObject("Folders", folder);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the WorkFlows EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToWorkFlows(WorkFlow workFlow)
+        {
+            base.AddObject("WorkFlows", workFlow);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the WorkFlowSteps EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToWorkFlowSteps(WorkFlowStep workFlowStep)
+        {
+            base.AddObject("WorkFlowSteps", workFlowStep);
         }
 
         #endregion
@@ -3982,12 +4083,382 @@ namespace TripleThreat.Framework.Core
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static CustomerGroup CreateCustomerGroup(global::System.Int32 id, global::System.String name)
+        /// <param name="workFlowId">Initial value of the WorkFlowId property.</param>
+        public static CustomerGroup CreateCustomerGroup(global::System.Int32 id, global::System.String name, global::System.Int32 workFlowId)
         {
             CustomerGroup customerGroup = new CustomerGroup();
             customerGroup.Id = id;
             customerGroup.Name = name;
+            customerGroup.WorkFlowId = workFlowId;
             return customerGroup;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 WorkFlowId
+        {
+            get
+            {
+                return _WorkFlowId;
+            }
+            set
+            {
+                OnWorkFlowIdChanging(value);
+                ReportPropertyChanging("WorkFlowId");
+                _WorkFlowId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("WorkFlowId");
+                OnWorkFlowIdChanged();
+            }
+        }
+        private global::System.Int32 _WorkFlowId;
+        partial void OnWorkFlowIdChanging(global::System.Int32 value);
+        partial void OnWorkFlowIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_Customer_CustomerGroup", "Customer")]
+        public EntityCollection<Customer> Customers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("TripleThreat.FK_Customer_CustomerGroup", "Customer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("TripleThreat.FK_Customer_CustomerGroup", "Customer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_CustomerGroup_WorkFlow", "WorkFlow")]
+        public WorkFlow WorkFlow
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WorkFlow>("TripleThreat.FK_CustomerGroup_WorkFlow", "WorkFlow").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WorkFlow>("TripleThreat.FK_CustomerGroup_WorkFlow", "WorkFlow").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<WorkFlow> WorkFlowReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WorkFlow>("TripleThreat.FK_CustomerGroup_WorkFlow", "WorkFlow");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<WorkFlow>("TripleThreat.FK_CustomerGroup_WorkFlow", "WorkFlow", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TripleThreat", Name="Document")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Document : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Document object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="isArchived">Initial value of the isArchived property.</param>
+        /// <param name="image">Initial value of the Image property.</param>
+        /// <param name="folderId">Initial value of the FolderId property.</param>
+        public static Document CreateDocument(global::System.Int32 id, global::System.String name, global::System.Boolean isArchived, global::System.Byte[] image, global::System.Int32 folderId)
+        {
+            Document document = new Document();
+            document.Id = id;
+            document.Name = name;
+            document.isArchived = isArchived;
+            document.Image = image;
+            document.FolderId = folderId;
+            return document;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean isArchived
+        {
+            get
+            {
+                return _isArchived;
+            }
+            set
+            {
+                OnisArchivedChanging(value);
+                ReportPropertyChanging("isArchived");
+                _isArchived = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("isArchived");
+                OnisArchivedChanged();
+            }
+        }
+        private global::System.Boolean _isArchived;
+        partial void OnisArchivedChanging(global::System.Boolean value);
+        partial void OnisArchivedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] Image
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_Image);
+            }
+            set
+            {
+                OnImageChanging(value);
+                ReportPropertyChanging("Image");
+                _Image = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Image");
+                OnImageChanged();
+            }
+        }
+        private global::System.Byte[] _Image;
+        partial void OnImageChanging(global::System.Byte[] value);
+        partial void OnImageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FolderId
+        {
+            get
+            {
+                return _FolderId;
+            }
+            set
+            {
+                OnFolderIdChanging(value);
+                ReportPropertyChanging("FolderId");
+                _FolderId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FolderId");
+                OnFolderIdChanged();
+            }
+        }
+        private global::System.Int32 _FolderId;
+        partial void OnFolderIdChanging(global::System.Int32 value);
+        partial void OnFolderIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_Document_Folder", "Folder")]
+        public Folder Folder
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Folder>("TripleThreat.FK_Document_Folder", "Folder").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Folder>("TripleThreat.FK_Document_Folder", "Folder").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Folder> FolderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Folder>("TripleThreat.FK_Document_Folder", "Folder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Folder>("TripleThreat.FK_Document_Folder", "Folder", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TripleThreat", Name="Folder")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Folder : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Folder object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Folder CreateFolder(global::System.Int32 id, global::System.String name)
+        {
+            Folder folder = new Folder();
+            folder.Id = id;
+            folder.Name = name;
+            return folder;
         }
 
         #endregion
@@ -4054,18 +4525,40 @@ namespace TripleThreat.Framework.Core
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_Customer_CustomerGroup", "Customer")]
-        public EntityCollection<Customer> Customers
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_Document_Folder", "Document")]
+        public EntityCollection<Document> Documents
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("TripleThreat.FK_Customer_CustomerGroup", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Document>("TripleThreat.FK_Document_Folder", "Document");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("TripleThreat.FK_Customer_CustomerGroup", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Document>("TripleThreat.FK_Document_Folder", "Document", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_WorkFlow_Folder", "WorkFlow")]
+        public EntityCollection<WorkFlow> WorkFlows
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<WorkFlow>("TripleThreat.FK_WorkFlow_Folder", "WorkFlow");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<WorkFlow>("TripleThreat.FK_WorkFlow_Folder", "WorkFlow", value);
                 }
             }
         }
@@ -4236,6 +4729,28 @@ namespace TripleThreat.Framework.Core
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("TripleThreat.FK_Customer_Lender", "Customer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_WorkFlow_Lender", "WorkFlow")]
+        public EntityCollection<WorkFlow> WorkFlows
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<WorkFlow>("TripleThreat.FK_WorkFlow_Lender", "WorkFlow");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<WorkFlow>("TripleThreat.FK_WorkFlow_Lender", "WorkFlow", value);
                 }
             }
         }
@@ -5995,6 +6510,436 @@ namespace TripleThreat.Framework.Core
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TripleThreat", Name="WorkFlow")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class WorkFlow : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new WorkFlow object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="lenderId">Initial value of the LenderId property.</param>
+        /// <param name="folderId">Initial value of the FolderId property.</param>
+        public static WorkFlow CreateWorkFlow(global::System.Int32 id, global::System.String name, global::System.Int32 lenderId, global::System.Int32 folderId)
+        {
+            WorkFlow workFlow = new WorkFlow();
+            workFlow.Id = id;
+            workFlow.Name = name;
+            workFlow.LenderId = lenderId;
+            workFlow.FolderId = folderId;
+            return workFlow;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LenderId
+        {
+            get
+            {
+                return _LenderId;
+            }
+            set
+            {
+                OnLenderIdChanging(value);
+                ReportPropertyChanging("LenderId");
+                _LenderId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LenderId");
+                OnLenderIdChanged();
+            }
+        }
+        private global::System.Int32 _LenderId;
+        partial void OnLenderIdChanging(global::System.Int32 value);
+        partial void OnLenderIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FolderId
+        {
+            get
+            {
+                return _FolderId;
+            }
+            set
+            {
+                OnFolderIdChanging(value);
+                ReportPropertyChanging("FolderId");
+                _FolderId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FolderId");
+                OnFolderIdChanged();
+            }
+        }
+        private global::System.Int32 _FolderId;
+        partial void OnFolderIdChanging(global::System.Int32 value);
+        partial void OnFolderIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_CustomerGroup_WorkFlow", "CustomerGroup")]
+        public EntityCollection<CustomerGroup> CustomerGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerGroup>("TripleThreat.FK_CustomerGroup_WorkFlow", "CustomerGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerGroup>("TripleThreat.FK_CustomerGroup_WorkFlow", "CustomerGroup", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_WorkFlow_Folder", "Folder")]
+        public Folder Folder
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Folder>("TripleThreat.FK_WorkFlow_Folder", "Folder").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Folder>("TripleThreat.FK_WorkFlow_Folder", "Folder").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Folder> FolderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Folder>("TripleThreat.FK_WorkFlow_Folder", "Folder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Folder>("TripleThreat.FK_WorkFlow_Folder", "Folder", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_WorkFlow_Lender", "Lender")]
+        public Lender Lender
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Lender>("TripleThreat.FK_WorkFlow_Lender", "Lender").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Lender>("TripleThreat.FK_WorkFlow_Lender", "Lender").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Lender> LenderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Lender>("TripleThreat.FK_WorkFlow_Lender", "Lender");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Lender>("TripleThreat.FK_WorkFlow_Lender", "Lender", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_WorkFlowStep_WorkFlow", "WorkFlowStep")]
+        public EntityCollection<WorkFlowStep> WorkFlowSteps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<WorkFlowStep>("TripleThreat.FK_WorkFlowStep_WorkFlow", "WorkFlowStep");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<WorkFlowStep>("TripleThreat.FK_WorkFlowStep_WorkFlow", "WorkFlowStep", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TripleThreat", Name="WorkFlowStep")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class WorkFlowStep : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new WorkFlowStep object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="workFlowId">Initial value of the WorkFlowId property.</param>
+        /// <param name="isAuto">Initial value of the IsAuto property.</param>
+        public static WorkFlowStep CreateWorkFlowStep(global::System.Int32 id, global::System.String name, global::System.Int32 workFlowId, global::System.Boolean isAuto)
+        {
+            WorkFlowStep workFlowStep = new WorkFlowStep();
+            workFlowStep.Id = id;
+            workFlowStep.Name = name;
+            workFlowStep.WorkFlowId = workFlowId;
+            workFlowStep.IsAuto = isAuto;
+            return workFlowStep;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 WorkFlowId
+        {
+            get
+            {
+                return _WorkFlowId;
+            }
+            set
+            {
+                OnWorkFlowIdChanging(value);
+                ReportPropertyChanging("WorkFlowId");
+                _WorkFlowId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("WorkFlowId");
+                OnWorkFlowIdChanged();
+            }
+        }
+        private global::System.Int32 _WorkFlowId;
+        partial void OnWorkFlowIdChanging(global::System.Int32 value);
+        partial void OnWorkFlowIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsAuto
+        {
+            get
+            {
+                return _IsAuto;
+            }
+            set
+            {
+                OnIsAutoChanging(value);
+                ReportPropertyChanging("IsAuto");
+                _IsAuto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsAuto");
+                OnIsAutoChanged();
+            }
+        }
+        private global::System.Boolean _IsAuto;
+        partial void OnIsAutoChanging(global::System.Boolean value);
+        partial void OnIsAutoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TripleThreat", "FK_WorkFlowStep_WorkFlow", "WorkFlow")]
+        public WorkFlow WorkFlow
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WorkFlow>("TripleThreat.FK_WorkFlowStep_WorkFlow", "WorkFlow").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WorkFlow>("TripleThreat.FK_WorkFlowStep_WorkFlow", "WorkFlow").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<WorkFlow> WorkFlowReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WorkFlow>("TripleThreat.FK_WorkFlowStep_WorkFlow", "WorkFlow");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<WorkFlow>("TripleThreat.FK_WorkFlowStep_WorkFlow", "WorkFlow", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion
