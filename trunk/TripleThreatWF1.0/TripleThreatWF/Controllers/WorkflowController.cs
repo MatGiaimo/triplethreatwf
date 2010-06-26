@@ -15,6 +15,19 @@ namespace TripleThreatWF.Controllers
         {
             return View();
         }
+        public ActionResult ManageWorkflow()
+        {
+            return View();
+        }
+        public ActionResult NewWorkFlow()
+        {
+            return View();
+        }
+        public ActionResult WorkFlowStep()
+        {
+            return View();
+        }
+
 
     }
 }

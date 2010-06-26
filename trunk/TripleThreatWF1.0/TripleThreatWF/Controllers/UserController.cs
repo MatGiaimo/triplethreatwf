@@ -38,6 +38,10 @@ namespace TripleThreatWF.Controllers
         {
             return View();
         }
+        public ActionResult ManageUsers()
+        {
+            return View();
+        }
 
     }
 }

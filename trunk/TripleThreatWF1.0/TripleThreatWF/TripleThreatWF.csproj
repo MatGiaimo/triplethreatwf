@@ -91,6 +91,11 @@
     <Content Include="Views\Shared\LogOn.ascx" />
     <Content Include="Views\Shared\OpenItems.ascx" />
     <Content Include="Views\Shared\SideNav.ascx" />
+    <Content Include="Views\User\CreatUsers.aspx" />
+    <Content Include="Views\User\ManageUsers.aspx" />
+    <Content Include="Views\Workflow\ManageWorkFlow.aspx" />
+    <Content Include="Views\Workflow\NewWorkFlow.aspx" />
+    <Content Include="Views\Workflow\WorkFlowStep.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -124,8 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
-    <Folder Include="Views\Workflow\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Controllers\ClassDiagrams\AccountController.cd" />
