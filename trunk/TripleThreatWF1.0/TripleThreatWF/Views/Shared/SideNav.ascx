@@ -3,6 +3,6 @@
 <div><%: Html.ActionLink("Search Documents", "SearchDocuments", "Search")%></div>
 <div><%: Html.ActionLink("Manage Users", "ManageUsers", "Account")%></div>
 <div><%: Html.ActionLink("Manage Customers", "ManageCustomers", "Customer")%></div>
-<div><%: Html.ActionLink("Manage Folders", "ManageFolders", "Folder")%></div>
+<div><%: Html.ActionLink("Manage Folders", "ManageFolder", "Folder")%></div>
 <div><%: Html.ActionLink("Manage Workflow", "ManageWorkflow", "Workflow")%></div>
 <div><%: Html.ActionLink("Manage Document", "ManageDocument", "Document")%></div>

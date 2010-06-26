@@ -86,6 +86,7 @@
     <Content Include="Views\Account\ManageCustomers.aspx" />
     <Content Include="Views\Customer\ManageCustomer.aspx" />
     <Content Include="Views\Document\ManageDocument.aspx" />
+    <Content Include="Views\Folder\ManageFolder.aspx" />
     <Content Include="Views\Search\SearchDocuments.aspx" />
     <Content Include="Views\Shared\LogOn.ascx" />
     <Content Include="Views\Shared\OpenItems.ascx" />
@@ -123,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Folder\" />
     <Folder Include="Views\User\" />
     <Folder Include="Views\Workflow\" />
   </ItemGroup>

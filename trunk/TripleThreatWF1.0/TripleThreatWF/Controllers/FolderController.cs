@@ -27,5 +27,10 @@ namespace TripleThreatWF.Controllers
             return View();
         }
 
+        public ActionResult ManageFolder()
+        {
+            return View();
+        }
+
     }
 }
