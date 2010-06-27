@@ -2080,6 +2080,30 @@ namespace TripleThreat.Framework.Core
         private global::System.Boolean _IsComplete;
         partial void OnIsCompleteChanging(global::System.Boolean value);
         partial void OnIsCompleteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> AutoExecTime
+        {
+            get
+            {
+                return _AutoExecTime;
+            }
+            set
+            {
+                OnAutoExecTimeChanging(value);
+                ReportPropertyChanging("AutoExecTime");
+                _AutoExecTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AutoExecTime");
+                OnAutoExecTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _AutoExecTime;
+        partial void OnAutoExecTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnAutoExecTimeChanged();
 
         #endregion
     

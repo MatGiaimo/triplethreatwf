@@ -40,7 +40,7 @@ namespace TripleThreatWF.Controllers
                 // update document
                 if (dm.Id > 0)
                 {
-
+                    Document doc = DocumentHelper.Instance.GetDocument(dm.Id);
                 }
                 // save new document
                 else

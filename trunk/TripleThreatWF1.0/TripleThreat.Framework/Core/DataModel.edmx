@@ -91,7 +91,7 @@
           <Property Name="Image" Type="image" Nullable="false" />
           <Property Name="AddedBy" Type="varchar(max)" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="FolderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FolderId" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
         </EntityType>
@@ -126,6 +126,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="WorkFlowId" Type="int" Nullable="false" />
+          <Property Name="AutoExecTime" Type="datetime" />
           <Property Name="IsAuto" Type="bit" Nullable="false" />
           <Property Name="IsComplete" Type="bit" Nullable="false" />
         </EntityType>
@@ -396,7 +397,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="isArchived" Nullable="false" />
           <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Type="Int32" Name="FolderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FolderId" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <NavigationProperty Name="Folder" Relationship="TripleThreat.FK_Document_Folder" FromRole="Document" ToRole="Folder" />
           <Property Type="Int32" Name="CustomerId" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="TripleThreat.FK_Document_Customer" FromRole="Document" ToRole="Customer" />
@@ -436,6 +437,7 @@
           <Property Type="Boolean" Name="IsAuto" Nullable="false" />
           <NavigationProperty Name="WorkFlow" Relationship="TripleThreat.FK_WorkFlowStep_WorkFlow" FromRole="WorkFlowStep" ToRole="WorkFlow" />
           <Property Type="Boolean" Name="IsComplete" Nullable="false" />
+          <Property Type="DateTime" Name="AutoExecTime" />
         </EntityType>
         <Association Name="FK_CustomerGroup_WorkFlow">
           <End Type="TripleThreat.WorkFlow" Role="WorkFlow" Multiplicity="1" />
@@ -593,6 +595,7 @@
           <EntitySetMapping Name="WorkFlowSteps">
             <EntityTypeMapping TypeName="TripleThreat.WorkFlowStep">
               <MappingFragment StoreEntitySet="WorkFlowStep">
+                <ScalarProperty Name="AutoExecTime" ColumnName="AutoExecTime" />
                 <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
                 <ScalarProperty Name="IsAuto" ColumnName="IsAuto" />
                 <ScalarProperty Name="WorkFlowId" ColumnName="WorkFlowId" />
