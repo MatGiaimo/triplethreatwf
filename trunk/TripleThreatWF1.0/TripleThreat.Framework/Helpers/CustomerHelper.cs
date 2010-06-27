@@ -30,7 +30,7 @@ namespace TripleThreat.Framework.Helpers
 {
     public class CustomerHelper : HelperBase
     {
-        public static volatile CustomerHelper _instance;
+        private static volatile CustomerHelper _instance;
         public static object _sync = new Object();
 
         internal CustomerHelper(IDatabaseContext DatabaseContext)
@@ -77,6 +77,16 @@ namespace TripleThreat.Framework.Helpers
                 select customer;
 
             return custQuery.ToList<Customer>();
+        }
+
+        public Customer GetCustomer(int Id)
+        {
+            IQueryable<Customer> custQuery =
+                from customer in this.Database.Customers
+                where customer.Id == Id
+                select customer;
+
+            return custQuery.FirstOrDefault();
         }
 
         public List<Customer> GetAllCustomers()

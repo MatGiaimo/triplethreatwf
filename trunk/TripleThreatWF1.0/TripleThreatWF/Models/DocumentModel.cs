@@ -21,5 +21,9 @@ namespace TripleThreatWF.Models
         public List<Customer> Customers { get; set; }
         // Reference to the uploaded file
         public HttpPostedFileBase Image { get; set; }
+        // Image Name
+        public string ImageName { get; set; }
+        // Image Mime
+        public string ImageMime { get; set; }
     }
 }

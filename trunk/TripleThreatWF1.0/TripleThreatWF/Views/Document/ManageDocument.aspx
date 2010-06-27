@@ -19,8 +19,10 @@
     <div>
     <fieldset><legend>Image:</legend>
     <a href="../../img/loandocpg2sm.jpg">Direct Link</a>
-    <img src="../../img/loandocpg2sm.jpg" alt="loan doc pg 2"/>
-    <input type="file" id="DocImage" name="DocImage" />
+    <% if (this.Model.Id > 0) { %>
+    <img src="/GetDocumentImage/<%= this.Model.Id %>" alt="<%= this.Model.ImageName %>"/>
+    <%} %>
+    <input type="file" id="Image" name="Image" />
     </fieldset>
     <input type="submit" value="Save" />
     <%} %>

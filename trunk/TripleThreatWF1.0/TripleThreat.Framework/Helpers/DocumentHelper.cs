@@ -88,11 +88,15 @@ namespace TripleThreat.Framework.Helpers
             return docQuery.ToList<Document>();
         }
 
-        public void SaveDocument(Document document)
+        public Document SaveDocument(Document document)
         {
             ((DatabaseContext)this.Database).Documents.AddObject(document);
 
             ((DatabaseContext)this.Database).SaveChanges();
+
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, document);
+
+            return document;
         }
     }
 }
