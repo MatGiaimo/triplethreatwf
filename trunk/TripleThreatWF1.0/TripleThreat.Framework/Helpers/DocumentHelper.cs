@@ -58,12 +58,14 @@ namespace TripleThreat.Framework.Helpers
             }
         }
     
-        public Document CreateDocument(string Name)
+        public Document CreateDocument(string Name, string AddedBy)
         {
             Document doc = new Document();
 
             doc.Name = Name;
             doc.isArchived = false;
+            doc.AddedBy = AddedBy;
+            doc.CreatedDate = DateTime.UtcNow;
 
             return doc;
         }

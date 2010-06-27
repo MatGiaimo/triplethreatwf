@@ -104,7 +104,7 @@ namespace TripleThreat.NUnit
         {
             Folder folder = FolderHelper.Instance.CreateFolder("Test");
 
-            Document doc = DocumentHelper.Instance.CreateDocument("Test");
+            Document doc = DocumentHelper.Instance.CreateDocument("Test","TestUser");
 
             folder.Documents.Add(doc);
 
@@ -136,7 +136,7 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_5()
         {
-            Document doc = DocumentHelper.Instance.CreateDocument("Test");
+            Document doc = DocumentHelper.Instance.CreateDocument("Test","TestUser");
 
             //DocumentHelper.Instance.SaveDocument(doc);
         }
@@ -155,7 +155,7 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_6()
         {
-            Document doc = DocumentHelper.Instance.CreateDocument("Test");
+            Document doc = DocumentHelper.Instance.CreateDocument("Test","TestUser");
 
             //doc.DateAdded = DateTime.Now;
             //doc.AddedBy = new User(); //some user
@@ -175,7 +175,7 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_7()
         {
-            Document doc = DocumentHelper.Instance.CreateDocument("Test");
+            Document doc = DocumentHelper.Instance.CreateDocument("Test","TestUser");
             //Assert.AreEqual(doc.State, DocumentState.Incomplete);
         }
 
@@ -201,8 +201,8 @@ namespace TripleThreat.NUnit
         {
             Folder folder = FolderHelper.Instance.CreateFolder("Test");
 
-            Document doc = DocumentHelper.Instance.CreateDocument("Test");
-            Document doc2 = DocumentHelper.Instance.CreateDocument("Test");
+            Document doc = DocumentHelper.Instance.CreateDocument("Test","TestUser");
+            Document doc2 = DocumentHelper.Instance.CreateDocument("Test","TestUser");
 
             folder.Documents.Add(doc);
             folder.Documents.Add(doc2);

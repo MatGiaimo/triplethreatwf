@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using TripleThreat.Framework.Core;
 using TripleThreat.Framework.Helpers;
+using TripleThreatWF.Models;
+using System.Web.Security;
 
 namespace TripleThreatWF.Controllers
 {
@@ -17,9 +19,24 @@ namespace TripleThreatWF.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ManageDocument(FormCollection formValues)
+        public ActionResult ManageDocument(DocumentModel dm)
         {
+            var postedFile = dm.Image;
+
+            if (postedFile.ContentLength > 0)
+            {
+            }
+
             return View();
+        }
+
+        public ActionResult ManageDocument()
+        {
+            DocumentModel dm = new DocumentModel();
+
+            dm.Name = "New Document";
+
+            return View(dm);
         }
 
         public ActionResult Save(IDocument document)

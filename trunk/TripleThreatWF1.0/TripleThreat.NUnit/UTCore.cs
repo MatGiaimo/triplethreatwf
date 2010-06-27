@@ -50,7 +50,7 @@ namespace TripleThreat.NUnit
         public void CreateNewDocument()
         {
 
-            Document newDoc = DocumentHelper.Instance.CreateDocument("Test");
+            Document newDoc = DocumentHelper.Instance.CreateDocument("Test","TestUser");
         }
 
         [Test]
