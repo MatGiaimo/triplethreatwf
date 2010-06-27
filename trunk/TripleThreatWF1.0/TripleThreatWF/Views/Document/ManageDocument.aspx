@@ -14,8 +14,8 @@
                   new {enctype = "multipart/form-data"}))
        {%>
     <div style="display:inline">Name:</div><div style="display:inline"><%: Html.TextBoxFor(m => m.Name) %></div>
-    <div style="display:inline">Customer:</div><div style="display:inline"><select><option id="1234">Robert Vila</option></select></div>
-    <div style="display:inline">State:</div><div style="display:inline"><select><option id="on hold">On Hold</option></select></div>
+    <div style="display:inline">Customer:</div><div style="display:inline"><%: Html.DropDownListFor( m => m.Customer.Id, new SelectList(Model.Customers,"Id","FullName",Model.Customer),"-- Select Customer --") %></div>
+    <%--<div style="display:inline">State:</div><div style="display:inline"><select><option id="on hold">On Hold</option></select></div>--%>
     <div>
     <fieldset><legend>Image:</legend>
     <a href="../../img/loandocpg2sm.jpg">Direct Link</a>

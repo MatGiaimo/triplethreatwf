@@ -1030,7 +1030,9 @@ namespace TripleThreat.Framework.Core
         /// <param name="addedBy">Initial value of the AddedBy property.</param>
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
         /// <param name="state">Initial value of the State property.</param>
-        public static Document CreateDocument(global::System.Int32 id, global::System.String name, global::System.Boolean isArchived, global::System.Byte[] image, global::System.Int32 folderId, global::System.Int32 customerId, global::System.String addedBy, global::System.DateTime createdDate, global::System.Int32 state)
+        /// <param name="imageName">Initial value of the ImageName property.</param>
+        /// <param name="imageMime">Initial value of the ImageMime property.</param>
+        public static Document CreateDocument(global::System.Int32 id, global::System.String name, global::System.Boolean isArchived, global::System.Byte[] image, global::System.Int32 folderId, global::System.Int32 customerId, global::System.String addedBy, global::System.DateTime createdDate, global::System.Int32 state, global::System.String imageName, global::System.String imageMime)
         {
             Document document = new Document();
             document.Id = id;
@@ -1042,6 +1044,8 @@ namespace TripleThreat.Framework.Core
             document.AddedBy = addedBy;
             document.CreatedDate = createdDate;
             document.State = state;
+            document.ImageName = imageName;
+            document.ImageMime = imageMime;
             return document;
         }
 
@@ -1266,6 +1270,54 @@ namespace TripleThreat.Framework.Core
         private global::System.Int32 _State;
         partial void OnStateChanging(global::System.Int32 value);
         partial void OnStateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageName
+        {
+            get
+            {
+                return _ImageName;
+            }
+            set
+            {
+                OnImageNameChanging(value);
+                ReportPropertyChanging("ImageName");
+                _ImageName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageName");
+                OnImageNameChanged();
+            }
+        }
+        private global::System.String _ImageName;
+        partial void OnImageNameChanging(global::System.String value);
+        partial void OnImageNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageMime
+        {
+            get
+            {
+                return _ImageMime;
+            }
+            set
+            {
+                OnImageMimeChanging(value);
+                ReportPropertyChanging("ImageMime");
+                _ImageMime = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageMime");
+                OnImageMimeChanged();
+            }
+        }
+        private global::System.String _ImageMime;
+        partial void OnImageMimeChanging(global::System.String value);
+        partial void OnImageMimeChanged();
 
         #endregion
     

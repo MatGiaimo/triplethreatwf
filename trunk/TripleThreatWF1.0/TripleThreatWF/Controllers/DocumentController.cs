@@ -41,10 +41,19 @@ namespace TripleThreatWF.Controllers
                 if (dm.Id > 0)
                 {
                     Document doc = DocumentHelper.Instance.GetDocument(dm.Id);
+
+                    doc.Name = dm.Name;
+                    doc.Customer = dm.Customer;
+
+                    DocumentHelper.Instance.SaveDocument(doc);
                 }
                 // save new document
                 else
                 {
+                    Document doc = DocumentHelper.Instance.CreateDocument(dm.Name, HttpContext.User.Identity.Name);
+
+                    doc.Image = imageData;
+                    doc.CreatedDate = DateTime.UtcNow;
                 }
 
             }
@@ -60,23 +69,44 @@ namespace TripleThreatWF.Controllers
         {
             DocumentModel dm = new DocumentModel();
 
-            dm.Name = "New Document";
+            Document doc = DocumentHelper.Instance.CreateDocument("New Document", HttpContext.User.Identity.Name);
+
+            dm.Name = doc.Name;
+            dm.Customer = doc.Customer;
+            dm.Customers = CustomerHelper.Instance.GetAllCustomers();
 
             return View(dm);
         }
 
-        /// <summary>
-        /// Action with querystring containing document id.  Refreshes document from database.
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        public ActionResult ManageDocument(string Id)
-        {
-            return View();
-        }
+        //public FileContentResult GetDocumentImage(int DocumentId)
+        //{
+        //    //SqlDataReader rdr; byte[] fileContent = null;
+        //    //string mimeType = ""; string fileName = "";
+        //    //const string connect = @"Server=.\SQLExpress;Database=FileTest;Trusted_Connection=True;";
+
+        //    //using (var conn = new SqlConnection(connect))
+        //    //{
+        //    //    var qry = "SELECT FileContent, MimeType, FileName FROM FileStore WHERE ID = @ID";
+        //    //    var cmd = new SqlCommand(qry, conn);
+        //    //    cmd.Parameters.AddWithValue("@ID", id);
+        //    //    conn.Open();
+        //    //    rdr = cmd.ExecuteReader();
+        //    //    if (rdr.HasRows)
+        //    //    {
+        //    //        rdr.Read();
+        //    //        fileContent = (byte[])rdr["FileContent"];
+        //    //        mimeType = rdr["MimeType"].ToString();
+        //    //        fileName = rdr["FileName"].ToString();
+        //    //    }
+        //    //}
+
+        //    return File(fileContent, mimeType, fileName);
+        //}
+
 
         public ActionResult Save(IDocument document)
         {
+            // set created date and save
             return View();
         }
 

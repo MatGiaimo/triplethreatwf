@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Core\AutomatedWorkFlowStep.cs" />
     <Compile Include="Core\AutoStepWorker.cs" />
+    <Compile Include="Core\Customer.cs" />
     <Compile Include="Core\IActivity.cs" />
     <Compile Include="Core\IDocument.cs" />
     <Compile Include="Core\IFolder.cs" />

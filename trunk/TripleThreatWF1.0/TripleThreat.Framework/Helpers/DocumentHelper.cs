@@ -65,7 +65,6 @@ namespace TripleThreat.Framework.Helpers
             doc.Name = Name;
             doc.isArchived = false;
             doc.AddedBy = AddedBy;
-            doc.CreatedDate = DateTime.UtcNow;
 
             return doc;
         }

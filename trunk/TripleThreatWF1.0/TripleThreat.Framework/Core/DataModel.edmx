@@ -89,6 +89,8 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="isArchived" Type="bit" Nullable="false" />
           <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="ImageName" Type="varchar(max)" Nullable="false" />
+          <Property Name="ImageMime" Type="varchar(max)" Nullable="false" />
           <Property Name="AddedBy" Type="varchar(max)" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="FolderId" Type="int" Nullable="false" />
@@ -404,6 +406,8 @@
           <Property Type="String" Name="AddedBy" Nullable="false" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
           <Property Type="Int32" Name="State" Nullable="false" />
+          <Property Type="String" Name="ImageName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageMime" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Folder">
           <Key>
@@ -562,6 +566,8 @@
           <EntitySetMapping Name="Documents">
             <EntityTypeMapping TypeName="TripleThreat.Document">
               <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="ImageMime" ColumnName="ImageMime" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
