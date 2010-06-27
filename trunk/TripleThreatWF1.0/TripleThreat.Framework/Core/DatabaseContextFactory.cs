@@ -33,20 +33,17 @@ namespace TripleThreat.Framework.Core
         private static volatile DatabaseContextFactory _instance;
         public static object _sync = new Object();
         public static string _dbConnectionString;
+        private static DatabaseContext _context = null;
 
         public static DatabaseContextFactory Instance
         {
             get
             {
-                if (_instance == null)
+                lock (_sync)
                 {
-                    lock (_sync)
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new DatabaseContextFactory();
-                            return _instance;
-                        }
+                        _instance = new DatabaseContextFactory();
                     }
                 }
 
@@ -56,9 +53,17 @@ namespace TripleThreat.Framework.Core
 
         public DatabaseContext GetDatabaseContext()
         {
-            string connString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            lock (_sync)
+            {
+                if (_context == null)
+                {
+                    string connString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
-            return new DatabaseContext(connString);
+                    _context = new DatabaseContext(connString);
+                }
+            }
+
+            return _context;
         }
 
     }
