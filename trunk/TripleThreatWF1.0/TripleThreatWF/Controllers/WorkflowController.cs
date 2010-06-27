@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TripleThreat.Framework.Core;
+using TripleThreat.Framework.Helpers;
+using System.Data.Entity;
 
 namespace TripleThreatWF.Controllers
 {
@@ -21,9 +24,52 @@ namespace TripleThreatWF.Controllers
         }
         public ActionResult NewWorkFlow()
         {
+            List<Folder> folders = RefreshFolderList();
+
+            List<string> folderList = new List<string>();
+            
+            foreach (Folder f in folders)
+            {
+                folderList.Add(f.Name);
+            }
+
+            ViewData["FolderList"] =  new SelectList(folderList);
+
+            List<string> stepsList = new List<string>();
+
+            stepsList.Add("step1");
+            stepsList.Add("step2");
+            stepsList.Add("step3");
+            stepsList.Add("autostep1");
+            stepsList.Add("autostep2");
+
+            ViewData["StepsList"] = new MultiSelectList(stepsList);
+
             return View();
         }
         public ActionResult WorkFlowStep()
+        {
+            return View();
+        }
+
+        public List<Folder> RefreshFolderList()
+        {
+            List<Folder> folders;
+
+            folders = FolderHelper.Instance.GetAllFolders();
+
+            if (folders != null)
+            {
+                return folders;
+            }
+            else
+            {
+                return new List<Folder>();
+            }
+
+        }
+
+        public ActionResult HandleForm(string FolderList, string StepsList)
         {
             return View();
         }

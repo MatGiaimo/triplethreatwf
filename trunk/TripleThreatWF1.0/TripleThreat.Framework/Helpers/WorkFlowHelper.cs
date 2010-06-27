@@ -90,8 +90,24 @@ namespace TripleThreat.Framework.Helpers
             return wfQuery.ToList<WorkFlow>();
         }
 
+        public WorkFlowStep GetCurrentWorkFlowStep(WorkFlow workflow)
+        {
+            foreach (WorkFlowStep s in workflow.WorkFlowSteps)
+            {
+                if (!s.IsComplete) return s;
+            }
+
+            return null;
+        }
+
+
         public void SaveWorkFlow(WorkFlow workflow)
         {
+            //if (((DatabaseContext)this.Database).WorkFlows.Contains<WorkFlow>(workflow))
+            //{
+            //    ((DatabaseContext)this.Database).WorkFlows.DeleteObject(workflow);
+            //}
+
             ((DatabaseContext)this.Database).WorkFlows.AddObject(workflow);
 
             ((DatabaseContext)this.Database).SaveChanges();
