@@ -10,29 +10,6 @@ namespace TripleThreatWF.Controllers
 {
     public class DocumentController : Controller
     {
-        public IDocument IDocument
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public DocumentHelper DocumentHelper
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-        //
-        // GET: /Document/
 
         public ActionResult Index()
         {

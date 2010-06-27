@@ -4,7 +4,7 @@
         Please enter your username and password. <%: Html.ActionLink("Register", "Register","Account") %> if you don't have an account.
     </p>
 
-    <% using (Html.BeginForm()) { %>
+    <% using (Html.BeginForm("LogOn","Account")) { %>
         <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
         <div>
             <fieldset>
