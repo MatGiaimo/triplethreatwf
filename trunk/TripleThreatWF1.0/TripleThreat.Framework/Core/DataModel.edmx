@@ -127,6 +127,7 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="WorkFlowId" Type="int" Nullable="false" />
           <Property Name="IsAuto" Type="bit" Nullable="false" />
+          <Property Name="IsComplete" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Customer_Address">
           <End Role="Address" Type="ASPNETDBModel.Store.Address" Multiplicity="1" />
@@ -434,6 +435,7 @@
           <Property Type="Int32" Name="WorkFlowId" Nullable="false" />
           <Property Type="Boolean" Name="IsAuto" Nullable="false" />
           <NavigationProperty Name="WorkFlow" Relationship="TripleThreat.FK_WorkFlowStep_WorkFlow" FromRole="WorkFlowStep" ToRole="WorkFlow" />
+          <Property Type="Boolean" Name="IsComplete" Nullable="false" />
         </EntityType>
         <Association Name="FK_CustomerGroup_WorkFlow">
           <End Type="TripleThreat.WorkFlow" Role="WorkFlow" Multiplicity="1" />
@@ -591,6 +593,7 @@
           <EntitySetMapping Name="WorkFlowSteps">
             <EntityTypeMapping TypeName="TripleThreat.WorkFlowStep">
               <MappingFragment StoreEntitySet="WorkFlowStep">
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
                 <ScalarProperty Name="IsAuto" ColumnName="IsAuto" />
                 <ScalarProperty Name="WorkFlowId" ColumnName="WorkFlowId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

@@ -1943,13 +1943,15 @@ namespace TripleThreat.Framework.Core
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="workFlowId">Initial value of the WorkFlowId property.</param>
         /// <param name="isAuto">Initial value of the IsAuto property.</param>
-        public static WorkFlowStep CreateWorkFlowStep(global::System.Int32 id, global::System.String name, global::System.Int32 workFlowId, global::System.Boolean isAuto)
+        /// <param name="isComplete">Initial value of the IsComplete property.</param>
+        public static WorkFlowStep CreateWorkFlowStep(global::System.Int32 id, global::System.String name, global::System.Int32 workFlowId, global::System.Boolean isAuto, global::System.Boolean isComplete)
         {
             WorkFlowStep workFlowStep = new WorkFlowStep();
             workFlowStep.Id = id;
             workFlowStep.Name = name;
             workFlowStep.WorkFlowId = workFlowId;
             workFlowStep.IsAuto = isAuto;
+            workFlowStep.IsComplete = isComplete;
             return workFlowStep;
         }
 
@@ -2054,6 +2056,30 @@ namespace TripleThreat.Framework.Core
         private global::System.Boolean _IsAuto;
         partial void OnIsAutoChanging(global::System.Boolean value);
         partial void OnIsAutoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsComplete
+        {
+            get
+            {
+                return _IsComplete;
+            }
+            set
+            {
+                OnIsCompleteChanging(value);
+                ReportPropertyChanging("IsComplete");
+                _IsComplete = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsComplete");
+                OnIsCompleteChanged();
+            }
+        }
+        private global::System.Boolean _IsComplete;
+        partial void OnIsCompleteChanging(global::System.Boolean value);
+        partial void OnIsCompleteChanged();
 
         #endregion
     

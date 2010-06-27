@@ -8,9 +8,11 @@ namespace TripleThreatWF.Models
 {
     public class DocumentModel
     {
-        // User name
+        // Document Id
+        public int Id { get; set; }
+        // Document name
         public String Name { get; set; }
-        // User email address
+        // Document Created date
         public DateTime CreatedDate { get; set; }
         // Reference to the uploaded file
         public HttpPostedFileBase Image { get; set; }
