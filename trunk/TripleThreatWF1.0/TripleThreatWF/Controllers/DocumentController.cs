@@ -16,7 +16,8 @@ namespace TripleThreatWF.Controllers
             return View();
         }
 
-        public ActionResult ManageDocument()
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ManageDocument(FormCollection formValues)
         {
             return View();
         }

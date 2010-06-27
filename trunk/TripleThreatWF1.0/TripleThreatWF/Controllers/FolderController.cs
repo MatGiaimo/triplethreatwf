@@ -46,36 +46,25 @@ namespace TripleThreatWF.Controllers
         {
             List<Folder> folders;
 
-            using (DatabaseContext dbContext = DatabaseContextFactory.Instance.GetDatabaseContext())
+            folders = FolderHelper.Instance.GetAllFolders();
+
+            if (folders != null)
             {
-                FolderHelper fHelper = new FolderHelper(dbContext);
-
-                folders = fHelper.GetFolders();
-
-                if (folders != null)
-                {
-                    return folders;
-                }
-                else
-                {
-                    return new List<Folder>();
-                }
+                return folders;
             }
+            else
+            {
+                return new List<Folder>();
+            }
+
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Save(FormCollection formValues)
         {
-            using (DatabaseContext dbContext = DatabaseContextFactory.Instance.GetDatabaseContext())
-            {
-                Folder folder = new Folder();
+            Folder folder = FolderHelper.Instance.CreateFolder(formValues["FolderName"].ToString());
 
-                folder.Name = formValues["FolderName"].ToString();
-
-                dbContext.Folders.AddObject(folder);
-
-                dbContext.SaveChanges();
-            }
+            FolderHelper.Instance.SaveFolder(folder);
 
             ViewData["Folders"] = RefreshFolderList();
 

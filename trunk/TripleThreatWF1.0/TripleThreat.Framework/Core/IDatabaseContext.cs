@@ -30,79 +30,6 @@ namespace TripleThreat.Framework.Core
 {
     public interface IDatabaseContext
     {
-
-        // Interactions that involve instances of objects
-        #region Instance
-
-        void AddNewDocument(IDocument document);
-
-        void UpdateDocument(IDocument document);
-
-        void ArchiveDocument(IDocument document);
-
-
-        void AddWorkFlowInstance(IWorkFlow workflow);
-
-        void UpdateWorkFlowInstance(IWorkFlow workflow);
-
-        void DeleteWorkFlowInstance(IWorkFlow workflow);
-
-        
-        void AddCustomer(Customer customer);
-
-        void UpdateCustomer(Customer customer);
-
-        void DeleteCustomer(Customer customer);
-
-
-        void AddCustomerGroup(CustomerGroup customerGroup);
-
-        void UpdateCustomerGroup(CustomerGroup customerGroup);
-
-        void DeleteCustomerGroup(CustomerGroup customerGroup);
-
-
-        void AddLender(Lender lender);
-
-        void UpdateLender(Lender lender);
-
-        void DeleteLender(Lender lender);
-
-
-        void AddUser(User user);
-
-        void UpdateUser(User user);
-
-        void DeleteUser(User user);
-
-
-        void AddUserGroup(UserGroup userGroup);
-
-        void UpdateUserGroup(UserGroup userGroup);
-
-        void DeleteUserGroup(UserGroup userGroup);
-
-        
-        List<IDocument> GetDocuments(/*todo: search criterion*/);
-
-        List<IWorkFlowStep> GetWorkFlowSteps(/*todo: search criterion*/);
-        
-        List<IWorkFlow> GetWorkFlows(/*todo: search criterion*/);
-
-
-        List<Customer> GetCustomers(/*todo: search criterion*/);
-
-        List<CustomerGroup> GetCustomerGroups(/*todo: search criterion*/);
-
-        List<Lender> GetLenders(/*todo: search criterion*/);
-
-
-        List<User> GetUsers(/*todo: search criterion*/);
-
-        List<UserGroup> GetUserGroups(/*todo: search criterion*/);
-
-        #endregion Instance
-
         #region Properties
 
         IQueryable<CustomerGroup> CustomerGroups
@@ -115,8 +42,11 @@ namespace TripleThreat.Framework.Core
             get;
         }
 
+        IQueryable<Document> Documents
+        {
+            get;
+        }
+
         #endregion
-
-
     }
 }

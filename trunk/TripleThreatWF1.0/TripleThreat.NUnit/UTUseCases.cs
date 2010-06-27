@@ -102,11 +102,11 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_4()
         {
-            IFolder folder = FolderHelper.CreateNewFolder();
+            Folder folder = FolderHelper.Instance.CreateFolder("Test");
 
-            IDocument doc = DocumentHelper.CreateNewDocument();
+            Document doc = DocumentHelper.Instance.CreateDocument("Test");
 
-            folder.AddDocument(doc);
+            folder.Documents.Add(doc);
 
             AutomatedWorkFlowStep step = new AutomatedWorkFlowStep();
 
@@ -136,9 +136,9 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_5()
         {
-            IDocument doc = DocumentHelper.CreateNewDocument();
+            Document doc = DocumentHelper.Instance.CreateDocument("Test");
 
-            doc.UpdateDocument("c:\\some_path_to_a_file");
+            //DocumentHelper.Instance.SaveDocument(doc);
         }
 
         /// <summary>
@@ -155,15 +155,15 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_6()
         {
-            IDocument doc = DocumentHelper.CreateNewDocument();
+            Document doc = DocumentHelper.Instance.CreateDocument("Test");
 
-            doc.DateAdded = DateTime.Now;
-            doc.AddedBy = new User(); //some user
-            doc.DocumentName = "SomeDocName";
-            doc.CustomerAccount = new CustomerGroup();
-            doc.State = DocumentState.Incomplete;
-            doc.ReadAccessGroups = new List<UserGroup>();
-            doc.FullAccessGroups = new List<UserGroup>();
+            //doc.DateAdded = DateTime.Now;
+            //doc.AddedBy = new User(); //some user
+            //doc.DocumentName = "SomeDocName";
+            //doc.CustomerAccount = new CustomerGroup();
+            //doc.State = DocumentState.Incomplete;
+            //doc.ReadAccessGroups = new List<UserGroup>();
+            //doc.FullAccessGroups = new List<UserGroup>();
 
         }
 
@@ -175,7 +175,7 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_7()
         {
-            IDocument doc = DocumentHelper.CreateNewDocument();
+            Document doc = DocumentHelper.Instance.CreateDocument("Test");
             //Assert.AreEqual(doc.State, DocumentState.Incomplete);
         }
 
@@ -187,7 +187,7 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_8()
         {
-            DocumentHelper.GetDocuments();
+            DocumentHelper.Instance.GetAllDocuments();
         }
 
         /// <summary>
@@ -199,13 +199,13 @@ namespace TripleThreat.NUnit
         [Test]
         public void FuncReq_9()
         {
-            IFolder folder = FolderHelper.CreateNewFolder();
+            Folder folder = FolderHelper.Instance.CreateFolder("Test");
 
-            IDocument doc = DocumentHelper.CreateNewDocument();
-            IDocument doc2 = DocumentHelper.CreateNewDocument();
+            Document doc = DocumentHelper.Instance.CreateDocument("Test");
+            Document doc2 = DocumentHelper.Instance.CreateDocument("Test");
 
-            folder.AddDocument(doc);
-            folder.AddDocument(doc2);
+            folder.Documents.Add(doc);
+            folder.Documents.Add(doc2);
 
         }
 

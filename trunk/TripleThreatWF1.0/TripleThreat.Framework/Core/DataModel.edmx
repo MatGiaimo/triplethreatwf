@@ -176,6 +176,10 @@
             <End Role="WorkFlow" EntitySet="WorkFlow" />
             <End Role="CustomerGroup" EntitySet="CustomerGroup" />
           </AssociationSet>
+          <AssociationSet Name="FK_Document_Customer" Association="ASPNETDBModel.Store.FK_Document_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
           <AssociationSet Name="FK_Document_Folder" Association="ASPNETDBModel.Store.FK_Document_Folder">
             <End Role="Folder" EntitySet="Folder" />
             <End Role="Document" EntitySet="Document" />
@@ -362,7 +366,11 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="isArchived" Type="bit" Nullable="false" />
           <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="AddedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="FolderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Folder">
           <Key>
@@ -398,7 +406,7 @@
           <Property Name="IsAuto" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Applications">
           <Key>
@@ -412,7 +420,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_MembershipUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_MembershipUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_MembershipUsers">
           <Key>
@@ -458,7 +466,7 @@
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Profiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Profiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Profiles">
           <Key>
@@ -470,7 +478,7 @@
           <Property Name="DataSize" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Roles">
           <Key>
@@ -486,7 +494,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_Users">
           <Key>
@@ -506,7 +514,7 @@
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_UsersInRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_UsersInRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_UsersInRoles">
           <Key>
@@ -517,7 +525,7 @@
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Paths' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Paths' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_WebPartState_Paths">
           <Key>
@@ -532,7 +540,7 @@
           <Property Name="LoweredPath" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Shared' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_Shared' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_WebPartState_Shared">
           <Key>
@@ -544,7 +552,7 @@
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\ISLANDER\DOCUMENTS\CSU\OODSUMMER2010\PROJECT\TRIPLETHREATWF1.0\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'C:\USERS\MAT\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\TRIPLETHREATWF\TRIPLETHREATWF\APP_DATA\ASPNETDB.MDF.dbo.vw_aspnet_WebPartState_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="vw_aspnet_WebPartState_User">
           <Key>
@@ -732,6 +740,18 @@
             </Principal>
             <Dependent Role="CustomerGroup">
               <PropertyRef Name="WorkFlowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Customer">
+          <End Role="Customer" Type="ASPNETDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="Document" Type="ASPNETDBModel.Store.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1222,6 +1242,10 @@
             <End Role="WorkFlow" EntitySet="WorkFlows" />
             <End Role="WorkFlowStep" EntitySet="WorkFlowSteps" />
           </AssociationSet>
+          <AssociationSet Name="FK_Document_Customer" Association="TripleThreat.FK_Document_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="aspnet_Applications">
           <Key>
@@ -1635,6 +1659,7 @@
           <NavigationProperty Name="Address" Relationship="TripleThreat.FK_Customer_Address" FromRole="Customer" ToRole="Address" />
           <NavigationProperty Name="CustomerGroup" Relationship="TripleThreat.FK_Customer_CustomerGroup" FromRole="Customer" ToRole="CustomerGroup" />
           <NavigationProperty Name="Lender" Relationship="TripleThreat.FK_Customer_Lender" FromRole="Customer" ToRole="Lender" />
+          <NavigationProperty Name="Documents" Relationship="TripleThreat.FK_Document_Customer" FromRole="Customer" ToRole="Document" />
         </EntityType>
         <EntityType Name="CustomerGroup">
           <Key>
@@ -1715,6 +1740,11 @@
           <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Type="Int32" Name="FolderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Folder" Relationship="TripleThreat.FK_Document_Folder" FromRole="Document" ToRole="Folder" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="TripleThreat.FK_Document_Customer" FromRole="Document" ToRole="Customer" />
+          <Property Type="Guid" Name="AddedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="Int32" Name="State" Nullable="false" />
         </EntityType>
         <EntityType Name="Folder">
           <Key>
@@ -1805,6 +1835,18 @@
             </Principal>
             <Dependent Role="WorkFlowStep">
               <PropertyRef Name="WorkFlowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Customer">
+          <End Type="TripleThreat.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="TripleThreat.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2032,6 +2074,10 @@
           <EntitySetMapping Name="Documents">
             <EntityTypeMapping TypeName="TripleThreat.Document">
               <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="FolderId" ColumnName="FolderId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="isArchived" ColumnName="isArchived" />
@@ -2173,13 +2219,13 @@
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_Customer_CustomerGroup" >
           <ConnectorPoint PointX="16.5625" PointY="13.875" />
-          <ConnectorPoint PointX="16.5625" PointY="13.316793619791667" />
+          <ConnectorPoint PointX="16.5625" PointY="13.509095052083332" />
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_Customer_Lender" >
-          <ConnectorPoint PointX="14.875" PointY="12.970896809895834" />
-          <ConnectorPoint PointX="15.875" PointY="12.970896809895834" />
+          <ConnectorPoint PointX="14.875" PointY="13.067047526041666" />
+          <ConnectorPoint PointX="15.875" PointY="13.067047526041666" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="TripleThreat.Document" Width="1.5" PointX="13.5" PointY="20.125" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="TripleThreat.Document" Width="1.5" PointX="18.25" PointY="13.375" Height="2.5571907552083353" />
         <EntityTypeShape EntityType="TripleThreat.Folder" Width="1.5" PointX="15.75" PointY="20.125" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="TripleThreat.WorkFlow" Width="1.5" PointX="15.75" PointY="16.625" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="TripleThreat.WorkFlowStep" Width="1.5" PointX="17.75" PointY="16.875" Height="1.9802864583333246" />
@@ -2188,8 +2234,9 @@
           <ConnectorPoint PointX="16.5" PointY="15.855286458333334" />
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_Document_Folder" >
-          <ConnectorPoint PointX="15.75" PointY="21.018992513020834" />
-          <ConnectorPoint PointX="15" PointY="21.018992513020834" />
+          <ConnectorPoint PointX="17.25" PointY="21.018992513020834" />
+          <ConnectorPoint PointX="19.53125" PointY="21.018992513020834" />
+          <ConnectorPoint PointX="19.53125" PointY="15.932190755208335" />
         </AssociationConnector>
         <AssociationConnector Association="TripleThreat.FK_WorkFlow_Folder" >
           <ConnectorPoint PointX="16.5" PointY="20.125" />
@@ -2203,6 +2250,11 @@
         <AssociationConnector Association="TripleThreat.FK_WorkFlowStep_WorkFlow" >
           <ConnectorPoint PointX="17.25" PointY="17.865143229166662" />
           <ConnectorPoint PointX="17.75" PointY="17.865143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="TripleThreat.FK_Document_Customer" >
+          <ConnectorPoint PointX="17.375" PointY="11.874999500000001" />
+          <ConnectorPoint PointX="19" PointY="11.874999500000001" />
+          <ConnectorPoint PointX="19" PointY="13.375" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

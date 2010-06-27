@@ -30,27 +30,56 @@ namespace TripleThreat.Framework.Helpers
 {
     public class FolderHelper : HelperBase
     {
-        public FolderHelper(IDatabaseContext DatabaseConext) : base(DatabaseConext)
+        public static volatile FolderHelper _instance;
+        public static object _sync = new Object();
+
+        internal FolderHelper(IDatabaseContext DatabaseConext) : base(DatabaseConext)
         {
+        }
+
+        public static FolderHelper Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_sync)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new FolderHelper(DatabaseContextFactory.Instance.GetDatabaseContext());
+                            return _instance;
+                        }
+                    }
+                }
+
+                return _instance;
+            }
         }
     
-        static public IFolder CreateNewFolder(/*todo add creation criterion*/)
+        public Folder CreateFolder(string Name)
         {
-            throw new System.NotImplementedException();
+            Folder folder = new Folder();
+
+            folder.Name = Name;
+
+            return folder;
         }
 
-        public List<Folder> GetFolders(/*todo: search criterion*/)
+        public List<Folder> GetAllFolders()
         {
-            //IQueryable<CustomerGroup> cGroupQuery =
-            //    from customergroup in this.Database.CustomerGroups
-            //    where customergroup.Id == Id
-            //    select customergroup;
-
             IQueryable<Folder> folderQuery = 
                 from folder in this.Database.Folders
                 select folder;
 
             return folderQuery.ToList<Folder>();
+        }
+
+        public void SaveFolder(Folder folder)
+        {
+            ((DatabaseContext)this.Database).Folders.AddObject(folder);
+
+            ((DatabaseContext)this.Database).SaveChanges();
         }
 
     }

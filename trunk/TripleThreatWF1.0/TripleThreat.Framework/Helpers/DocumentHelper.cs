@@ -28,32 +28,70 @@ using TripleThreat.Framework.Core;
 
 namespace TripleThreat.Framework.Helpers
 {
-    public class DocumentHelper
+    public class DocumentHelper : HelperBase
     {
-        public TripleThreat.Framework.Core.IDatabaseContext DatabaseContext
+        private static volatile DocumentHelper _instance;
+        public static object _sync = new Object();
+
+        internal DocumentHelper(IDatabaseContext DatabaseContext)
+            : base(DatabaseContext)
+        {
+        }
+
+        public static DocumentHelper Instance
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                if (_instance == null)
+                {
+                    lock (_sync)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new DocumentHelper(DatabaseContextFactory.Instance.GetDatabaseContext());
+                            return _instance;
+                        }
+                    }
+                }
+
+                return _instance;
             }
         }
     
-        static public IDocument CreateNewDocument(/*todo add creation criterion*/)
+        public Document CreateDocument(string Name)
         {
-            throw new System.NotImplementedException();
+            Document doc = new Document();
+
+            doc.Name = Name;
+            doc.isArchived = false;
+
+            return doc;
         }
 
-        static public List<IDocument> GetDocuments(/*todo: search criterion*/)
+        public Document GetDocument(int Id)
         {
-            throw new System.NotImplementedException();
+            IQueryable<Document> docQuery =
+                from document in this.Database.Documents
+                where document.Id == Id
+                select document;
+
+            return docQuery.FirstOrDefault();
         }
 
-        static public bool SaveDocument(IDocument document)
+        public List<Document> GetAllDocuments()
         {
-            throw new System.NotImplementedException();
+            IQueryable<Document> docQuery =
+                from document in this.Database.Documents
+                select document;
+
+            return docQuery.ToList<Document>();
+        }
+
+        public void SaveDocument(Document document)
+        {
+            ((DatabaseContext)this.Database).Documents.AddObject(document);
+
+            ((DatabaseContext)this.Database).SaveChanges();
         }
 
     }

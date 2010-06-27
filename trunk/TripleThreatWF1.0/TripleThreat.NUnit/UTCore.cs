@@ -50,13 +50,13 @@ namespace TripleThreat.NUnit
         public void CreateNewDocument()
         {
 
-            IDocument newDoc = DocumentHelper.CreateNewDocument();
+            Document newDoc = DocumentHelper.Instance.CreateDocument("Test");
         }
 
         [Test]
         public void CreateNewFolder()
         {
-            IFolder newFolder = FolderHelper.CreateNewFolder();
+            Folder newFolder = FolderHelper.Instance.CreateFolder("Test");
         }
 
         [Test]
