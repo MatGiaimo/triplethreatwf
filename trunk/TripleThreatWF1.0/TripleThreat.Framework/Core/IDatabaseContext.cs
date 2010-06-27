@@ -47,6 +47,21 @@ namespace TripleThreat.Framework.Core
             get;
         }
 
+        IQueryable<Customer> Customers
+        {
+            get;
+        }
+
+        IQueryable<Lender> Lenders
+        {
+            get;
+        }
+
+        IQueryable<Address> Addresses
+        {
+            get;
+        }
+
         #endregion
     }
 }

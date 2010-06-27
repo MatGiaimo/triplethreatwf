@@ -30,13 +30,52 @@ namespace TripleThreat.Framework.Helpers
 {
     public class CustomerHelper : HelperBase
     {
-        public CustomerHelper(IDatabaseContext DatabaseContext) : base(DatabaseContext)
+        public static volatile CustomerHelper _instance;
+        public static object _sync = new Object();
+
+        internal CustomerHelper(IDatabaseContext DatabaseContext)
+            : base(DatabaseContext)
         {
+        }
+
+        public static CustomerHelper Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_sync)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new CustomerHelper(DatabaseContextFactory.Instance.GetDatabaseContext());
+                            return _instance;
+                        }
+                    }
+                }
+
+                return _instance;
+            }
+        }
+
+        public Customer CreateCustomer(string FirstName, string LastName, string SSN)
+        {
+            Customer cust = new Customer();
+
+            cust.FirstName = FirstName;
+            cust.LastName = LastName;
+            cust.SSN = SSN;
+
+            return cust;
         }
 
         public List<Customer> GetCustomersForGroup(int CustomerGroupId)
         {
-            throw new System.NotImplementedException();
+            IQueryable<Customer> custQuery =
+                from customer in this.Database.Customers
+                select customer;
+
+            return custQuery.ToList<Customer>();
         }
 
         public CustomerGroup GetCustomerGroupById(int Id)
@@ -47,6 +86,13 @@ namespace TripleThreat.Framework.Helpers
                 select customergroup;
 
             return cGroupQuery.FirstOrDefault();
+        }
+
+        public void SaveCustomer(Customer Customer)
+        {
+            ((DatabaseContext)this.Database).Customers.AddObject(Customer);
+
+            ((DatabaseContext)this.Database).SaveChanges();
         }
 
     }

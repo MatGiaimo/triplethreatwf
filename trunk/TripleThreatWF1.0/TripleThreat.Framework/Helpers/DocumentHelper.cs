@@ -93,6 +93,5 @@ namespace TripleThreat.Framework.Helpers
 
             ((DatabaseContext)this.Database).SaveChanges();
         }
-
     }
 }

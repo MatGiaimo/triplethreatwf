@@ -34,6 +34,30 @@ namespace TripleThreat.Framework.Core
             }
         }
 
+        IQueryable<Customer> IDatabaseContext.Customers
+        {
+            get
+            {
+                return this.Customers;
+            }
+        }
+
+        IQueryable<Lender> IDatabaseContext.Lenders
+        {
+            get
+            {
+                return this.Lenders;
+            }
+        }
+
+        IQueryable<Address> IDatabaseContext.Addresses
+        {
+            get
+            {
+                return this.Addresses;
+            }
+        }
+
         #endregion
     }
 }

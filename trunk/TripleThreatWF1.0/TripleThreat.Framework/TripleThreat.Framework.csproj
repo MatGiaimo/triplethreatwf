@@ -63,10 +63,12 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ActivityHelper.cs" />
+    <Compile Include="Helpers\AddressHelper.cs" />
     <Compile Include="Helpers\CustomerHelper.cs" />
     <Compile Include="Helpers\DocumentHelper.cs" />
     <Compile Include="Helpers\FolderHelper.cs" />
     <Compile Include="Helpers\HelperBase.cs" />
+    <Compile Include="Helpers\LenderHelper.cs" />
     <Compile Include="Helpers\UserManagement.cs" />
     <Compile Include="Helpers\WorkFlowHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
