@@ -62,6 +62,11 @@ namespace TripleThreat.Framework.Core
             get;
         }
 
+        IQueryable<WorkFlow> WorkFlows
+        {
+            get;
+        }
+
         #endregion
     }
 }

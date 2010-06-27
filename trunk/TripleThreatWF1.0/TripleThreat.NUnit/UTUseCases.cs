@@ -51,7 +51,7 @@ namespace TripleThreat.NUnit
         public void FuncReq_1()
         {
             List<IWorkFlowStep> steps = new List<IWorkFlowStep>();
-            IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
+            //IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace TripleThreat.NUnit
             List<IWorkFlowStep> steps = new List<IWorkFlowStep>();
             steps.Add(step);
 
-            IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
+            //IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace TripleThreat.NUnit
             List<IWorkFlowStep> steps = new List<IWorkFlowStep>();
             steps.Add(step);
 
-            IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
+            //IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
         }
 
         /// <summary>
@@ -116,11 +116,11 @@ namespace TripleThreat.NUnit
             List<IWorkFlowStep> steps = new List<IWorkFlowStep>();
             steps.Add(step);
 
-            IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
+            //IWorkFlow workflow = WorkFlowHelper.CreateWorkFlow(steps);
 
-            IActivity activity = ActivityHelper.CreateActivity(workflow, new CustomerGroup());
+            //IActivity activity = ActivityHelper.CreateActivity(workflow, new CustomerGroup());
 
-            ActivityHelper.SubmitActivityForProcessing(activity);
+            //ActivityHelper.SubmitActivityForProcessing(activity);
 
             //this would be initiated by another part of system
             AutoStepWorker worker = new AutoStepWorker();

@@ -28,29 +28,74 @@ using TripleThreat.Framework.Core;
 
 namespace TripleThreat.Framework.Helpers
 {
-    public class WorkFlowHelper
+    public class WorkFlowHelper : HelperBase
     {
-        public TripleThreat.Framework.Core.IDatabaseContext DatabaseContext
+        private static volatile WorkFlowHelper _instance;
+        public static object _sync = new Object();
+
+        internal WorkFlowHelper(IDatabaseContext DatabaseContext)
+            : base(DatabaseContext)
+        {
+        }
+
+        public static WorkFlowHelper Instance
         {
             get
             {
-                throw new System.NotImplementedException();
+                if (_instance == null)
+                {
+                    lock (_sync)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new WorkFlowHelper(DatabaseContextFactory.Instance.GetDatabaseContext());
+                            return _instance;
+                        }
+                    }
+                }
+
+                return _instance;
             }
-            set
+        }
+
+        public WorkFlow CreateWorkFlow(string name, List<WorkFlowStep> steps)
+        {
+            WorkFlow w = new WorkFlow();
+
+            w.Name = name;
+            foreach( WorkFlowStep s in steps)
             {
+                w.WorkFlowSteps.Add(s);
             }
-        }
-    
-        static public IWorkFlow CreateWorkFlow(List<IWorkFlowStep> steps)
-        {
-            throw new System.NotImplementedException();
+
+            return w;
         }
 
-        static public List<IWorkFlow> GetWorkFlows(/*todo: search criterion*/)
+        public WorkFlow GetWorkFlow(int Id)
         {
-            throw new System.NotImplementedException();
+            IQueryable<WorkFlow> wfQuery =
+                from workflow in this.Database.WorkFlows
+                where workflow.Id == Id
+                select workflow;
+
+            return wfQuery.FirstOrDefault();
         }
 
+        public List<WorkFlow> GetAllWorkFlows()
+        {
+            IQueryable<WorkFlow> wfQuery =
+                from workflow in this.Database.WorkFlows
+                select workflow;
+
+            return wfQuery.ToList<WorkFlow>();
+        }
+
+        public void SaveWorkFlow(WorkFlow workflow)
+        {
+            ((DatabaseContext)this.Database).WorkFlows.AddObject(workflow);
+
+            ((DatabaseContext)this.Database).SaveChanges();
+        }
     }
 }
 
