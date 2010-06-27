@@ -73,6 +73,16 @@ namespace TripleThreat.Framework.Helpers
         {
             IQueryable<Customer> custQuery =
                 from customer in this.Database.Customers
+                where customer.CustomerGroupId == CustomerGroupId
+                select customer;
+
+            return custQuery.ToList<Customer>();
+        }
+
+        public List<Customer> GetAllCustomers()
+        {
+            IQueryable<Customer> custQuery =
+                from customer in this.Database.Customers
                 select customer;
 
             return custQuery.ToList<Customer>();
