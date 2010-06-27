@@ -10,6 +10,9 @@
 
     <h2>NewWorkFlow</h2>
     
+    <p>
+       <%: Html.ActionLink("WorkFlow Step", "WorkFlowStep", "Workflow")%>
+    </p>
 
     <% using (Html.BeginForm("HandleForm", "Workflow")) %>
     <% { %>

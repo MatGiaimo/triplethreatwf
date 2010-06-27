@@ -27,7 +27,7 @@ namespace TripleThreatWF.Controllers
 
             foreach (WorkFlow w in workFlows)
             {
-                workFlowList.Add(w.Name);
+                workFlowList.Add(w.Id.ToString() + ":" + w.Name);
             }
 
             ViewData["WorkFlowList"] = new SelectList(workFlowList);
@@ -117,12 +117,12 @@ namespace TripleThreatWF.Controllers
 
             foreach (WorkFlow w in workFlows)
             {
-                workFlowList.Add(w.Name);
+                workFlowList.Add(w.Id.ToString() + ":" + w.Name);
             }
 
             ViewData["WorkFlowList"] = new SelectList(workFlowList);
 
-            return View("ManageWorkFlow");
+            return View("OpenWorkFlow");
         }
     }
 }

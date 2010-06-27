@@ -96,6 +96,7 @@
     <Content Include="Views\User\ManageUsers.aspx" />
     <Content Include="Views\Workflow\ManageWorkFlow.aspx" />
     <Content Include="Views\Workflow\NewWorkFlow.aspx" />
+    <Content Include="Views\Workflow\OpenWorkFlow.aspx" />
     <Content Include="Views\Workflow\WorkFlowStep.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

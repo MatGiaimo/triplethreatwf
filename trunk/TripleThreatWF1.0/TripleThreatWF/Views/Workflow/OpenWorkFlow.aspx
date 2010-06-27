@@ -3,16 +3,16 @@
 <%@ Import Namespace="System.Data.Entity" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	ManageWorkflow
+	OpenWorkFlow
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>ManageWorkflow</h2>    
-    <p>
-       <%: Html.ActionLink("New WorkFlow", "NewWorkFlow", "Workflow")%>
-    </p>
+    <h2>WorkFlow</h2>
 
+    <p>
+       <%: Html.ActionLink("<<- Go Back", "ManageWorkFlow", "Workflow")%>
+    </p>
 
     <% using (Html.BeginForm("HandleWF", "Workflow")) %>
     <% { %>
