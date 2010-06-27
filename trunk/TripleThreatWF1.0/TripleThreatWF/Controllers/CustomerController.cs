@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using TripleThreat.Framework.Core;
 using TripleThreat.Framework.Helpers;
+using TripleThreatWF.Models;
+using System.Web.Security;
+using System.IO;
 
 namespace TripleThreatWF.Controllers
 {
@@ -30,8 +33,16 @@ namespace TripleThreatWF.Controllers
 
         public ActionResult ManageCustomer()
         {
-            ViewData["Customers"] = RefreshCustomerList();
-            return View();
+            CustomerModel cm = new CustomerModel();
+
+            cm.FirstName = "Enter First Name";
+            cm.LastName = "Enter Last Name";
+            cm.SSN = "000000000";
+
+            cm.Customers = RefreshCustomerList();
+
+            return View(cm);
+            
         }
 
         public List<Customer> RefreshCustomerList()
@@ -52,15 +63,66 @@ namespace TripleThreatWF.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Save(FormCollection formValues)
+        public ActionResult Save(CustomerModel cm)
         {
-            Customer customer = CustomerHelper.Instance.CreateCustomer(formValues["CustomerFirstName"].ToString(), formValues["CustomerLastName"].ToString(), formValues["CustomerSSN"].ToString());
+            Customer customer = CustomerHelper.Instance.CreateCustomer(cm.FirstName, cm.LastName, cm.SSN);
 
             CustomerHelper.Instance.SaveCustomer(customer);
 
-            ViewData["Customers"] = RefreshCustomerList();
+            Address addr = AddressHelper.Instance.CreateAddress(cm.Street, cm.City, cm.State, cm.ZipCode);
 
-            return View("ManageCustomers");
+            customer.Address = addr;
+
+            Lender lender = LenderHelper.Instance.CreateLender(cm.Lender.Name);
+          
+           
+            CustomerHelper.Instance.SaveCustomer(customer);
+
+            cm.Customers = RefreshCustomerList();
+
+            return View(cm);
         }
+
+        public ActionResult AddCustomer()
+        {
+            CustomerModel cm = new CustomerModel();
+
+            cm.Lenders = LenderHelper.Instance.GetAllLenders();
+
+            return View(cm);
+        }
+
+        public ActionResult SaveCustomer(CustomerModel cm)
+        {
+            Customer cust = CustomerHelper.Instance.CreateCustomer(cm.FirstName, cm.LastName, cm.SSN);
+            cust.Address = cust.Address;
+            Address addr = AddressHelper.Instance.CreateAddress(cm.Street, cm.City, cm.State, cm.ZipCode);
+                        
+            return View("AddCustomer", cm);
+        }
+
+        //[HttpPost]
+        //public ActionResult Save(RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Attempt to register the customer
+        //        MembershipCreateStatus createStatus =  MembershipService.CreateUser(model.UserName, model.Password, model.Email);
+
+        //        if (createStatus == MembershipCreateStatus.Success)
+        //        {
+        //            FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", AccountValidation.ErrorCodeToString(createStatus));
+        //        }
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+        //    return View(model);
+        //}
     }
 }

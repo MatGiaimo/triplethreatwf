@@ -6,7 +6,7 @@ using TripleThreat.Framework.Core;
 
 namespace TripleThreat.Framework.Helpers
 {
-    class LenderHelper : HelperBase
+    public class LenderHelper : HelperBase
     {
         public static volatile LenderHelper _instance;
         public static object _sync = new Object();

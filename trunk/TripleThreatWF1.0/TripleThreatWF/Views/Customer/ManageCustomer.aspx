@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<TripleThreatWF.Models.CustomerModel>" %>
 <%@ Import Namespace="TripleThreat.Framework.Core" %>
 <%@ Import Namespace="System.Data.Entity" %>
 
@@ -11,34 +11,34 @@
     <h2>ManageCustomer</h2>
 <%--    <div style="display:inline"><a href="#">Add Customer</a></div>--%>
      <p>
-       <%: Html.ActionLink("Add Customer", "ManageCustomer", "customer")%>
+       <%: Html.ActionLink("Add Customer", "AddCustomer", "Customer")%>
     </p>
     <table>
-    <tr><td>Name</td></tr>
-    <% foreach (Customer customer in (IList<Customer>)this.ViewData["Customers"])
-       { %>
-       <tr><td><%= customer.FirstName %></td></tr>
-       <% } %>
+    
+
     </table>
     <div>&nbsp;</div>
     <table>
     <thead>
     <th>SSN</th>
-    <th>Customer Name</th>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>Address</th>
+    <th>Lender</th>
     </thead>
     <tbody>
-    <tr>
-    <td>12345678</td>
-    <td>Eldon Tyrell</td>
-    </tr>
-    <tr>
-    <td>12345672</td>
-    <td>Rick Deckard</td>
-    </tr>
-    <tr>
-    <td>12345674</td>
-    <td>Roy Batty</td>
-    </tr>
+    <% foreach (Customer customer in this.Model.Customers)
+       { %>
+       <tr>
+       <td><%= customer.SSN %></td>
+       <td><%= customer.FirstName %></td>
+       <td><%= customer.LastName %></td>
+       <td><%= string.Format("{0} {1}, {2} {3}",customer.Address.Street,customer.Address.City,customer.Address.State, customer.Address.Zip)%></td>
+       <td><%= string.Format("{0}", customer.Lender.Name) %></td>
+      
+       </tr>
+       <% } %>
+
     </tbody>
     </table>
 
