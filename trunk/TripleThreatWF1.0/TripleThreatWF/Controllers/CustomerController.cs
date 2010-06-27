@@ -30,8 +30,37 @@ namespace TripleThreatWF.Controllers
 
         public ActionResult ManageCustomer()
         {
+            ViewData["Customers"] = RefreshCustomerList();
             return View();
         }
 
+        public List<Customer> RefreshCustomerList()
+        {
+            List<Customer> customers;
+
+            customers = CustomerHelper.Instance.GetAllCustomers();
+
+            if (customers != null)
+            {
+                return customers;
+            }
+            else
+            {
+                return new List<Customer>();
+            }
+
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Save(FormCollection formValues)
+        {
+            Customer customer = CustomerHelper.Instance.CreateCustomer(formValues["CustomerFirstName"].ToString(), formValues["CustomerLastName"].ToString(), formValues["CustomerSSN"].ToString());
+
+            CustomerHelper.Instance.SaveCustomer(customer);
+
+            ViewData["Customers"] = RefreshCustomerList();
+
+            return View("ManageCustomers");
+        }
     }
 }
