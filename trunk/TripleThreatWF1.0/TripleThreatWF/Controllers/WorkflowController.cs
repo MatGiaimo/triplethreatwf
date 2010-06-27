@@ -18,8 +18,21 @@ namespace TripleThreatWF.Controllers
         {
             return View();
         }
+
         public ActionResult ManageWorkflow()
         {
+            List<WorkFlow> workFlows = RefreshWorkFlowList();
+
+            List<string> workFlowList = new List<string>();
+
+            foreach (WorkFlow w in workFlows)
+            {
+                workFlowList.Add(w.Name);
+            }
+
+            ViewData["WorkFlowList"] = new SelectList(workFlowList);
+            ViewData["SelectedWorkFlow"] = workFlowList[0];
+
             return View();
         }
         public ActionResult NewWorkFlow()
@@ -52,6 +65,23 @@ namespace TripleThreatWF.Controllers
             return View();
         }
 
+        public List<WorkFlow> RefreshWorkFlowList()
+        {
+            List<WorkFlow> workFlows;
+
+            workFlows = WorkFlowHelper.Instance.GetAllWorkFlows();
+
+            if (workFlows != null)
+            {
+                return workFlows;
+            }
+            else
+            {
+                return new List<WorkFlow>();
+            }
+
+        }
+
         public List<Folder> RefreshFolderList()
         {
             List<Folder> folders;
@@ -69,11 +99,30 @@ namespace TripleThreatWF.Controllers
 
         }
 
+
+
         public ActionResult HandleForm(string FolderList, string StepsList)
         {
             return View();
         }
 
+        
+        public ActionResult HandleWF(string WorkFlowList)
+        {
+            ViewData["SelectedWorkFlow"] = WorkFlowList;
+            
+            List<WorkFlow> workFlows = RefreshWorkFlowList();
 
+            List<string> workFlowList = new List<string>();
+
+            foreach (WorkFlow w in workFlows)
+            {
+                workFlowList.Add(w.Name);
+            }
+
+            ViewData["WorkFlowList"] = new SelectList(workFlowList);
+
+            return View("ManageWorkFlow");
+        }
     }
 }
