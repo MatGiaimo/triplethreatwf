@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Objects.DataClasses;
 using TripleThreat.Framework.Core;
 
 namespace TripleThreat.Framework.Helpers
@@ -90,11 +91,25 @@ namespace TripleThreat.Framework.Helpers
 
         public Document SaveDocument(Document document)
         {
+            //try
+            //{
+            //    document = (Document)((DatabaseContext)this.Database).GetObjectByKey(document.EntityKey);
+            //}
+            //catch (System.Data.ObjectNotFoundException onfe)
+            //{
+            //    // Object is not found so add it
+            //    ((DatabaseContext)this.Database).Documents.AddObject(document);
+            //}
+
+            //(document as IEntityWithChangeTracker).SetChangeTracker(null);
+
+            //((DatabaseContext)this.Database).Attach(document);
+
             ((DatabaseContext)this.Database).Documents.AddObject(document);
 
             ((DatabaseContext)this.Database).SaveChanges();
 
-            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, document);
+            //((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, document);
 
             return document;
         }

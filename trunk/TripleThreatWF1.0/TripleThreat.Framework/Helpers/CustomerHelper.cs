@@ -86,7 +86,9 @@ namespace TripleThreat.Framework.Helpers
                 where customer.Id == Id
                 select customer;
 
-            return custQuery.FirstOrDefault();
+            Customer cust = custQuery.FirstOrDefault();
+
+            return cust;
         }
 
         public List<Customer> GetAllCustomers()

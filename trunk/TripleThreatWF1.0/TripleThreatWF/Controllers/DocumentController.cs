@@ -46,9 +46,14 @@ namespace TripleThreatWF.Controllers
 
                     doc.Name = dm.Name;
 
-                    doc.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
+                    dm.Customers = CustomerHelper.Instance.GetAllCustomers();
+                    dm.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
+                    dm.Folders = FolderHelper.Instance.GetAllFolders();
+                    dm.Folder = FolderHelper.Instance.GetFolder(dm.Folder.Id);
 
                     doc.Customer = dm.Customer;
+                    doc.Folder = dm.Folder;
+
                     doc.Image = imageData;
                     doc.ImageName = postedFile.FileName;
                     doc.ImageMime = postedFile.ContentType;
@@ -62,7 +67,13 @@ namespace TripleThreatWF.Controllers
 
                     doc.Name = dm.Name;
 
-                    doc.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
+                    dm.Customers = CustomerHelper.Instance.GetAllCustomers();
+                    dm.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
+                    dm.Folders = FolderHelper.Instance.GetAllFolders();
+                    dm.Folder = FolderHelper.Instance.GetFolder(dm.Folder.Id);
+
+                    doc.Customer = dm.Customer;
+                    doc.Folder = dm.Folder;
 
                     doc.Image = imageData;
                     doc.ImageName = postedFile.FileName;
@@ -91,6 +102,8 @@ namespace TripleThreatWF.Controllers
             dm.Name = doc.Name;
             dm.Customer = doc.Customer;
             dm.Customers = CustomerHelper.Instance.GetAllCustomers();
+            dm.Folder = doc.Folder;
+            dm.Folders = FolderHelper.Instance.GetAllFolders();
 
             return View("ManageDocument",dm);
         }
@@ -107,12 +120,15 @@ namespace TripleThreatWF.Controllers
             dm.Customer = doc.Customer;
             dm.Customers = CustomerHelper.Instance.GetAllCustomers();
 
+            dm.Folder = doc.Folder;
+            dm.Folders = FolderHelper.Instance.GetAllFolders();
+
             return View("ManageDocument", dm);
         }
 
-        public FileContentResult GetDocumentImage(int DocumentId)
+        public FileContentResult GetDocumentImage(string Id)
         {
-            Document doc = DocumentHelper.Instance.GetDocument(DocumentId);
+            Document doc = DocumentHelper.Instance.GetDocument(Convert.ToInt32(Id));
 
             return File(doc.Image, doc.ImageMime, doc.ImageName);
         }

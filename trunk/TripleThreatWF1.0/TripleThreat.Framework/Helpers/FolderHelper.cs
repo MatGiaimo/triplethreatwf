@@ -66,6 +66,16 @@ namespace TripleThreat.Framework.Helpers
             return folder;
         }
 
+        public Folder GetFolder(int Id)
+        {
+            IQueryable<Folder> folderQuery =
+                from folder in this.Database.Folders
+                where folder.Id == Id
+                select folder;
+
+            return folderQuery.FirstOrDefault();
+        }
+
         public List<Folder> GetAllFolders()
         {
             IQueryable<Folder> folderQuery = 

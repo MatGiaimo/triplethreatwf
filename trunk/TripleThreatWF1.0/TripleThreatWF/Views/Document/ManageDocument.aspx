@@ -15,14 +15,15 @@
        {%>
     <div style="display:inline">Name:</div><div style="display:inline"><%: Html.TextBoxFor(m => m.Name) %></div>
     <div style="display:inline">Customer:</div><div style="display:inline"><%: Html.DropDownListFor( m => m.Customer.Id, new SelectList(Model.Customers,"Id","FullName",Model.Customer),"-- Select Customer --") %></div>
+    <div style="display:inline">Folder:</div><div style="display:inline"><%: Html.DropDownListFor( m => m.Folder.Id, new SelectList(Model.Folders,"Id","Name",Model.Folder),"-- Select Folder --") %></div>
     <%--<div style="display:inline">State:</div><div style="display:inline"><select><option id="on hold">On Hold</option></select></div>--%>
     <div>
     <fieldset><legend>Image:</legend>
-    <a href="../../img/loandocpg2sm.jpg">Direct Link</a>
+    <%--<a href="../../img/loandocpg2sm.jpg">Direct Link</a>--%>
     <% if (this.Model.Id > 0) { %>
-    <img src="/GetDocumentImage/<%= this.Model.Id %>" alt="<%= this.Model.ImageName %>"/>
+    <div style="display:inline"><img src="/Document/GetDocumentImage/<%= this.Model.Id %>" alt="<%= this.Model.ImageName %>"/></div>
     <%} %>
-    <input type="file" id="Image" name="Image" />
+    <div style="display:inline">Upload: <input type="file" id="Image" name="Image" /></div>
     </fieldset>
     <input type="submit" value="Save" />
     <%} %>

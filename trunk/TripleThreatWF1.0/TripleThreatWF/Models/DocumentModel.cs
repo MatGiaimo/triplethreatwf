@@ -19,6 +19,10 @@ namespace TripleThreatWF.Models
         public Customer Customer { get; set; }
         // All customers
         public List<Customer> Customers { get; set; }
+        // Folder
+        public Folder Folder { get; set; }
+        // All Folders
+        public List<Folder> Folders { get; set; }
         // Reference to the uploaded file
         public HttpPostedFileBase Image { get; set; }
         // Image Name
