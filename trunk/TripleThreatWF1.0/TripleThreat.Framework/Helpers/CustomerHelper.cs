@@ -110,6 +110,15 @@ namespace TripleThreat.Framework.Helpers
             return cGroupQuery.FirstOrDefault();
         }
 
+        public List<CustomerGroup> GetAllCustomerGroups()
+        {
+            IQueryable<CustomerGroup> cGroupQuery =
+                from customergroup in this.Database.CustomerGroups
+                select customergroup;
+
+            return cGroupQuery.ToList();
+        }
+
         public Customer SaveCustomer(Customer Customer)
         {
             ((DatabaseContext)this.Database).Customers.AddObject(Customer);
