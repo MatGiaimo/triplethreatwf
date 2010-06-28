@@ -10,3 +10,4 @@
 <div><%: Html.ActionLink("Manage Folders", "ManageFolder", "Folder")%></div>
 <div><%: Html.ActionLink("Manage Workflow", "ManageWorkflow", "Workflow")%></div>
 <div><%: Html.ActionLink("Create Document", "CreateDocument", "Document")%></div>
+<div><%: Html.ActionLink("Create Lender", "Lenders", "Lender")%></div>

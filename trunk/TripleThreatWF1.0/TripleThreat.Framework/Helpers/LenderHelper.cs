@@ -62,5 +62,16 @@ namespace TripleThreat.Framework.Helpers
 
             return lenderQuery.FirstOrDefault();
         }
+
+        public Lender SaveLender(Lender Lender)
+        {
+            ((DatabaseContext)this.Database).Lenders.AddObject(Lender);
+
+            ((DatabaseContext)this.Database).SaveChanges();
+
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, Lender);
+
+            return Lender;
+        }
     }
 }

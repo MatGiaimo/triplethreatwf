@@ -71,6 +71,7 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LenderController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WorkflowController.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DocumentModel.cs" />
+    <Compile Include="Models\LenderModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -109,6 +111,7 @@
     <Content Include="Views\Customer\ManageCustomer.aspx" />
     <Content Include="Views\Document\ManageDocument.aspx" />
     <Content Include="Views\Folder\ManageFolder.aspx" />
+    <Content Include="Views\Lender\Lenders.aspx" />
     <Content Include="Views\Search\SearchDocuments.aspx" />
     <Content Include="Views\Shared\LogOn.ascx" />
     <Content Include="Views\Shared\OpenItems.ascx" />

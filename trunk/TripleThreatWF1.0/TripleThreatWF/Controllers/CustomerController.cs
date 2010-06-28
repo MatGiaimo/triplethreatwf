@@ -12,20 +12,7 @@ using System.IO;
 namespace TripleThreatWF.Controllers
 {
     public class CustomerController : Controller
-    {
-        public Customer Customer
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-        //
-        // GET: /Customer/
-
+    {        
         public ActionResult Index()
         {
             return View();
@@ -69,28 +56,32 @@ namespace TripleThreatWF.Controllers
 
             CustomerHelper.Instance.SaveCustomer(customer);
 
+            CustomerGroup custgroup = CustomerHelper.Instance.GetCustomerGroupById(cm.CustomerGroup.Id);
+
             Address addr = AddressHelper.Instance.CreateAddress(cm.Street, cm.City, cm.State, cm.ZipCode);
 
             customer.Address = addr;
 
             Lender lender = LenderHelper.Instance.CreateLender(cm.Lender.Name);
-          
-           
+                                  
             CustomerHelper.Instance.SaveCustomer(customer);
 
             cm.Customers = RefreshCustomerList();
 
-            return View(cm);
+            return View("AddCustomer",cm);
         }
 
         public ActionResult AddCustomer()
         {
             CustomerModel cm = new CustomerModel();
-
+            
             cm.Lenders = LenderHelper.Instance.GetAllLenders();
 
-            return View(cm);
+            cm.CustomerGroups = CustomerHelper.Instance.GetAllCustomerGroups();
+            
+            return View("AddCustomer",cm);
         }
+
 
         public ActionResult SaveCustomer(CustomerModel cm)
         {
@@ -98,14 +89,20 @@ namespace TripleThreatWF.Controllers
             
             Address addr = AddressHelper.Instance.CreateAddress(cm.Street, cm.City, cm.State, cm.ZipCode);
 
+            CustomerGroup custgroup = CustomerHelper.Instance.GetCustomerGroupById(cm.CustomerGroup.Id);
+
+            cust.CustomerGroup = custgroup;
+
             Lender lndr = LenderHelper.Instance.GetLender(cm.Lender.Id);
 
             cust.Lender = lndr;
             
             cust.Address = addr;
             CustomerHelper.Instance.SaveCustomer(cust);
-            
-                        
+
+            cm.Lenders = LenderHelper.Instance.GetAllLenders();
+
+            cm.CustomerGroups = CustomerHelper.Instance.GetAllCustomerGroups();            
             return View("AddCustomer", cm);
         }
 
