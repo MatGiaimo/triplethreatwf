@@ -95,34 +95,19 @@ namespace TripleThreatWF.Controllers
         public ActionResult SaveCustomer(CustomerModel cm)
         {
             Customer cust = CustomerHelper.Instance.CreateCustomer(cm.FirstName, cm.LastName, cm.SSN);
-            cust.Address = cust.Address;
+            
             Address addr = AddressHelper.Instance.CreateAddress(cm.Street, cm.City, cm.State, cm.ZipCode);
+
+            Lender lndr = LenderHelper.Instance.GetLender(cm.Lender.Id);
+
+            cust.Lender = lndr;
+            
+            cust.Address = addr;
+            CustomerHelper.Instance.SaveCustomer(cust);
+            
                         
             return View("AddCustomer", cm);
         }
 
-        //[HttpPost]
-        //public ActionResult Save(RegisterModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Attempt to register the customer
-        //        MembershipCreateStatus createStatus =  MembershipService.CreateUser(model.UserName, model.Password, model.Email);
-
-        //        if (createStatus == MembershipCreateStatus.Success)
-        //        {
-        //            FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", AccountValidation.ErrorCodeToString(createStatus));
-        //        }
-        //    }
-
-        //    // If we got this far, something failed, redisplay form
-        //    ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
-        //    return View(model);
-        //}
     }
 }
