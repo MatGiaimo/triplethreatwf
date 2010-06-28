@@ -89,7 +89,7 @@ namespace TripleThreat.Framework.Helpers
             return docQuery.ToList<Document>();
         }
 
-        public List<Document> SearchDocuments(string Name, string CustomerName, DateTime DateAdded, string State)
+        public List<Document> SearchDocuments(string Name, string CustomerName, DateTime? DateAdded, string State)
         {
             IQueryable<Document> docQuery =
                 from document in this.Database.Documents

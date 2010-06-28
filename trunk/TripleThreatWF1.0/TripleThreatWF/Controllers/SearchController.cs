@@ -31,7 +31,7 @@ namespace TripleThreatWF.Controllers
 
         public ActionResult SearchDocuments(SearchModel sm)
         {
-            if (string.IsNullOrEmpty(sm.CustName) && sm.DateAdded == DateTime.MinValue &&
+            if (string.IsNullOrEmpty(sm.CustName) && sm.DateAdded == null &&
                 string.IsNullOrEmpty(sm.Name))
             {
                 sm.SearchResults = new List<Document>();
