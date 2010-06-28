@@ -109,7 +109,7 @@ namespace TripleThreat.Framework.Helpers
 
             ((DatabaseContext)this.Database).SaveChanges();
 
-            //((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, document);
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, document);
 
             return document;
         }

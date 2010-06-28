@@ -110,11 +110,15 @@ namespace TripleThreat.Framework.Helpers
             return cGroupQuery.FirstOrDefault();
         }
 
-        public void SaveCustomer(Customer Customer)
+        public Customer SaveCustomer(Customer Customer)
         {
             ((DatabaseContext)this.Database).Customers.AddObject(Customer);
 
             ((DatabaseContext)this.Database).SaveChanges();
+
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, Customer);
+
+            return Customer;
         }
 
     }
