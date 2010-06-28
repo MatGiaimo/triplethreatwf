@@ -3,10 +3,16 @@
 <%@ Import Namespace="System.Data.Entity" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Search Documentss
+	Search Documents
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<script type="text/javascript">
+    $(function () {
+        $("#DateAdded").datepicker();
+    });
+	</script>
 
     <h2>Search Documents</h2>
 

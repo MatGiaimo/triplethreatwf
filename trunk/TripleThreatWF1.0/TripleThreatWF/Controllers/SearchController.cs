@@ -44,5 +44,12 @@ namespace TripleThreatWF.Controllers
             return View(sm);
         }
 
+        public ActionResult OpenItems(SearchModel sm)
+        {
+            sm.SearchResults = DocumentHelper.Instance.GetAllDocuments();
+
+            return View(sm);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="TripleThreatWF.Models" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Home Page
@@ -14,7 +15,8 @@
         }
         else
         {
-            Html.RenderPartial("OpenItems");
+            SearchModel sm = (SearchModel)ViewData["PartialSM"];      
+            Html.RenderPartial("OpenItems",sm);
         }
     %>
     </p>
