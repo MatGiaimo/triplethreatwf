@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<TripleThreatWF.Models.SearchModel>" %>
+<%@ Import Namespace="TripleThreat.Framework.Core" %>
+<%@ Import Namespace="System.Data.Entity" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Search Documentss
@@ -8,12 +10,18 @@
 
     <h2>Search Documents</h2>
 
-    <div>Document Name:</div><div style="display:inline"><%= Html.TextBox("DocName",string.Empty) %></div>
-    <div>Date Added:</div><div style="display:inline"><%= Html.TextBox("DateAdded",string.Empty) %></div>
-    <div>Customer Name:</div style="display:inline"><div><%= Html.TextBox("CustName",string.Empty) %></div>
-    <div>State:</div><div style="display:inline"><select><option id="unassigned">Unassigned</option></select></div>
-    <div><input id="submit" type="button" value="submit" /></div>
+    <% using(Html.BeginForm("SearchDocuments","Search")) { %>
+    <div>Document Name:</div><div style="display:inline"><%: Html.TextBoxFor(m => m.Name) %></div>
+    <div>Date Added:</div><div style="display:inline"><%: Html.TextBoxFor(m => m.DateAdded) %></div>
+    <div>Customer Name:</div><div style="display:inline"><%: Html.TextBoxFor(m => m.CustName) %></div>
+    <div>State:</div><div style="display:inline"><%: Html.TextBoxFor(m => m.State) %></div>
+    <div><input type="submit" value="Search" /></div>
+    <%} %>
+    
     <h3>Search Results:</h3>
+
+    <%if (this.Model.SearchResults.Count > 0)
+      { %>
     <table>
     <thead>
     <th>Customer Name</th>
@@ -23,28 +31,22 @@
     <th>Assigned By</th>
     </thead>
     <tbody>
-    <tr>
-    <td>Eldon Tyrell</td>
-    <td>Loan Application</td>
-    <td>Assigned</td>
-    <td>6/3/2010 9:32AM</td>
-    <td>mgiaimo</td>
-    </tr>
-    <tr>
-    <td>Rick Deckard</td>
-    <td>Loan Application</td>
-    <td>Assigned</td>
-    <td>5/21/2010 4:16PM</td>
-    <td>mfotta</td>
-    </tr>
-    <tr>
-    <td>Roy Batty</td>
-    <td>Medical Application</td>
-    <td>On Hold</td>
-    <td>7/12/2100 3:33PM</td>
-    <td>epapp</td>
-    </tr>
+    <%foreach (Document doc in this.Model.SearchResults)
+      { %>
+      <tr style="cursor:pointer" onclick="location.href = '/Document/ManageDocument/<%= doc.Id %>';">
+      <td><%= doc.Customer.FullName%></td>
+      <td><%= doc.Name%></td>
+      <td><%= doc.State%></td>
+      <td><%= doc.CreatedDate.ToShortDateString()%></td>
+      <td><%= doc.AddedBy%></td>
+      </tr>
+    <%} %>
     </tbody>
     </table>
+    <%}
+      else
+      {%>
+      <div>No documents found.</div>
+      <%} %>
 
 </asp:Content>

@@ -89,22 +89,18 @@ namespace TripleThreat.Framework.Helpers
             return docQuery.ToList<Document>();
         }
 
+        public List<Document> SearchDocuments(string Name, string CustomerName, DateTime DateAdded, string State)
+        {
+            IQueryable<Document> docQuery =
+                from document in this.Database.Documents
+                where document.Name.Contains(Name) || document.Customer.FirstName.Contains(CustomerName) || document.Customer.LastName.Contains(CustomerName) || document.CreatedDate >= DateAdded
+                select document;
+
+            return docQuery.ToList();
+        }
+
         public Document SaveDocument(Document document)
         {
-            //try
-            //{
-            //    document = (Document)((DatabaseContext)this.Database).GetObjectByKey(document.EntityKey);
-            //}
-            //catch (System.Data.ObjectNotFoundException onfe)
-            //{
-            //    // Object is not found so add it
-            //    ((DatabaseContext)this.Database).Documents.AddObject(document);
-            //}
-
-            //(document as IEntityWithChangeTracker).SetChangeTracker(null);
-
-            //((DatabaseContext)this.Database).Attach(document);
-
             ((DatabaseContext)this.Database).Documents.AddObject(document);
 
             ((DatabaseContext)this.Database).SaveChanges();

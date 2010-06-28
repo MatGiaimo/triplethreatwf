@@ -19,9 +19,8 @@
     <%--<div style="display:inline">State:</div><div style="display:inline"><select><option id="on hold">On Hold</option></select></div>--%>
     <div>
     <fieldset><legend>Image:</legend>
-    <%--<a href="../../img/loandocpg2sm.jpg">Direct Link</a>--%>
     <% if (this.Model.Id > 0) { %>
-    <div style="display:inline"><img src="/Document/GetDocumentImage/<%= this.Model.Id %>" alt="<%= this.Model.ImageName %>"/></div>
+    <div><img src="/Document/GetDocumentImage/<%= this.Model.Id %>" alt="<%= this.Model.ImageName %>"/></div>
     <%} %>
     <div style="display:inline">Upload: <input type="file" id="Image" name="Image" /></div>
     </fieldset>

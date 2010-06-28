@@ -80,6 +80,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DocumentModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +91,7 @@
     <Content Include="Views\Customer\ManageCustomer.aspx" />
     <Content Include="Views\Document\ManageDocument.aspx" />
     <Content Include="Views\Folder\ManageFolder.aspx" />
-    <Content Include="Views\Document\Search\SearchDocuments.aspx" />
+    <Content Include="Views\Search\SearchDocuments.aspx" />
     <Content Include="Views\Shared\LogOn.ascx" />
     <Content Include="Views\Shared\OpenItems.ascx" />
     <Content Include="Views\Shared\SideNav.ascx" />
