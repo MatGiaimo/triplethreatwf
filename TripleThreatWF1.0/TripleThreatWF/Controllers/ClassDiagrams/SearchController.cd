@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TripleThreatWF.Controllers.SearchController">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <AssociationLine Name="DocumentHelper" Type="TripleThreat.Framework.DocumentHelper" FixedFromPoint="true">
+      <Path>
+        <Point X="1.625" Y="1.925" />
+        <Point X="1.625" Y="2.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.193" Y="0.237" Height="0.182" Width="1.273" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAABAAAAAAAAAAIAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\SearchController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DocumentHelper" />
+      <Property Name="IDocument" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TripleThreat.Framework.DocumentHelper">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="TripleThreat.Framework.IDocument">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="TripleThreat.Framework.DocumentState">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
