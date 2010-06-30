@@ -8,18 +8,32 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>ManageWorkflow</h2>    
-    <p>
-       <%: Html.ActionLink("New WorkFlow", "NewWorkFlow", "Workflow")%>
-    </p>
+    <h2>Manage Workflows</h2>    
 
-
-    <% using (Html.BeginForm("HandleWF", "Workflow")) %>
+    <%: Html.ActionLink("Create New WorkFlow", "NewWorkFlow", "Workflow")%>
+    <% using(Html.BeginForm("HandleRadio", "WorkFlow")) %>
     <% { %>
-        WorkFlow: <%= Html.DropDownList("WorkFlowList")%>
-        <br /><br />
-        Selected WorkFlow: <%= Html.DisplayText("SelectedWorkFlow") %>
-        <input type="submit" value="Submit" />
+            <div>&nbsp;</div>
+            Select WorkFlow:
+            <table>
+            <thead>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            </thead>
+            <tbody>
+            <% foreach (WorkFlow workflow in (List<WorkFlow>)ViewData["WorkFlows"])
+               { %>
+               <tr>
+               <td><%= Html.RadioButton("SelectedWorkFlow", workflow.Id, false)%></td>
+               <td><%= workflow.Id %></td>
+               <td><%= workflow.Name %></td>
+               </tr>
+               <% } %>
+            </tbody>
+            </table>
+            <input type="submit" value="Submit" />
     <% } %>
+
 
 </asp:Content>

@@ -42,6 +42,11 @@ namespace TripleThreatWF.Controllers
             return View();
         }
 
+        public ActionResult OpenFolder()
+        {
+            return View();
+        }
+
         public List<Folder> RefreshFolderList()
         {
             List<Folder> folders;
@@ -71,5 +76,73 @@ namespace TripleThreatWF.Controllers
             return View("ManageFolder");
         }
 
+        public ActionResult HandleRadio(int SelectedFolder)
+        {
+            ViewData["CurrentFolder"] = FolderHelper.Instance.GetFolder(SelectedFolder);
+
+            return View("OpenFolder");
+        }
+
+        public ActionResult HandleDocumentRadio(int SelectedDocument, int Id)
+        {
+            ViewData["CurrentDocument"] = DocumentHelper.Instance.GetDocument(SelectedDocument);
+
+            return View("OpenDocument");
+        }
+
+        public ActionResult AddDocument(int Id)
+        {
+            Folder CurrentFolder = FolderHelper.Instance.GetFolder(Id);
+            List<Document> docs = DocumentHelper.Instance.GetAllDocuments();
+
+            foreach (Document d in CurrentFolder.Documents)
+            {
+                for (int i = 0; i < docs.Count; ++i)
+                {
+                    if (d.Id == docs[i].Id)
+                    {
+                        docs.RemoveRange(i, 1);
+                        --i;
+                    }
+                }
+            }
+
+            ViewData["Documents"] = docs;
+            ViewData["CurrentFolder"] = CurrentFolder;
+
+            return View("AddDocuments");
+        }
+
+        public ActionResult AddDocumentRadio(int SelectedDocument, int Id)
+        {
+            Folder CurrentFolder = FolderHelper.Instance.GetFolder(Id);
+            CurrentFolder.Documents.Add(DocumentHelper.Instance.GetDocument(SelectedDocument));
+            
+            List<Document> docs = DocumentHelper.Instance.GetAllDocuments();
+
+            foreach (Document d in CurrentFolder.Documents)
+            {
+                for (int i = 0; i < docs.Count; ++i)
+                {
+                    if (d.Id == docs[i].Id)
+                    {
+                        docs.RemoveRange(i, 1);
+                        --i;
+                    }
+                }
+            }
+
+            ViewData["Documents"] = docs;
+            ViewData["CurrentFolder"] = CurrentFolder;
+
+            return View("AddDocuments");
+        }
+
+        public ActionResult AddDocumentDone(int Id)
+        {
+            ViewData["CurrentFolder"] = FolderHelper.Instance.GetFolder(Id);
+
+            return View("OpenFolder");
+        }
     }
 }
