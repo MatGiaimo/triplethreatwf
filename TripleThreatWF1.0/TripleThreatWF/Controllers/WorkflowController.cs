@@ -23,15 +23,7 @@ namespace TripleThreatWF.Controllers
         {
             List<WorkFlow> workFlows = RefreshWorkFlowList();
 
-            List<string> workFlowList = new List<string>();
-
-            foreach (WorkFlow w in workFlows)
-            {
-                workFlowList.Add(w.Id.ToString() + ":" + w.Name);
-            }
-
-            ViewData["WorkFlowList"] = new SelectList(workFlowList);
-            ViewData["SelectedWorkFlow"] = workFlowList[0];
+            ViewData["WorkFlows"] = workFlows;
 
             return View();
         }
@@ -123,6 +115,28 @@ namespace TripleThreatWF.Controllers
             ViewData["WorkFlowList"] = new SelectList(workFlowList);
 
             return View("OpenWorkFlow");
+        }
+
+        public ActionResult HandleRadio(int SelectedWorkFlow)
+        {
+            ViewData["SelectedWorkFlow"] = WorkFlowHelper.Instance.GetWorkFlow(SelectedWorkFlow);
+            return View("OpenWorkFlow");
+        }
+
+        public ActionResult HandleWFStep(int SelectedWorkFlowStep)
+        {
+            return View();
+        }
+
+        public ActionResult HandleWFFolder(int Id)
+        {
+            ViewData["CurrentFolder"] = WorkFlowHelper.Instance.GetWorkFlow(Id).Folder;
+            return View("./../Folder/OpenFolder");
+        }
+
+        public ActionResult CreateWorkFlow()
+        {
+            return View();
         }
     }
 }

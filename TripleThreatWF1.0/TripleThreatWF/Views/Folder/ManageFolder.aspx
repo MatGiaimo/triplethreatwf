@@ -7,20 +7,38 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Manage Folder</h2>
+    <%: Html.ActionLink("<-- Go Back", "NewWorkFlow", "Workflow")%>
+    <h2>Manage Folders</h2>
 
     <% using (Html.BeginForm("Save", "Folder"))
        { %>
     <div>Folder Name:</div><div display="inline"><input type="text" name="FolderName" id="FolderName" /></div>
-    <input type="submit" value="Save" />
+    <input type="submit" value="Create" />
+    <% } %>
+    <br /><br />
+
+    <% using(Html.BeginForm("HandleRadio", "Folder")) %>
+    <% { %>
+            <div>&nbsp;</div>
+            Current Folders:
+            <table>
+            <thead>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            </thead>
+            <tbody>
+            <% foreach (Folder folder in (IList<Folder>)this.ViewData["Folders"])
+               { %>
+               <tr>
+               <td><%= Html.RadioButton("SelectedFolder", folder.Id, false)%></td>
+               <td><%= folder.Id %></td>
+               <td><%= folder.Name %></td>
+               </tr>
+               <% } %>
+            </tbody>
+            </table>
+            <input type="submit" value="Open Folder" />
     <% } %>
 
-    <table>
-    <tr><td>Name</td></tr>
-    <% foreach (Folder folder in (IList<Folder>)this.ViewData["Folders"])
-       { %>
-       <tr><td><%= folder.Name %></td></tr>
-       <% } %>
-    </table>
 </asp:Content>
