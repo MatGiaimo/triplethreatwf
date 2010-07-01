@@ -6,6 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<%= Html.MvcSiteMap().SiteMapPath() %> 
+
     <h2>Add Document to Folder</h2>
 
     <div>&nbsp;</div>

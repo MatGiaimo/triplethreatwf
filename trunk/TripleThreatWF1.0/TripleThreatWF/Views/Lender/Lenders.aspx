@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<%= Html.MvcSiteMap().SiteMapPath() %> 
     <h2>Lenders</h2>
     <% using (Html.BeginForm("SaveLender","Lender")) { %>
     <div>

@@ -7,6 +7,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<%= Html.MvcSiteMap().SiteMapPath() %> 
+
     <h2>Customers</h2>
 <%--    <div style="display:inline"><a href="#">Add Customer</a></div>--%>
      <p>
