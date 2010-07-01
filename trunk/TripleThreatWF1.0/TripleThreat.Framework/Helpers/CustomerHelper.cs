@@ -130,5 +130,25 @@ namespace TripleThreat.Framework.Helpers
             return Customer;
         }
 
+        public CustomerGroup CreateCustomerGroup(string Name)
+        {
+            CustomerGroup customergroup = new CustomerGroup();
+
+            customergroup.Name = Name;
+
+            return customergroup;
+        }
+
+        public CustomerGroup SaveCustomerGroup(CustomerGroup CustomerGroup)
+        {
+            ((DatabaseContext)this.Database).CustomerGroups.AddObject(CustomerGroup);
+
+            ((DatabaseContext)this.Database).SaveChanges();
+
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, CustomerGroup);
+
+            return CustomerGroup;
+        }
+
     }
 }
