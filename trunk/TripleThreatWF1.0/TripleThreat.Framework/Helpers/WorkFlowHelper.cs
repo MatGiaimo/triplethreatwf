@@ -71,6 +71,16 @@ namespace TripleThreat.Framework.Helpers
             return w;
         }
 
+        public WorkFlowStep CreateWorkFlowStep(string name, bool IsAutomatic)
+        {
+            WorkFlowStep w = new WorkFlowStep();
+
+            w.Name = name;
+            w.IsAuto = IsAutomatic;
+
+            return w;
+        }
+
         public WorkFlow GetWorkFlow(int Id)
         {
             IQueryable<WorkFlow> wfQuery =
@@ -103,14 +113,12 @@ namespace TripleThreat.Framework.Helpers
 
         public void SaveWorkFlow(WorkFlow workflow)
         {
-            //if (((DatabaseContext)this.Database).WorkFlows.Contains<WorkFlow>(workflow))
-            //{
-            //    ((DatabaseContext)this.Database).WorkFlows.DeleteObject(workflow);
-            //}
 
             ((DatabaseContext)this.Database).WorkFlows.AddObject(workflow);
 
             ((DatabaseContext)this.Database).SaveChanges();
+
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, workflow);
         }
     }
 }

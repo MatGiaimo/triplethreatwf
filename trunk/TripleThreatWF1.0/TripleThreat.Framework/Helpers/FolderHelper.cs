@@ -85,11 +85,13 @@ namespace TripleThreat.Framework.Helpers
             return folderQuery.ToList<Folder>();
         }
 
-        public void SaveFolder(Folder Folder)
+        public void SaveFolder(Folder folder)
         {
-            ((DatabaseContext)this.Database).Folders.AddObject(Folder);
+            ((DatabaseContext)this.Database).Folders.AddObject(folder);
 
             ((DatabaseContext)this.Database).SaveChanges();
+
+            ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, folder);
         }
 
     }

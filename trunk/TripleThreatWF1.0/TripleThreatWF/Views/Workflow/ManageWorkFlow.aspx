@@ -25,7 +25,7 @@
             <% foreach (WorkFlow workflow in (List<WorkFlow>)ViewData["WorkFlows"])
                { %>
                <tr>
-               <td><%= Html.RadioButton("SelectedWorkFlow", workflow.Id, false)%></td>
+               <td><%= Html.RadioButton("SelectedWorkFlow", workflow.Id, true)%></td>
                <td><%= workflow.Id %></td>
                <td><%= workflow.Name %></td>
                </tr>

@@ -30,25 +30,10 @@ namespace TripleThreatWF.Controllers
         public ActionResult NewWorkFlow()
         {
             List<Folder> folders = RefreshFolderList();
+            List<Lender> lenders = LenderHelper.Instance.GetAllLenders();
 
-            List<string> folderList = new List<string>();
-            
-            foreach (Folder f in folders)
-            {
-                folderList.Add(f.Name);
-            }
-
-            ViewData["FolderList"] =  new SelectList(folderList);
-
-            List<string> stepsList = new List<string>();
-
-            stepsList.Add("step1");
-            stepsList.Add("step2");
-            stepsList.Add("step3");
-            stepsList.Add("autostep1");
-            stepsList.Add("autostep2");
-
-            ViewData["StepsList"] = new MultiSelectList(stepsList);
+            ViewData["FolderList"] = folders;
+            ViewData["LenderList"] = lenders;
 
             return View();
         }
@@ -123,7 +108,7 @@ namespace TripleThreatWF.Controllers
             return View("OpenWorkFlow");
         }
 
-        public ActionResult HandleWFStep(int SelectedWorkFlowStep)
+        public ActionResult HandleWFStep(int SelectedWorkFlowStep, int Id)
         {
             return View();
         }
@@ -134,9 +119,36 @@ namespace TripleThreatWF.Controllers
             return View("./../Folder/OpenFolder");
         }
 
-        public ActionResult CreateWorkFlow()
+        public ActionResult CreateWorkFlow(string name, bool scanning, bool verifying, bool creditcheck, int SelectedFolder, int SelectedLender)
         {
-            return View();
+            List<WorkFlowStep> steps = new List<WorkFlowStep>();
+
+            if (scanning)
+            {
+                steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("Scanning", false));
+            }
+
+            if (scanning)
+            {
+                steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("Verifying", false));
+            }
+
+            if (scanning)
+            {
+                steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("CreditCheck", false));
+            }
+
+            WorkFlow w = WorkFlowHelper.Instance.CreateWorkFlow(name, steps);
+            w.Folder = FolderHelper.Instance.GetFolder(SelectedFolder);
+            w.Lender = LenderHelper.Instance.GetLender(SelectedLender);
+
+            WorkFlowHelper.Instance.SaveWorkFlow(w);
+
+            List<WorkFlow> workFlows = RefreshWorkFlowList();
+
+            ViewData["WorkFlows"] = workFlows;
+
+            return View("ManageWorkflow");
         }
     }
 }
