@@ -14,6 +14,10 @@
      <p>
        <%: Html.ActionLink("Add Customer", "AddCustomer", "Customer")%>
     </p>
+    
+    <p>
+       <%: Html.ActionLink("AddGroup", "ManageGroupID", "Customer")%>
+    </p>
     <table>
     
 
