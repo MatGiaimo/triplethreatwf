@@ -113,9 +113,10 @@ namespace TripleThreat.Framework.Helpers
 
         public void SaveWorkFlow(WorkFlow workflow)
         {
-
-            ((DatabaseContext)this.Database).WorkFlows.AddObject(workflow);
-
+            try
+            {
+                ((DatabaseContext)this.Database).WorkFlows.AddObject(workflow);
+            }catch{}
             ((DatabaseContext)this.Database).SaveChanges();
 
             ((DatabaseContext)this.Database).Refresh(System.Data.Objects.RefreshMode.StoreWins, workflow);
