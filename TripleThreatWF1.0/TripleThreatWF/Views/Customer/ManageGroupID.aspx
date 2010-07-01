@@ -3,16 +3,16 @@
 <%@ Import Namespace="System.Data.Entity" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	ManageGroupID
+	AddGroup
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>ManageGroupID</h2>
+<%= Html.MvcSiteMap().SiteMapPath() %> 
+    <h2>CreateGroup</h2>
         <% using (Html.BeginForm("SaveGroupID","Customer")) { %>
         <div>
             <fieldset>
-                <legend>GroupID Information</legend>
+                <legend>Group Information</legend>
                 
                 <div class="editor-label">
                     <%: Html.LabelFor(cm => cm.GroupName) %>
