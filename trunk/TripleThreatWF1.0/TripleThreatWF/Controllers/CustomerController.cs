@@ -125,7 +125,8 @@ namespace TripleThreatWF.Controllers
 
             WorkFlow wflow = WorkFlowHelper.Instance.GetWorkFlow(cm.WorkFlow.Id);
 
-            cm.WorkFlows = WorkFlowHelper.Instance.GetAllWorkFlows();
+            cgroup.WorkFlow = wflow;
+            //cm.WorkFlows = WorkFlowHelper.Instance.GetAllWorkFlows();
 
             CustomerHelper.Instance.SaveCustomerGroup(cgroup);
 
