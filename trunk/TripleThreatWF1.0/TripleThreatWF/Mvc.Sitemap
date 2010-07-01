@@ -7,6 +7,7 @@
     <mvcSiteMapNode title="Users" controller="User" action="ManageUsers" />
     <mvcSiteMapNode title="Customers" controller="Customer" action="ManageCustomer" >
       <mvcSiteMapNode title="Add Customer" action="AddCustomer" />
+      <mvcSiteMapNode title="Create Group" action="ManageGroupID" />
     </mvcSiteMapNode>
     <mvcSiteMapNode title="Lenders" controller="Lender" action="Lenders" />
     <mvcSiteMapNode title="Workflow Builder" controller="Workflow" action="ManageWorkflow" >
