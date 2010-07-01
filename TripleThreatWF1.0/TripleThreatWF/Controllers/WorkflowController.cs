@@ -110,7 +110,17 @@ namespace TripleThreatWF.Controllers
 
         public ActionResult HandleWFStep(int SelectedWorkFlowStep, int Id)
         {
-            return View();
+            WorkFlow w = WorkFlowHelper.Instance.GetWorkFlow(Id);
+
+            foreach (WorkFlowStep s in w.WorkFlowSteps)
+            {
+                if (s.Id == SelectedWorkFlowStep)
+                    s.IsComplete = true;
+            }
+            WorkFlowHelper.Instance.SaveWorkFlow(w);
+
+            ViewData["SelectedWorkFlow"] = WorkFlowHelper.Instance.GetWorkFlow(Id);
+            return View("OpenWorkFlow");
         }
 
         public ActionResult HandleWFFolder(int Id)
