@@ -1,6 +1,4 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<TripleThreatWF.Models.SearchModel>" %>
-<%@ Import Namespace="TripleThreat.Framework.Core" %>
-<%@ Import Namespace="System.Data.Entity" %>
 
 <h3>Open Items:</h3>
 
