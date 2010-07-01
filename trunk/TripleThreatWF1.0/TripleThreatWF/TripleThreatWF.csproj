@@ -174,7 +174,9 @@
     <None Include="Controllers\ClassDiagrams\SearchController.cd" />
     <None Include="Controllers\ClassDiagrams\UserController.cd" />
     <None Include="Controllers\ClassDiagrams\WorkflowController.cd" />
-    <Content Include="Mvc.Sitemap" />
+    <Content Include="Mvc.Sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TripleThreat.Framework\TripleThreat.Framework.csproj">
