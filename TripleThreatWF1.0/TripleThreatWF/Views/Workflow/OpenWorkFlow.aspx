@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <%: Html.ActionLink("<<- Go Back", "ManageWorkFlow", "Workflow")%>
+<%= Html.MvcSiteMap().SiteMapPath() %> 
 
     <h2>Selected WorkFlow: <%=((WorkFlow)ViewData["SelectedWorkFlow"]).Name %></h2>
 

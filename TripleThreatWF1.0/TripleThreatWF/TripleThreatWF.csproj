@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SiteMapProvider\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -169,7 +173,7 @@
     <None Include="Controllers\ClassDiagrams\SearchController.cd" />
     <None Include="Controllers\ClassDiagrams\UserController.cd" />
     <None Include="Controllers\ClassDiagrams\WorkflowController.cd" />
-    <Content Include="Web.sitemap" />
+    <Content Include="Mvc.Sitemap" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TripleThreat.Framework\TripleThreat.Framework.csproj">

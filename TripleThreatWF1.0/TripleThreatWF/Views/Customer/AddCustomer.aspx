@@ -5,6 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
+
+<%= Html.MvcSiteMap().SiteMapPath() %> 
     <h2>Create a New Customer</h2>
     <p>
         Use the form below to create a new customer. 

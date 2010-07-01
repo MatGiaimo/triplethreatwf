@@ -6,7 +6,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Workflow Builder</h2>    
+    <%= Html.MvcSiteMap().SiteMapPath() %> 
+
+    <h2>Workflow Builder</h2>   
 
     <%: Html.ActionLink("Create New WorkFlow", "NewWorkFlow", "Workflow")%>
     <% using(Html.BeginForm("HandleRadio", "WorkFlow")) %>

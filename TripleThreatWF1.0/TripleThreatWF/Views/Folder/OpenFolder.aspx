@@ -5,6 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <%= Html.MvcSiteMap().SiteMapPath() %> 
     <%: Html.ActionLink("<<- Go Back", "ManageWorkFlow", "Workflow")%>
     <h2>Folder: <%=((Folder)ViewData["CurrentFolder"]).Name%></h2>
 

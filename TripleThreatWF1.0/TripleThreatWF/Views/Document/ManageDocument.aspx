@@ -6,6 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<%= Html.MvcSiteMap().SiteMapPath() %> 
+
     <h2>Manage Document</h2>
 
     <% using (Html.BeginForm("Save", "Document",FormMethod.Post, 

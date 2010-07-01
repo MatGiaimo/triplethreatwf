@@ -11,7 +11,7 @@
         $("#DateAdded").datepicker();
     });
 	</script>
-
+    <%= Html.MvcSiteMap().SiteMapPath() %> 
     <h2>Search Documents</h2>
 
     <% using(Html.BeginForm("SearchDocuments","Search")) { %>
