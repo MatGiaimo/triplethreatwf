@@ -13,11 +13,69 @@
     <br /><br />
     <% using (Html.BeginForm("CreateWorkFlow", "Workflow")) %>
     <% { %>
-        Enter WorkFlow name: <%= Html.TextBox("name") %>
+        Enter WorkFlow name:<br /><%= Html.TextBox("name") %>
         <br /><br />
-        Select Folder: <%= Html.DropDownList("FolderList")%>   <%: Html.ActionLink("new", "ManageFolder", "Folder")%>
+
+        Select Folder:<%: Html.ActionLink("create new folder", "ManageFolder", "Folder")%><div>&nbsp;</div>
+        <table>
+        <thead>
+        <th></th>
+        <th>ID</th>
+        <th>Folder Name</th>
+        </thead>
+        <tbody>
+        <% if (((List<Folder>)this.ViewData["FolderList"]).Count == 0)
+        { %>
+            <tr>
+            <td>--</td>
+            <td>--No Folders--</td>
+            <td>--</td>
+            </tr>
+        <% } %>
+        <%else { %>
+            <% foreach (Folder folder in ((List<Folder>)this.ViewData["FolderList"]))
+                { %>
+                <tr>
+                <td><%= Html.RadioButton("SelectedFolder", folder.Id, true)%></td>
+                <td><%= folder.Id %></td>
+                <td><%= folder.Name %></td>
+                </tr>
+                <% } %>
+        <% } %>
+        </tbody>
+        </table>
+
+        Select Lender:<div>&nbsp;</div>
+        <table>
+        <thead>
+        <th></th>
+        <th>ID</th>
+        <th>Lender Name</th>
+        </thead>
+        <tbody>
+        <% if (((List<Lender>)this.ViewData["LenderList"]).Count == 0)
+        { %>
+            <tr>
+            <td>--</td>
+            <td>--No Lenders--</td>
+            <td>--</td>
+            </tr>
+        <% } %>
+        <%else { %>
+            <% foreach (Lender lender in ((List<Lender>)this.ViewData["LenderList"]))
+                { %>
+                <tr>
+                <td><%= Html.RadioButton("SelectedLender", lender.Id, true)%></td>
+                <td><%= lender.Id %></td>
+                <td><%= lender.Name %></td>
+                </tr>
+                <% } %>
+        <% } %>
+        </tbody>
+        </table>
+
         <br /><br />
-        Select WorkFlow Steps:<br />
+        Select WorkFlow Steps:<br /><div>&nbsp;</div>
         <table>
         <thead>
         <th></th>
@@ -26,18 +84,18 @@
         </thead>
         <tbody>
             <tr>
-            <td><%= Html.CheckBox("stepone") %></td>
-            <td>stepone</td>
+            <td><%= Html.CheckBox("scanning") %></td>
+            <td>Scanning</td>
             <td>some step description</td>
             </tr>
             <tr>
-            <td><%= Html.CheckBox("steptwo") %></td>
-            <td>steptwo</td>
+            <td><%= Html.CheckBox("verifying") %></td>
+            <td>Verifying</td>
             <td>some step description</td>
             </tr>
             <tr>
-            <td><%= Html.CheckBox("stepthree") %></td>
-            <td>stepthree</td>
+            <td><%= Html.CheckBox("creditcheck") %></td>
+            <td>Credit Check</td>
             <td>some step description</td>
             </tr>
             <tr>
@@ -47,8 +105,8 @@
             </tr>
         </tbody>
         </table>
-        <br />
-        <input type="submit" value="Create" />
+        <br /><div>&nbsp;</div>
+        <input type="submit" value="Create WorkFlow" />
     <% } %>
 
     
