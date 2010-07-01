@@ -17,3 +17,5 @@
 <br />
 <div><%: Html.ActionLink("Workflow Builder", "ManageWorkflow", "Workflow")%></div>
 <br />
+<div><%: Html.ActionLink("AddGroup", "ManageGroupID", "Customer")%></div>
+<br />

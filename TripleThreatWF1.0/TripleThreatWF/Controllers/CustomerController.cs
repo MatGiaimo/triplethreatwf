@@ -106,5 +106,33 @@ namespace TripleThreatWF.Controllers
             return View("AddCustomer", cm);
         }
 
+        //// new
+
+        public ActionResult ManageGroupID()
+        {
+
+            CustomerModel cm = new CustomerModel();
+
+            cm.WorkFlows = WorkFlowHelper.Instance.GetAllWorkFlows();
+
+            return View("ManageGroupID", cm);
+        }
+
+
+        public ActionResult SaveGroupID(CustomerModel cm)
+        {
+            CustomerGroup cgroup = CustomerHelper.Instance.CreateCustomerGroup(cm.GroupName);
+
+            WorkFlow wflow = WorkFlowHelper.Instance.GetWorkFlow(cm.WorkFlow.Id);
+
+            cm.WorkFlows = WorkFlowHelper.Instance.GetAllWorkFlows();
+
+            CustomerHelper.Instance.SaveCustomerGroup(cgroup);
+
+            cm.WorkFlows = WorkFlowHelper.Instance.GetAllWorkFlows();
+
+
+            return View("ManageGroupID", cm);
+        }
     }
 }

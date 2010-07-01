@@ -113,6 +113,7 @@
     <Content Include="Views\Account\ManageCustomers.aspx" />
     <Content Include="Views\Customer\AddCustomer.aspx" />
     <Content Include="Views\Customer\ManageCustomer.aspx" />
+    <Content Include="Views\Customer\ManageGroupID.aspx" />
     <Content Include="Views\Document\ManageDocument.aspx" />
     <Content Include="Views\Document\OpenDocument.aspx" />
     <Content Include="Views\Folder\AddDocuments.aspx" />
