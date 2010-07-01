@@ -51,7 +51,7 @@
             <% foreach (Document doc in (IList<Document>)this.ViewData["Documents"])
                { %>
                <tr>
-               <td><%= Html.RadioButton("SelectedDocument", doc.Id, false)%></td>
+               <td><%= Html.RadioButton("SelectedDocument", doc.Id, true)%></td>
                <td><%= doc.Name %></td>
                </tr>
                <% } %>

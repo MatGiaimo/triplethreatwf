@@ -87,7 +87,7 @@ namespace TripleThreatWF.Controllers
         {
             ViewData["CurrentDocument"] = DocumentHelper.Instance.GetDocument(SelectedDocument);
 
-            return View("OpenDocument");
+            return View("./../Document/OpenDocument");
         }
 
         public ActionResult AddDocument(int Id)
