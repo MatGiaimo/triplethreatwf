@@ -28,66 +28,77 @@ namespace TripleThreatWF.Controllers
         public ActionResult Save(DocumentModel dm)
         {
             var postedFile = dm.Image;
+            Document doc = new Document();
 
-            if (postedFile.ContentLength > 0)
+            if (postedFile != null)
             {
-                int imageLength = postedFile.ContentLength;
-                byte[] imageData = new byte[imageLength];
-                Stream imageStream = postedFile.InputStream;
-
-                imageStream.Read(imageData, 0, imageLength);
-
-                Document doc = new Document();
-
-                // update document
-                if (dm.Id > 0)
+                if (postedFile.ContentLength > 0)
                 {
-                    doc = DocumentHelper.Instance.GetDocument(dm.Id);
+                    int imageLength = postedFile.ContentLength;
+                    byte[] imageData = new byte[imageLength];
+                    Stream imageStream = postedFile.InputStream;
 
-                    doc.Name = dm.Name;
+                    imageStream.Read(imageData, 0, imageLength);
 
-                    dm.Customers = CustomerHelper.Instance.GetAllCustomers();
-                    dm.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
-                    dm.Folders = FolderHelper.Instance.GetAllFolders();
-                    dm.Folder = FolderHelper.Instance.GetFolder(dm.Folder.Id);
+                    // update document
+                    if (dm.Id > 0)
+                    {
+                        doc = DocumentHelper.Instance.GetDocument(dm.Id);
 
-                    doc.Customer = dm.Customer;
-                    doc.Folder = dm.Folder;
+                        doc.Name = dm.Name;
 
-                    doc.Image = imageData;
-                    doc.ImageName = postedFile.FileName;
-                    doc.ImageMime = postedFile.ContentType;
+                        
+                        dm.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
+                        
+                        dm.Folder = FolderHelper.Instance.GetFolder(dm.Folder.Id);
 
-                    doc = DocumentHelper.Instance.SaveDocument(doc);
+                        doc.Customer = dm.Customer;
+                        doc.Folder = dm.Folder;
+
+                        doc.Image = imageData;
+                        doc.ImageName = postedFile.FileName;
+                        doc.ImageMime = postedFile.ContentType;
+
+                        if (doc.Validate())
+                        {
+                            doc = DocumentHelper.Instance.SaveDocument(doc);
+                        }
+                    }
+                    // save new document
+                    else
+                    {
+                        doc = DocumentHelper.Instance.CreateDocument(dm.Name, HttpContext.User.Identity.Name);
+
+                        doc.Name = dm.Name;
+
+                        dm.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
+                        dm.Folder = FolderHelper.Instance.GetFolder(dm.Folder.Id);
+
+                        doc.Customer = dm.Customer;
+                        doc.Folder = dm.Folder;
+
+                        doc.Image = imageData;
+                        doc.ImageName = postedFile.FileName;
+                        doc.ImageMime = postedFile.ContentType;
+                        doc.CreatedDate = DateTime.UtcNow;
+
+                        if (doc.Validate())
+                        {
+                            doc = DocumentHelper.Instance.SaveDocument(doc);
+                        }
+                    }
                 }
-                // save new document
-                else
-                {
-                    doc = DocumentHelper.Instance.CreateDocument(dm.Name, HttpContext.User.Identity.Name);
-
-                    doc.Name = dm.Name;
-
-                    dm.Customers = CustomerHelper.Instance.GetAllCustomers();
-                    dm.Customer = CustomerHelper.Instance.GetCustomer(dm.Customer.Id);
-                    dm.Folders = FolderHelper.Instance.GetAllFolders();
-                    dm.Folder = FolderHelper.Instance.GetFolder(dm.Folder.Id);
-
-                    doc.Customer = dm.Customer;
-                    doc.Folder = dm.Folder;
-
-                    doc.Image = imageData;
-                    doc.ImageName = postedFile.FileName;
-                    doc.ImageMime = postedFile.ContentType;
-                    doc.CreatedDate = DateTime.UtcNow;
-
-                    doc = DocumentHelper.Instance.SaveDocument(doc);
-                }
-
-                dm.Id = doc.Id;
             }
+
+            dm.Id = doc.Id;
+            dm.Name = doc.Name;
+            dm.Customers = CustomerHelper.Instance.GetAllCustomers();
+            dm.Folders = FolderHelper.Instance.GetAllFolders();
 
             return View("ManageDocument",dm);
         }
+
+
 
         /// <summary>
         /// Action with no parameters
