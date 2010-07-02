@@ -43,6 +43,9 @@
                     { %>
                         <td> </td>
                         <td>Complete</td>
+                        <td><%= step.Name %></td>
+                        <td><%= step.IsAuto %></td>
+                        <td><%= step.AutoExecTime %></td>
                     <% }else
                        {
                            if (!identifiedCurrent)
@@ -51,16 +54,19 @@
                                if( step.IsAuto) isCurrentAutoStep = true;%>
                                <td><%= Html.RadioButton("SelectedWorkFlowStep", step.Id, true)%></td>
                                <td>InComplete</td>
+                               <td><%= step.Name %></td>
+                               <td><%= step.IsAuto %></td>
+                               <td><%= step.AutoExecTime %></td>
                            <%}
                            else
                            {%>
                             <td> </td>
                             <td>InComplete</td>
+                            <td><%= step.Name %></td>
+                            <td><%= step.IsAuto %></td>
+                            <td> </td>
                            <%}%>
                     <% } %>
-                    <td><%= step.Name %></td>
-                    <td><%= step.IsAuto %></td>
-                    <td><%= step.AutoExecTime %></td>
                     </tr>
                 <% } %>
                 </tbody>

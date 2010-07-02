@@ -87,22 +87,47 @@
             <tr>
             <td><%= Html.CheckBox("scanning") %></td>
             <td>Scanning</td>
-            <td>some step description</td>
+            <td>scan the document</td>
             </tr>
             <tr>
             <td><%= Html.CheckBox("verifying") %></td>
             <td>Verifying</td>
-            <td>some step description</td>
+            <td>verify document contents</td>
             </tr>
             <tr>
             <td><%= Html.CheckBox("creditcheck") %></td>
             <td>Credit Check</td>
+            <td>perform Credit Check</td>
+            </tr>
+            <tr>
+            <td><%= Html.CheckBox("contribution") %></td>
+            <td>Contribution</td>
+            <td>Contribute</td>
+            </tr>
+            <tr>
+            <td><%= Html.CheckBox("autocontribution") %></td>
+            <td>AutoContribution</td>
+            <td>Automatic Contribution</td>
+            </tr>
+            <tr>
+            <td><%= Html.CheckBox("review") %></td>
+            <td>Review</td>
+            <td>Review Application</td>
+            </tr>
+            <tr>
+            <td><%= Html.CheckBox("publish") %></td>
+            <td>Publish</td>
             <td>some step description</td>
             </tr>
             <tr>
-            <td><%= Html.CheckBox("stepfour") %></td>
-            <td>stepfour</td>
-            <td>some step description</td>
+            <td><%= Html.CheckBox("authorizecreditcard") %></td>
+            <td>Authorize Credit Card</td>
+            <td>Authorize Credit card</td>
+            </tr>
+            <tr>
+            <td><%= Html.CheckBox("authorizeloan") %></td>
+            <td>Authorize Loan</td>
+            <td>Authorize Loan</td>
             </tr>
         </tbody>
         </table>

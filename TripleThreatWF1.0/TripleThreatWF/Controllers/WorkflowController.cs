@@ -151,7 +151,9 @@ namespace TripleThreatWF.Controllers
             return View("./../Folder/OpenFolder");
         }
 
-        public ActionResult CreateWorkFlow(string name, bool scanning, bool verifying, bool creditcheck, int SelectedFolder, int SelectedLender)
+        public ActionResult CreateWorkFlow(string name, bool scanning, bool verifying, bool creditcheck, bool contribution, 
+            bool autocontribution, bool review, bool publish, bool authorizecreditcard, bool authorizeloan, 
+            int SelectedFolder, int SelectedLender)
         {
             List<WorkFlowStep> steps = new List<WorkFlowStep>();
 
@@ -160,14 +162,50 @@ namespace TripleThreatWF.Controllers
                 steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("Scanning", false));
             }
 
-            if (scanning)
+            if (verifying)
             {
                 steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("Verifying", false));
             }
 
-            if (scanning)
+            if (creditcheck)
             {
                 steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("CreditCheck", false));
+            }
+
+            if (contribution)
+            {
+                steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("Contribution", false));
+            }
+
+            if (autocontribution)
+            {
+                steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("AutoContribution", false));
+            }
+
+            if (review)
+            {
+                steps.Add(WorkFlowHelper.Instance.CreateWorkFlowStep("Review", false));
+            }
+
+            if (publish)
+            {
+                WorkFlowStep s = WorkFlowHelper.Instance.CreateWorkFlowStep("Publish", true);
+                s.AutoExecTime = DateTime.Now.AddMinutes(1);
+                steps.Add(s);
+            }
+
+            if (authorizecreditcard)
+            {
+                WorkFlowStep s = WorkFlowHelper.Instance.CreateWorkFlowStep("AuthorizeCreditCard", true);
+                s.AutoExecTime = DateTime.Now.Date.AddDays(1);
+                steps.Add(s);
+            }
+
+            if (authorizeloan)
+            {
+                WorkFlowStep s = WorkFlowHelper.Instance.CreateWorkFlowStep("AuthorizeLoan", true);
+                s.AutoExecTime = DateTime.Now.Date.AddDays(1);
+                steps.Add(s);
             }
 
             WorkFlow w = WorkFlowHelper.Instance.CreateWorkFlow(name, steps);
