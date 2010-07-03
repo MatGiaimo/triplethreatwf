@@ -134,10 +134,19 @@ namespace TripleThreatWF.Controllers
 
                 if (!s.IsComplete && next)
                 {
-                    next = false;
-                    if (s.IsAuto && s.AutoExecTime < DateTime.Now) s.IsComplete = true;
+                    
+                    if (s.IsAuto && s.AutoExecTime < DateTime.Now)
+                    {
+                        s.IsComplete = WorkFlowHelper.Instance.ProcessAutoStep(s);
+                    }
+                    else
+                    {
+                        next = false;
+                        if (s.IsAuto) s.AutoExecTime = WorkFlowHelper.Instance.ScheduleAutoStep(s);
+                    }
                 }
             }
+
             WorkFlowHelper.Instance.SaveWorkFlow(wf);
 
             ViewData["SelectedWorkFlow"] = WorkFlowHelper.Instance.GetWorkFlow(wf.Id);
@@ -153,7 +162,8 @@ namespace TripleThreatWF.Controllers
             {
                 if (next)
                 {
-                    if (s.IsAuto) s.AutoExecTime = DateTime.Now.AddMinutes(2);
+                    if (s.IsAuto) s.AutoExecTime = WorkFlowHelper.Instance.ScheduleAutoStep(s);
+                    next = false;
                 }
 
                 if (s.Id == SelectedWorkFlowStep)
@@ -213,21 +223,18 @@ namespace TripleThreatWF.Controllers
             if (publish)
             {
                 WorkFlowStep s = WorkFlowHelper.Instance.CreateWorkFlowStep("Publish", true);
-                s.AutoExecTime = DateTime.Now.AddMinutes(1);
                 steps.Add(s);
             }
 
             if (authorizecreditcard)
             {
                 WorkFlowStep s = WorkFlowHelper.Instance.CreateWorkFlowStep("AuthorizeCreditCard", true);
-                s.AutoExecTime = DateTime.Now.Date.AddDays(1);
                 steps.Add(s);
             }
 
             if (authorizeloan)
             {
                 WorkFlowStep s = WorkFlowHelper.Instance.CreateWorkFlowStep("AuthorizeLoan", true);
-                s.AutoExecTime = DateTime.Now.Date.AddDays(1);
                 steps.Add(s);
             }
 

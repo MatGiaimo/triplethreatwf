@@ -110,6 +110,29 @@ namespace TripleThreat.Framework.Helpers
             return null;
         }
 
+        public bool ProcessAutoStep(WorkFlowStep step)
+        {
+            switch (step.Name)
+            {
+                // insert autohandling here
+
+                default:
+                    return true;
+            }
+        }
+
+        public DateTime ScheduleAutoStep(WorkFlowStep step)
+        {
+            switch (step.Name)
+            {
+                // insert autohandling here
+                case("AuthorizeCreditCard"):
+                    return DateTime.Now.Date.AddDays(1);
+
+                default:
+                    return DateTime.Now.AddMinutes(2);
+            }
+        }
 
         public void SaveWorkFlow(WorkFlow workflow)
         {
