@@ -8,13 +8,13 @@
 
     <%= Html.MvcSiteMap().SiteMapPath() %> 
 
-    <h2>Workflow Builder</h2>   
+    <h2>Workflows</h2>   
 
     <%: Html.ActionLink("Create New WorkFlow", "NewWorkFlow", "Workflow")%>
     <% using(Html.BeginForm("HandleRadio", "WorkFlow")) %>
     <% { %>
             <div>&nbsp;</div>
-            Select WorkFlow:
+            In Progress WorkFlows:
             <table>
             <thead>
             <th></th>
@@ -26,35 +26,74 @@
             <tbody>
             <% foreach (WorkFlow workflow in (List<WorkFlow>)ViewData["WorkFlows"])
                { %>
-               <tr>
-               <td><%= Html.RadioButton("SelectedWorkFlow", workflow.Id, true)%></td>
-               <td><%= workflow.Id %></td>
-               <td><%= workflow.Name %></td>
-               <td><%= workflow.Lender.Name %></td>
 
                <% int numSteps = 0;
                   int numComplete = 0;
-               foreach (WorkFlowStep s in workflow.WorkFlowSteps)
-               {
-                   ++numSteps;
-                   if (s.IsComplete) ++numComplete;
+                  foreach (WorkFlowStep s in workflow.WorkFlowSteps)
+                  {
+                      ++numSteps;
+                      if (s.IsComplete) ++numComplete;
                    %>
 
-            <% }
-                if (numSteps == 0)
-                {%>
-                    <td>100%</td>
-                <%}
-                else
-                {%>
-                    <td><%=((100*numComplete)/(numSteps)).ToString() + "%" %></td>
-                <%}%>
-               </tr>
-               <% } %>
+                <% }
+                  if (numSteps != 0 && numSteps != numComplete)
+                  {%>
+                    <tr>
+                    <td><%= Html.RadioButton("SelectedWorkFlow", workflow.Id, true)%></td>
+                    <td><%= workflow.Id%></td>
+                    <td><%= workflow.Name%></td>
+                    <td><%= workflow.Lender.Name%></td>
+                    <td><%=((100 * numComplete) / (numSteps)).ToString() + "%"%></td>
+                    </tr>
+                   <%}
+               }%>
+
             </tbody>
             </table>
-            <input type="submit" value="Open WorkFlow" />
+            <input type="submit" value="Open" />
     <% } %>
 
+    <% using(Html.BeginForm("HandleRadio", "WorkFlow")) %>
+    <% { %>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            Completed WorkFlows:
+            <table>
+            <thead>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lender</th>
+            <th>Percent Complete</th>
+            </thead>
+            <tbody>
+            <% foreach (WorkFlow workflow in (List<WorkFlow>)ViewData["WorkFlows"])
+               { %>
+
+               <% int numSteps = 0;
+                  int numComplete = 0;
+                  foreach (WorkFlowStep s in workflow.WorkFlowSteps)
+                  {
+                      ++numSteps;
+                      if (s.IsComplete) ++numComplete;
+                   %>
+
+                <% }
+                  if (numSteps == 0 || numSteps == numComplete)
+                  {%>
+                    <tr>
+                    <td><%= Html.RadioButton("SelectedWorkFlow", workflow.Id, true)%></td>
+                    <td><%= workflow.Id%></td>
+                    <td><%= workflow.Name%></td>
+                    <td><%= workflow.Lender.Name%></td>
+                    <td>100%</td>
+                    </tr>
+                   <%}
+               }%>
+
+            </tbody>
+            </table>
+            <input type="submit" value="View" />
+    <% } %>
 
 </asp:Content>

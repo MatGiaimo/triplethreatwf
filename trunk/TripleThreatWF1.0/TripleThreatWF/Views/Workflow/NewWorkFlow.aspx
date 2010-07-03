@@ -9,7 +9,7 @@
 
     <%= Html.MvcSiteMap().SiteMapPath() %> 
 
-    <h2>Create New WorkFlow</h2>
+    <h2>WorkFlow Builder</h2>
 
     <br /><br />
     <% using (Html.BeginForm("CreateWorkFlow", "Workflow")) %>

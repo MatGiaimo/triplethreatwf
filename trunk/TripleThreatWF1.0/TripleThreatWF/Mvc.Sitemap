@@ -10,12 +10,15 @@
       <mvcSiteMapNode title="Create Group" action="ManageGroupID" />
     </mvcSiteMapNode>
     <mvcSiteMapNode title="Lenders" controller="Lender" action="Lenders" />
-    <mvcSiteMapNode title="Workflow Builder" controller="Workflow" action="ManageWorkflow" >
+    <mvcSiteMapNode title="Workflows" controller="Workflow" action="ManageWorkflow" >
       <mvcSiteMapNode title="Open Workflow" action="HandleRadio" />
       <mvcSiteMapNode title="Open Folder" controller="Folder" action="OpenFolder" />
-      <mvcSiteMapNode title="Create Workflow" action="NewWorkFlow" >
+      <mvcSiteMapNode title="WorkFlow Builder" action="NewWorkFlow" >
         <mvcSiteMapNode title="Create New Folder" controller="Folder" action="ManageFolder" />
       </mvcSiteMapNode>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="WorkFlow Builder" action="NewWorkFlow" >
+      <mvcSiteMapNode title="Create New Folder" controller="Folder" action="ManageFolder" />
     </mvcSiteMapNode>
   </mvcSiteMapNode>
 </mvcSiteMap>

@@ -126,7 +126,21 @@ namespace TripleThreatWF.Controllers
 
         public ActionResult HandleRadio(int SelectedWorkFlow)
         {
-            ViewData["SelectedWorkFlow"] = WorkFlowHelper.Instance.GetWorkFlow(SelectedWorkFlow);
+            WorkFlow wf =  WorkFlowHelper.Instance.GetWorkFlow(SelectedWorkFlow);
+
+            bool next = true;
+            foreach (WorkFlowStep s in wf.WorkFlowSteps)
+            {
+
+                if (!s.IsComplete && next)
+                {
+                    next = false;
+                    if (s.IsAuto && s.AutoExecTime < DateTime.Now) s.IsComplete = true;
+                }
+            }
+            WorkFlowHelper.Instance.SaveWorkFlow(wf);
+
+            ViewData["SelectedWorkFlow"] = WorkFlowHelper.Instance.GetWorkFlow(wf.Id);
             return View("OpenWorkFlow");
         }
 
@@ -134,10 +148,19 @@ namespace TripleThreatWF.Controllers
         {
             WorkFlow w = WorkFlowHelper.Instance.GetWorkFlow(Id);
 
+            bool next = false;
             foreach (WorkFlowStep s in w.WorkFlowSteps)
             {
+                if (next)
+                {
+                    if (s.IsAuto) s.AutoExecTime = DateTime.Now.AddMinutes(2);
+                }
+
                 if (s.Id == SelectedWorkFlowStep)
+                {
                     s.IsComplete = true;
+                    next = true;
+                }
             }
             WorkFlowHelper.Instance.SaveWorkFlow(w);
 
