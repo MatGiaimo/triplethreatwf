@@ -5,12 +5,14 @@ to use a different color start by replacing all instances of
 ----------------------------------------------------------*/
 body
 {
-    background-color: #5c87b2;
+    background-color: #696969;
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
-    color: #696969;
+    color:Gray;
+    background-image:url('./../img/bgrd.png');
+    background-repeat:repeat;
 }
 
 a:link
@@ -102,7 +104,7 @@ page width. Or, you can specify an exact pixel width. */
     font-weight: bold;
     padding: 5px 0;
     margin: 0;
-    color: #fff;
+    color: #696969;
     border: none;
     line-height: 2em;
     font-family: Arial, Helvetica, sans-serif;
@@ -321,12 +323,12 @@ div#title
     display:block;
     text-align:right;
     margin:10px;
-    color:White;
+    color:#696969;
 }
 
 #logindisplay a:link
 {
-    color: white;
+    color: #696969;
     text-decoration: underline;
 }
 
