@@ -17,15 +17,19 @@
             <table>
             <thead>
             <th></th>
-            <th>ID</th>
-            <th>Name</th>
+            <th>Document Name</th>
+            <th>Customer Name</th>
+            <th>Date Created</th>
+            <th>Added By</th>
             </thead>
             <tbody>
              <% if(((Folder)this.ViewData["CurrentFolder"]).Documents.Count == 0)
             { %>
                 <tr>
+                <td></td>
                 <td>--</td>
-                <td>--folder empty--</td>
+                <td>Folder Empty</td>
+                <td>--</td>
                 <td>--</td>
                 </tr>
                 </tbody>
@@ -37,6 +41,9 @@
                    <tr>
                    <td><%= Html.RadioButton("SelectedDocument", doc.Id, true)%></td>
                    <td><%= doc.Name %></td>
+                    <td><%=doc.Customer.FullName%></td>
+                    <td><%=doc.CreatedDate%></td>
+                    <td><%=doc.AddedBy%></td>
                    </tr>
                    <% } %>
                    </tbody>

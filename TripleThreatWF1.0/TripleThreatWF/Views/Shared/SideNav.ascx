@@ -15,5 +15,7 @@
 <%} %>
 <div><%: Html.ActionLink("Lenders", "Lenders", "Lender")%></div>
 <br />
-<div><%: Html.ActionLink("Workflow Builder", "ManageWorkflow", "Workflow")%></div>
+<div><%: Html.ActionLink("Workflows", "ManageWorkflow", "Workflow")%></div>
+<br />
+<div><%: Html.ActionLink("Workflow Builder", "NewWorkFlow", "Workflow")%></div>
 <br />

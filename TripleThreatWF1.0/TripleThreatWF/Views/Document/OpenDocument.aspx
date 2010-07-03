@@ -10,6 +10,17 @@
 
     <h2>OpenDocument</h2>
 
-    <%= ((Document)this.ViewData["CurrentDocument"]).Name%>
+     <% using (Html.BeginForm("Save", "Document",FormMethod.Post, 
+                  new {enctype = "multipart/form-data"}))
+       {%>
+        
+        <fieldset><legend>Image:</legend>
+        <% if (this.Model.Id > 0) { %>
+        <div><img src="/Document/GetDocumentImage/<%= this.Model.Id %>" alt="<%= this.Model.ImageName %>"/></div>
+        <%} %>
+        <div style="display:inline">Upload: <input type="file" id="Image" name="Image" /></div>
+        </fieldset>
+        <input type="submit" value="Save" />
+    <%} %>
 
 </asp:Content>

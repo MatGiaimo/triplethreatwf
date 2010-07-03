@@ -71,9 +71,21 @@
                 <% } %>
                 </tbody>
                 </table>
-                <%if(!isCurrentAutoStep){ %>
-                <input type="submit" value="Complete Step" />
-                <%} %>
+                <%if (!isCurrentAutoStep)
+                  {
+                      if (identifiedCurrent)
+                      {%>
+                        <input type="submit" value="Complete Step" />
+                        <%}
+                      else
+                      { %>
+                        <h2>WorkFlow Complete</h2>
+                      <%} %>
+                <%}
+                  else
+                  {%>
+                    <h2>Waiting On Scheduled Automated Step...</h2>
+                  <%} %>
              <% } %>
             
     <% } %>
@@ -81,17 +93,38 @@
     <% using (Html.BeginForm("HandleWFFolder", "WorkFlow", new { Id = ((WorkFlow)ViewData["SelectedWorkFlow"]).Id }))%>
     <% { %>
             <div>&nbsp;</div>
-            WorkFlow Folder:
+            WorkFlow Folder: <%= ((WorkFlow)ViewData["SelectedWorkFlow"]).Folder.Name%>
             <table>
             <thead>
-            <th>ID</th>
-            <th>Name</th>
+            <th>Document Name</th>
+            <th>Customer Name</th>
+            <th>Date Created</th>
+            <th>Added By</th>
             </thead>
             <tbody>
-            <tr>
-            <td><%= ((WorkFlow)ViewData["SelectedWorkFlow"]).Folder.Id%></td>
-            <td><%= ((WorkFlow)ViewData["SelectedWorkFlow"]).Folder.Name%></td>
-            </tr>
+            
+            <% if (((WorkFlow)ViewData["SelectedWorkFlow"]).Folder.Documents.Count == 0)
+               {%>
+                    <tr>
+                        <td>--</td>
+                        <td>Folder Empty</td>
+                        <td>--</td>
+                        <td>--</td>
+                        </tr>
+               <%}
+               else
+               {
+                   foreach (Document doc in ((WorkFlow)ViewData["SelectedWorkFlow"]).Folder.Documents)
+                   { %>
+                        <tr>
+                        <td><%=doc.Name%></td>
+                        <td><%=doc.Customer.FullName%></td>
+                        <td><%=doc.CreatedDate%></td>
+                        <td><%=doc.AddedBy%></td>
+                        </tr>
+                    <%}
+               }%>
+
             </tbody>
             </table>
             <input type="submit" value="Open Folder" />

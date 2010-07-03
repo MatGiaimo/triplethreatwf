@@ -107,9 +107,20 @@ namespace TripleThreatWF.Controllers
 
         public ActionResult HandleDocumentRadio(int SelectedDocument, int Id)
         {
-            ViewData["CurrentDocument"] = DocumentHelper.Instance.GetDocument(SelectedDocument);
+            Document doc = DocumentHelper.Instance.GetDocument(SelectedDocument);
 
-            return View("./../Document/OpenDocument");
+            Models.DocumentModel dm = new Models.DocumentModel();
+
+            dm.Name = doc.Name;
+            dm.Id = doc.Id;
+
+            dm.Customer = doc.Customer;
+            dm.Customers = CustomerHelper.Instance.GetAllCustomers();
+
+            dm.Folder = doc.Folder;
+            dm.Folders = FolderHelper.Instance.GetAllFolders();
+
+            return View("./../Document/ManageDocument", dm);
         }
 
         public ActionResult AddDocument(int Id)
