@@ -1,0 +1,1 @@
+TripleThreatWF is an open source object-oriented workflow management system.  The project is to fulfill requirements for CSU CIS 634 - Object Oriented Software Engineering.  It is designed and written using Microsoft .Net technologies.
